@@ -1,0 +1,287 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Appendix E: The dict Class &#8212; Data Structures and Algorithms with Python</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img class="logo" src="../_static/csbook.JPG" alt="Logo"/>
+          </a></p>
+        <div class="headertitle"><a
+          href="../index.html">Data Structures and Algorithms with Python</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendix-e-the-dict-class">
+<span id="dictappendix"></span><h1>Appendix E: The dict Class<a class="headerlink" href="#appendix-e-the-dict-class" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="http://docs.python.org/py3k">Python 3 Documentation</a> site contains this and much more extensive documentation on the Python 3 language, including the <a class="reference external" href="http://docs.python.org/py3k/library/index.html">Library Reference</a> which contains this documentation. This appendix was generated from the Python help system by typing help(dict) in the Python interpreter.</p>
+<p>Help on class dict in module builtins:</p>
+<dl class="docutils">
+<dt>class dict(object)</dt>
+<dd><div class="first last line-block">
+<div class="line">dict() -&gt; new empty dictionary</div>
+<div class="line">dict(mapping) -&gt; new dictionary initialized from a mapping object’s</div>
+<div class="line-block">
+<div class="line">(key, value) pairs</div>
+</div>
+<div class="line">dict(iterable) -&gt; new dictionary initialized as if via:</div>
+<div class="line-block">
+<div class="line">d = {}</div>
+<div class="line">for k, v in iterable:</div>
+<div class="line-block">
+<div class="line">d[k] = v</div>
+</div>
+</div>
+<div class="line">dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs</div>
+<div class="line-block">
+<div class="line">in the keyword argument list.  For example:  dict(one=1, two=2)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Methods defined here:</div>
+<div class="line"><br /></div>
+<div class="line">__contains__(…)</div>
+<div class="line-block">
+<div class="line">D.__contains__(k) -&gt; True if D has a key k, else False</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__delitem__(…)</div>
+<div class="line-block">
+<div class="line">x.__delitem__(y) &lt;==&gt; del x[y]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__eq__(…)</div>
+<div class="line-block">
+<div class="line">x.__eq__(y) &lt;==&gt; x==y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__ge__(…)</div>
+<div class="line-block">
+<div class="line">x.__ge__(y) &lt;==&gt; x&gt;=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__getattribute__(…)</div>
+<div class="line-block">
+<div class="line">x.__getattribute__(‘name’) &lt;==&gt; x.name</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__getitem__(…)</div>
+<div class="line-block">
+<div class="line">x.__getitem__(y) &lt;==&gt; x[y]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__gt__(…)</div>
+<div class="line-block">
+<div class="line">x.__gt__(y) &lt;==&gt; x&gt;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__init__(…)</div>
+<div class="line-block">
+<div class="line">x.__init__(…) initializes x; see help(type(x)) for signature</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__iter__(…)</div>
+<div class="line-block">
+<div class="line">x.__iter__() &lt;==&gt; iter(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__le__(…)</div>
+<div class="line-block">
+<div class="line">x.__le__(y) &lt;==&gt; x&lt;=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__len__(…)</div>
+<div class="line-block">
+<div class="line">x.__len__() &lt;==&gt; len(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__lt__(…)</div>
+<div class="line-block">
+<div class="line">x.__lt__(y) &lt;==&gt; x&lt;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__ne__(…)</div>
+<div class="line-block">
+<div class="line">x.__ne__(y) &lt;==&gt; x!=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__repr__(…)</div>
+<div class="line-block">
+<div class="line">x.__repr__() &lt;==&gt; repr(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__setitem__(…)</div>
+<div class="line-block">
+<div class="line">x.__setitem__(i, y) &lt;==&gt; x[i]=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__sizeof__(…)</div>
+<div class="line-block">
+<div class="line">D.__sizeof__() -&gt; size of D in memory, in bytes</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">clear(…)</div>
+<div class="line-block">
+<div class="line">D.clear() -&gt; None.  Remove all items from D.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">copy(…)</div>
+<div class="line-block">
+<div class="line">D.copy() -&gt; a shallow copy of D</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">get(…)</div>
+<div class="line-block">
+<div class="line">D.get(k[,d]) -&gt; D[k] if k in D, else d.  d defaults to None.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">items(…)</div>
+<div class="line-block">
+<div class="line">D.items() -&gt; a set-like object providing a view on D’s items</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">keys(…)</div>
+<div class="line-block">
+<div class="line">D.keys() -&gt; a set-like object providing a view on D’s keys</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">pop(…)</div>
+<div class="line-block">
+<div class="line">D.pop(k[,d]) -&gt; v, remove specified key and return the corresponding value.</div>
+<div class="line">If key is not found, d is returned if given, otherwise KeyError is raised</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">popitem(…)</div>
+<div class="line-block">
+<div class="line">D.popitem() -&gt; (k, v), remove and return some (key, value) pair as a</div>
+<div class="line">2-tuple; but raise KeyError if D is empty.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">setdefault(…)</div>
+<div class="line-block">
+<div class="line">D.setdefault(k[,d]) -&gt; D.get(k,d), also set D[k]=d if k not in D</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">update(…)</div>
+<div class="line-block">
+<div class="line">D.update(E, **F) -&gt; None.  Update D from dict/iterable E and F.</div>
+<div class="line">If E has a .keys() method, does:     for k in E: D[k] = E[k]</div>
+<div class="line">If E lacks .keys() method, does:     for (k, v) in E: D[k] = v</div>
+<div class="line">In either case, this is followed by: for k in F: D[k] = F[k]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">values(…)</div>
+<div class="line-block">
+<div class="line">D.values() -&gt; an object providing a view on D’s values</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Data and other attributes defined here:</div>
+<div class="line"><br /></div>
+<div class="line">__hash__ = None</div>
+<div class="line"><br /></div>
+<div class="line">__new__ = &lt;built-in method __new__ of type object&gt;</div>
+<div class="line-block">
+<div class="line">T.__new__(S, …) -&gt; a new object with type S, a subtype of T</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">fromkeys = &lt;built-in method fromkeys of type object&gt;</div>
+<div class="line-block">
+<div class="line">dict.fromkeys(S[,v]) -&gt; New dict with keys from S and values equal to v.</div>
+<div class="line">v defaults to None.</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap2/chap2.html">2. Computational Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap3/chap3.html">3. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap4/chap4.html">4. Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap5/chap5.html">5. Sets and Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap6/chap6.html">6. Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap7/chap7.html">7. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap11/chap11.html">8. Membership Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap8/chap8.html">9. Heaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap9/chap9.html">10. Balanced Binary Search Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap10/chap10.html">11. B-Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap12/chap12.html">12. Heuristic Search</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/appendices/appendixE.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

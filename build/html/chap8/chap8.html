@@ -1,0 +1,996 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>9. Heaps &#8212; Data Structures and Algorithms with Python</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Balanced Binary Search Trees" href="../chap9/chap9.html" />
+    <link rel="prev" title="8. Membership Structures" href="../chap11/chap11.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img class="logo" src="../_static/csbook.JPG" alt="Logo"/>
+          </a></p>
+        <div class="headertitle"><a
+          href="../index.html">Data Structures and Algorithms with Python</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../chap11/chap11.html" title="8. Membership Structures"
+             accesskey="P">previous</a> |
+          <a href="../chap9/chap9.html" title="10. Balanced Binary Search Trees"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="heaps">
+<span id="heapchap"></span><h1>9. Heaps<a class="headerlink" href="#heaps" title="Permalink to this headline">¶</a></h1>
+<p>The word <em>heap</em> is used in a couple of different contexts in Computer Science. A heap sometimes refers to an area of memory used for dynamic (i.e. run-time) memory allocation. Another meaning, and the topic of this chapter, is a data structure that is conceptually a complete binary tree. Heaps are used in implementing priority queues, the heapsort algorithm, and some graph algorithms. Heaps are somewhat like binary search trees in that they maintain an ordering of the items within the tree. However, a heap does not maintain a complete ordering of its items. This has some implications for how a heap may be used.</p>
+<div class="section" id="heap-program">
+<h2>9.1. Heap Program<a class="headerlink" href="#heap-program" title="Permalink to this headline">¶</a></h2>
+<p>Here you can <a class="reference download internal" download="" href="../_downloads/82064d40ac05f7017f92681cb56877ba/heap.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> a starter shell for the heap implementation described in the chapter.
+To run this program you must also <a class="reference download internal" download="" href="../_downloads/dd58e147030eba403ee88a82bdc03ad3/person.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> the person.py file. Place both modules in the same directory. The heap.py program file contains a main function to test your heap implementation.</p>
+<p>This heap program can be modified to support a different number of children. For instance, a four child heap is also possible. The file defaults to a three child heap.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">  File:  heap.py</span>
+<span class="sd">  Author: </span>
+<span class="sd">  Date:</span>
+<span class="sd">  Description:  This module provides the class Heap.  We can create heaps which</span>
+<span class="sd">     are either largest-on-top or smallest-on-top.  We can also create heaps </span>
+<span class="sd">     with a maximum number of children of our choice.  As written, the default</span>
+<span class="sd">     number of children is 3 and the default initial capacity is 5.  These</span>
+<span class="sd">     parameters can be changed by the way we invoke the class constructor.</span>
+<span class="sd">     </span>
+<span class="sd">     The module also provides the efficient heap sort method.  By default, the</span>
+<span class="sd">     methods sorts objects in increasing order.  But we can also sort objects</span>
+<span class="sd">     in decreasing order.</span>
+<span class="sd">     </span>
+<span class="sd">     Our implementation works for objects of any class that understand the</span>
+<span class="sd">     relational operators.</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">testing</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="kn">from</span> <span class="nn">person</span> <span class="kn">import</span> <span class="n">Person</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">heapSort</span><span class="p">(</span><span class="n">aSequence</span><span class="p">,</span> <span class="n">increasingOrder</span> <span class="o">=</span> <span class="bp">True</span><span class="p">):</span>
+  <span class="sd">&#39;&#39;&#39;  This method will answer a list of the elements of aSequence, which</span>
+<span class="sd">   by default will be sorted in increasing order.  To sort in decreasing</span>
+<span class="sd">   order, send a second parameter which is False.</span>
+<span class="sd">  &#39;&#39;&#39;</span>
+  <span class="c1"># Do last, after buildFrom() and siftDownFrom(), other methods.</span>
+  <span class="c1"># More code needed!</span>
+  <span class="k">return</span> <span class="n">h</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+
+
+<span class="k">class</span> <span class="nc">Heap</span><span class="p">:</span>
+  <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">  The class Heap provides a generic heap abstract data type.</span>
+<span class="sd">  The instances of this class can hold objects of any sort that</span>
+<span class="sd">  understand the relational operators.  It also allows us to create</span>
+<span class="sd">  heaps with any maximum number of children.</span>
+<span class="sd">  &#39;&#39;&#39;</span>
+
+  <span class="n">DefaultCapacity</span> <span class="o">=</span> <span class="mi">5</span>           <span class="c1">#  A class variable</span>
+  <span class="n">DefaultNumberOfChildren</span> <span class="o">=</span> <span class="mi">3</span>   <span class="c1">#  Another class variable</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">=</span> <span class="n">DefaultCapacity</span><span class="p">,</span>
+          <span class="n">largestOnTop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">numberOfChildren</span> <span class="o">=</span>
+              <span class="n">DefaultNumberOfChildren</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">capacity</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">largestOnTop</span> <span class="o">=</span> <span class="n">largestOnTop</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="n">capacity</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">maxChildren</span> <span class="o">=</span> <span class="n">numberOfChildren</span>
+
+  <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">largestOnTop</span><span class="p">:</span>
+       <span class="n">sortOfHeap</span> <span class="o">=</span> <span class="s1">&#39;largest on top&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+       <span class="n">sortOfHeap</span> <span class="o">=</span> <span class="s1">&#39;smallest on top&#39;</span>
+    <span class="n">st</span> <span class="o">=</span> <span class="s1">&#39;It is a &#39;</span> <span class="o">+</span> <span class="n">sortOfHeap</span> <span class="o">+</span> <span class="s1">&#39; heap:</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="c1">#  .......</span>
+    <span class="k">return</span> <span class="n">st</span>
+
+  <span class="k">def</span> <span class="nf">addToHeap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newObject</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;If the heap is full, double its current capacity.</span>
+<span class="sd">       Add the newObject to the heap, maintaining it as a</span>
+<span class="sd">       heap of the same type.  Answer newObject.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">pass</span>  <span class="c1"># Allows compilation of file.  Replace with actual code.</span>
+
+  <span class="k">def</span> <span class="nf">bestChildOf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">lastIndex</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Answer the index of the &quot;best child&quot; of self.data[index], if it</span>
+<span class="sd">      exists. If not, answer None.  lastIndex is the index of the last </span>
+<span class="sd">      object in the heap.  For a largest on top heap, the best child is the</span>
+<span class="sd">      largest child.  For a smallest on top heap, it is the smallest child</span>
+<span class="sd">      of the node with the given index.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">bestChild</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="c1">#  .......</span>
+    <span class="k">return</span> <span class="n">bestChild</span>
+            
+  <span class="k">def</span> <span class="nf">buildFrom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aSequence</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;aSequence is an instance of a sequence collection which</span>
+<span class="sd">        understands the comparison operators. The elements of</span>
+<span class="sd">        aSequence are copied into the heap and ordered to build</span>
+<span class="sd">        a heap. &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+
+  <span class="k">def</span> <span class="nf">removeTop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;  If the heap is not empty, remove the top element</span>
+<span class="sd">      of the heap and adjust the heap accordingly.  Answer the object</span>
+<span class="sd">      removed.  If the heap is empty, return None.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+
+  <span class="k">def</span> <span class="nf">siftDownFrom</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">fromIndex</span> <span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;fromIndex is the index of an element in the heap.</span>
+<span class="sd">      Pre: data[fromIndex..size-1] satisfies the heap condition,</span>
+<span class="sd">      except perhaps for the element self.data[fromIndex].</span>
+<span class="sd">      Post:  That element is sifted down as far as neccessary to</span>
+<span class="sd">      maintain the heap structure for data[fromIndex..size-1].</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+
+  <span class="k">def</span> <span class="nf">__siftUpFrom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; child is the index of a node in the heap.  This method sifts</span>
+<span class="sd">      that node up as far as necessary to ensure that the path to the root</span>
+<span class="sd">      satisfies the heap condition. &#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+
+  <span class="k">def</span> <span class="nf">__siftDownFromTo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromIndex</span><span class="p">,</span> <span class="n">lastIndex</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;fromIndex is the index of an element in the heap.</span>
+<span class="sd">      Pre: data[fromIndex..lastIndex] satisfies the heap condition,</span>
+<span class="sd">      except perhaps for the element data[fromIndex].</span>
+<span class="sd">      Post:  That element is sifted down as far as neccessary to</span>
+<span class="sd">      maintain the heap structure for data[fromIndex..lastIndex].&#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+    
+  <span class="k">def</span> <span class="nf">levelByLevelString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Return a string which lists the contents of the heap</span>
+<span class="sd">       level by level.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># start at the root node</span>
+    <span class="n">maxLevel</span> <span class="o">=</span> \
+       <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numberOfChildren</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span>
+            <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numberOfChildren</span><span class="p">))</span>
+    <span class="c1">#  MORE!              </span>
+
+  <span class="c1">#  Other methods?</span>
+  <span class="c1">#  Use Doc strings for all methods!</span>
+        
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;My name is &quot;</span><span class="p">)</span>
+  <span class="n">h</span> <span class="o">=</span> <span class="n">Heap</span><span class="p">()</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">54</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">66</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+  <span class="n">h</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">siftDownFrom</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+  <span class="n">h</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">60</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">siftDownFrom</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+  <span class="n">h</span> <span class="o">=</span> <span class="n">Heap</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">buildFrom</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span> <span class="mi">99</span><span class="p">))</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+  <span class="n">theList</span> <span class="o">=</span> <span class="n">heapSort</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">theList</span><span class="p">)</span>
+
+  <span class="n">theList</span> <span class="o">=</span> <span class="n">heapSort</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="bp">False</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">theList</span><span class="p">)</span>
+
+  <span class="k">print</span><span class="p">(</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">The following is the extra output that happens when we&quot;</span> <span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span> <span class="s2">&quot; create a heap that can have 5 children per node. </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">)</span>
+  <span class="n">heap</span> <span class="o">=</span> <span class="n">Heap</span><span class="p">(</span><span class="n">numberOfChildren</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+  <span class="n">heap</span><span class="o">.</span><span class="n">buildFrom</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">29</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="o">-</span><span class="mi">293</span><span class="p">,</span> \
+   <span class="mi">77</span><span class="p">,</span> <span class="o">-</span><span class="mi">19</span><span class="p">,</span> <span class="o">-</span><span class="mi">77</span><span class="p">,</span> <span class="mi">230</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="o">-</span><span class="mi">230</span><span class="p">,</span> <span class="o">-</span><span class="mi">48</span><span class="p">,</span> <span class="mi">23</span><span class="p">))</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+
+  <span class="n">a</span> <span class="o">=</span> <span class="n">heapSort</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">29</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="o">-</span><span class="mi">293</span><span class="p">,</span> \
+   <span class="mi">77</span><span class="p">,</span> <span class="o">-</span><span class="mi">19</span><span class="p">,</span> <span class="o">-</span><span class="mi">77</span><span class="p">,</span> <span class="mi">230</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="o">-</span><span class="mi">230</span><span class="p">,</span> <span class="o">-</span><span class="mi">48</span><span class="p">,</span> <span class="mi">23</span><span class="p">))</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+
+  <span class="c1">#  Extra stuff to test removeTop()</span>
+  <span class="n">h</span> <span class="o">=</span> <span class="n">Heap</span><span class="p">()</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">54</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">66</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+  <span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">removeTop</span><span class="p">())</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+  <span class="k">print</span><span class="p">(</span> <span class="s2">&quot;trying heapSort method:&quot;</span> <span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span> <span class="n">heapSort</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">921</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">57</span><span class="p">))</span> <span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span>  <span class="n">heapSort</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">921</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">57</span><span class="p">),</span> <span class="bp">False</span><span class="p">))</span>
+  <span class="n">joe</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Joe&#39;</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+  <span class="n">jill</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Jill&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+  <span class="n">walt</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Walter&#39;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
+  <span class="n">dave</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;David&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+  <span class="n">kent</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Kent&#39;</span><span class="p">,</span> <span class="mi">220</span><span class="p">)</span>
+  <span class="n">alan</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span>
+  <span class="n">folks</span> <span class="o">=</span> <span class="p">[</span><span class="n">joe</span><span class="p">,</span> <span class="n">jill</span><span class="p">,</span> <span class="n">walt</span><span class="p">,</span> <span class="n">dave</span><span class="p">,</span> <span class="n">kent</span><span class="p">,</span> <span class="n">alan</span><span class="p">]</span>
+  <span class="k">print</span><span class="p">(</span> <span class="n">heapSort</span><span class="p">(</span><span class="n">folks</span><span class="p">)</span> <span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span> <span class="n">heapSort</span><span class="p">(</span><span class="n">folks</span><span class="p">,</span> <span class="bp">False</span> <span class="p">))</span>
+
+  <span class="n">h</span> <span class="o">=</span> <span class="n">Heap</span><span class="p">()</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">54</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">66</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+  <span class="n">h</span><span class="o">.</span><span class="n">addToHeap</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">()</span>
+  <span class="k">print</span><span class="p">(</span> <span class="s1">&#39;A level by level listing of the heap:&#39;</span> <span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span> <span class="n">h</span><span class="o">.</span><span class="n">levelByLevelString</span><span class="p">()</span> <span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span> <span class="n">main</span><span class="p">()</span>
+
+<span class="sd">&#39;&#39;&#39;  The following is the output from running this code:</span>
+<span class="sd">My name is YOUR NAME</span>
+<span class="sd">[evaluate heap.py]</span>
+<span class="sd">It is a largest on top heap:</span>
+<span class="sd">The size of the heap is 11.</span>
+<span class="sd">The capacity of the heap is 20.</span>
+<span class="sd">The elements of the heap are: </span>
+<span class="sd">1000</span>
+<span class="sd">72</span>
+<span class="sd">99</span>
+<span class="sd">900</span>
+<span class="sd">20</span>
+<span class="sd">-100</span>
+<span class="sd">54</span>
+<span class="sd">-10</span>
+<span class="sd">66</span>
+<span class="sd">84</span>
+<span class="sd">40</span>
+
+<span class="sd">It is a largest on top heap:</span>
+<span class="sd">The size of the heap is 11.</span>
+<span class="sd">The capacity of the heap is 20.</span>
+<span class="sd">The elements of the heap are: </span>
+<span class="sd">900</span>
+<span class="sd">72</span>
+<span class="sd">99</span>
+<span class="sd">50</span>
+<span class="sd">20</span>
+<span class="sd">-100</span>
+<span class="sd">54</span>
+<span class="sd">-10</span>
+<span class="sd">66</span>
+<span class="sd">84</span>
+<span class="sd">40</span>
+
+<span class="sd">It is a largest on top heap:</span>
+<span class="sd">The size of the heap is 11.</span>
+<span class="sd">The capacity of the heap is 20.</span>
+<span class="sd">The elements of the heap are: </span>
+<span class="sd">99</span>
+<span class="sd">72</span>
+<span class="sd">84</span>
+<span class="sd">50</span>
+<span class="sd">20</span>
+<span class="sd">-100</span>
+<span class="sd">54</span>
+<span class="sd">-10</span>
+<span class="sd">66</span>
+<span class="sd">60</span>
+<span class="sd">40</span>
+
+<span class="sd">Output from buildFrom():</span>
+<span class="sd">It is a smallest on top heap:</span>
+<span class="sd">The size of the heap is 9.</span>
+<span class="sd">The capacity of the heap is 9.</span>
+<span class="sd">The elements of the heap are: </span>
+<span class="sd">-100</span>
+<span class="sd">20</span>
+<span class="sd">-10</span>
+<span class="sd">72</span>
+<span class="sd">84</span>
+<span class="sd">40</span>
+<span class="sd">54</span>
+<span class="sd">66</span>
+<span class="sd">99</span>
+
+<span class="sd">[-100, -40, 5, 10, 20, 30, 30, 50, 50, 70]</span>
+<span class="sd">[70, 50, 50, 30, 30, 20, 10, 5, -40, -100]</span>
+
+<span class="sd">The following is the extra output that happens when we</span>
+<span class="sd"> create a heap that can have 5 children per node. </span>
+
+<span class="sd">It is a largest on top heap:</span>
+<span class="sd">The size of the heap is 18.</span>
+<span class="sd">The capacity of the heap is 18.</span>
+<span class="sd">The elements of the heap are: </span>
+<span class="sd">230</span>
+<span class="sd">100</span>
+<span class="sd">91</span>
+<span class="sd">23</span>
+<span class="sd">70</span>
+<span class="sd">30</span>
+<span class="sd">20</span>
+<span class="sd">20</span>
+<span class="sd">38</span>
+<span class="sd">-293</span>
+<span class="sd">77</span>
+<span class="sd">-19</span>
+<span class="sd">-77</span>
+<span class="sd">-29</span>
+<span class="sd">10</span>
+<span class="sd">-230</span>
+<span class="sd">-48</span>
+<span class="sd">16</span>
+
+<span class="sd">[-293, -230, -77, -48, -29, -19, 10, 16, 20, 20, 23, 30, 38, 70, 77, 91, 100, 230]</span>
+<span class="sd">It is a largest on top heap:</span>
+<span class="sd">The size of the heap is 11.</span>
+<span class="sd">The capacity of the heap is 20.</span>
+<span class="sd">The elements of the heap are: </span>
+<span class="sd">1000</span>
+<span class="sd">72</span>
+<span class="sd">99</span>
+<span class="sd">900</span>
+<span class="sd">20</span>
+<span class="sd">-100</span>
+<span class="sd">54</span>
+<span class="sd">-10</span>
+<span class="sd">66</span>
+<span class="sd">84</span>
+<span class="sd">40</span>
+
+<span class="sd">Output from removeTop():</span>
+<span class="sd">1000</span>
+<span class="sd">It is a largest on top heap:</span>
+<span class="sd">The size of the heap is 10.</span>
+<span class="sd">The capacity of the heap is 20.</span>
+<span class="sd">The elements of the heap are: </span>
+<span class="sd">900</span>
+<span class="sd">72</span>
+<span class="sd">99</span>
+<span class="sd">40</span>
+<span class="sd">20</span>
+<span class="sd">-100</span>
+<span class="sd">54</span>
+<span class="sd">-10</span>
+<span class="sd">66</span>
+<span class="sd">84</span>
+
+<span class="sd">trying heapSort method:</span>
+<span class="sd">[-1000, -30, 20, 37, 45, 57, 200, 921, 4000]</span>
+<span class="sd">[4000, 921, 200, 57, 45, 37, 20, -30, -1000]</span>
+<span class="sd">[Name: David Id: 23 , Name: Joe Id: 99 , Name: Al Id: 110 ,</span>
+<span class="sd">   Name: Jill Id: 200 , Name: Kent Id: 220 , Name: Walter Id: 3000 ]</span>
+<span class="sd">[Name: Walter Id: 3000 , Name: Kent Id: 220 , Name: Jill Id: 200 , </span>
+<span class="sd">   Name: Al Id: 110 , Name: Joe Id: 99 , Name: David Id: 23 ]</span>
+
+<span class="sd">A level by level listing of the heap:</span>
+<span class="sd">Level 1:</span>
+<span class="sd">1000</span>
+
+<span class="sd">Level 2:</span>
+<span class="sd">72</span>
+<span class="sd">99</span>
+<span class="sd">900</span>
+
+<span class="sd">Level 3:</span>
+<span class="sd">20</span>
+<span class="sd">-100</span>
+<span class="sd">54</span>
+<span class="sd">-10</span>
+<span class="sd">66</span>
+<span class="sd">84</span>
+<span class="sd">40</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="figures-from-text">
+<h2>9.2. Figures from Text<a class="headerlink" href="#figures-from-text" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id1">
+<img alt="../_images/heap1.png" src="../_images/heap1.png" />
+<p class="caption"><span class="caption-text">Fig. 1: Heap Shape</span></p>
+</div>
+<div class="figure" id="id2">
+<img alt="../_images/heap2.png" src="../_images/heap2.png" />
+<p class="caption"><span class="caption-text">Fig. 2: Sample Heap</span></p>
+</div>
+<div class="figure" id="id3">
+<img alt="../_images/heap3.png" src="../_images/heap3.png" />
+<p class="caption"><span class="caption-text">Fig. 3: Heap Organization</span></p>
+</div>
+<div class="figure" id="id4">
+<img alt="../_images/heap4.png" src="../_images/heap4.png" />
+<p class="caption"><span class="caption-text">Fig. 4: Building a Heap Part One</span></p>
+</div>
+<div class="figure" id="id5">
+<img alt="../_images/heap5.png" src="../_images/heap5.png" />
+<p class="caption"><span class="caption-text">Fig. 5: Building a Heap Part Two</span></p>
+</div>
+<div class="figure" id="id6">
+<img alt="../_images/heap6.png" src="../_images/heap6.png" />
+<p class="caption"><span class="caption-text">Fig. 6: Building a Heap Part Three</span></p>
+</div>
+<div class="figure" id="id7">
+<img alt="../_images/heap7.png" src="../_images/heap7.png" />
+<p class="caption"><span class="caption-text">Fig. 7: Adding 98 to the Heap</span></p>
+</div>
+<div class="figure" id="id8">
+<img alt="../_images/heap8.png" src="../_images/heap8.png" />
+<p class="caption"><span class="caption-text">Fig. 8: Conceptual View While Adding 98 to the Heap</span></p>
+</div>
+<div class="figure" id="id9">
+<img alt="../_images/heap9.png" src="../_images/heap9.png" />
+<p class="caption"><span class="caption-text">Fig. 9: Heap After Moving 98 to Correct Location</span></p>
+</div>
+<div class="figure" id="id10">
+<img alt="../_images/heap10.png" src="../_images/heap10.png" />
+<p class="caption"><span class="caption-text">Fig. 10: A Perfect Binary Tree</span></p>
+</div>
+<div class="figure" id="id11">
+<img alt="../_images/logplot.png" src="../_images/logplot.png" />
+<p class="caption"><span class="caption-text">Fig. 11: Plot of log(n)</span></p>
+</div>
+<div class="figure" id="id12">
+<img alt="../_images/heap11.png" src="../_images/heap11.png" />
+<p class="caption"><span class="caption-text">Fig. 12: Just Before Phase II</span></p>
+</div>
+<div class="figure" id="id13">
+<img alt="../_images/heap12.png" src="../_images/heap12.png" />
+<p class="caption"><span class="caption-text">Fig. 13: After Swapping First and Last Values</span></p>
+</div>
+<div class="figure" id="id14">
+<img alt="../_images/heap13.png" src="../_images/heap13.png" />
+<p class="caption"><span class="caption-text">Fig. 14: After the First Pass of Phase II</span></p>
+</div>
+<div class="figure" id="id15">
+<img alt="../_images/heap14.png" src="../_images/heap14.png" />
+<p class="caption"><span class="caption-text">Fig. 15: After the Second Pass of Phase II</span></p>
+</div>
+<div class="figure" id="id16">
+<img alt="../_images/heap15.png" src="../_images/heap15.png" />
+<p class="caption"><span class="caption-text">Fig. 16: After the Third Pass of Phase II</span></p>
+</div>
+<div class="figure" id="id17">
+<img alt="../_images/heap16.png" src="../_images/heap16.png" />
+<p class="caption"><span class="caption-text">Fig. 17: After the Fourth and Final Pass of Phase II</span></p>
+</div>
+<div class="figure" id="id18">
+<img alt="../_images/heap17.png" src="../_images/heap17.png" />
+<p class="caption"><span class="caption-text">Fig. 18: A List to be Heapsorted</span></p>
+</div>
+<div class="figure" id="id19">
+<img alt="../_images/heap18.png" src="../_images/heap18.png" />
+<p class="caption"><span class="caption-text">Fig. 19: After Forming a Sub-Heap</span></p>
+</div>
+<div class="figure" id="id20">
+<img alt="../_images/heap19.png" src="../_images/heap19.png" />
+<p class="caption"><span class="caption-text">Fig. 20: After Forming a Second Sub-Heap</span></p>
+</div>
+<div class="figure" id="id21">
+<img alt="../_images/heap20.png" src="../_images/heap20.png" />
+<p class="caption"><span class="caption-text">Fig. 21: Sifting the 15 Down</span></p>
+</div>
+<div class="figure" id="id22">
+<img alt="../_images/heap21.png" src="../_images/heap21.png" />
+<p class="caption"><span class="caption-text">Fig. 22: The Final Heap using Version 2 of Phase I</span></p>
+</div>
+<div class="figure" id="id23">
+<img alt="../_images/heap22.png" src="../_images/heap22.png" />
+<p class="caption"><span class="caption-text">Fig. 23: A Binary Heap of Height 4</span></p>
+</div>
+<div class="figure" id="id24">
+<img alt="../_images/timinggraph.png" src="../_images/timinggraph.png" />
+<p class="caption"><span class="caption-text">Fig. 24: Comparison of Several Sorting Algorithms</span></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap2/chap2.html">2. Computational Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap3/chap3.html">3. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap4/chap4.html">4. Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap5/chap5.html">5. Sets and Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap6/chap6.html">6. Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap7/chap7.html">7. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap11/chap11.html">8. Membership Structures</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Heaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#heap-program">9.1. Heap Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#figures-from-text">9.2. Figures from Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chap9/chap9.html">10. Balanced Binary Search Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap10/chap10.html">11. B-Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap12/chap12.html">12. Heuristic Search</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../chap11/chap11.html" title="8. Membership Structures"
+              >previous</a> |
+            <a href="../chap9/chap9.html" title="10. Balanced Binary Search Trees"
+              >next</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/chap8/chap8.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

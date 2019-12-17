@@ -1,0 +1,1786 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Appendix F: The Turtle Class &#8212; Data Structures and Algorithms with Python</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img class="logo" src="../_static/csbook.JPG" alt="Logo"/>
+          </a></p>
+        <div class="headertitle"><a
+          href="../index.html">Data Structures and Algorithms with Python</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendix-f-the-turtle-class">
+<span id="turtlegraphicsappendix"></span><h1>Appendix F: The Turtle Class<a class="headerlink" href="#appendix-f-the-turtle-class" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="http://docs.python.org/py3k">Python 3 Documentation</a> site contains this and much more extensive documentation on the Python 3 language, including the <a class="reference external" href="http://docs.python.org/py3k/library/index.html">Library Reference</a> which contains this documentation. This appendix was generated from the Python help system by typing help(Turtle) in the Python interpreter after importing the turtle module.</p>
+<p>Help on class Turtle in module turtle:</p>
+<dl class="docutils">
+<dt>class Turtle(RawTurtle)</dt>
+<dd><div class="first last line-block">
+<div class="line">RawTurtle auto-crating (scrolled) canvas.</div>
+<div class="line"><br /></div>
+<div class="line">When a Turtle object is created or a function derived from some</div>
+<div class="line">Turtle method is called a TurtleScreen object is automatically created.</div>
+<div class="line"><br /></div>
+<div class="line">Method resolution order:</div>
+<div class="line-block">
+<div class="line">Turtle</div>
+<div class="line">RawTurtle</div>
+<div class="line">TPen</div>
+<div class="line">TNavigator</div>
+<div class="line">builtins.object</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Methods defined here:</div>
+<div class="line"><br /></div>
+<div class="line">__init__(self, shape=’classic’, undobuffersize=1000, visible=True)</div>
+<div class="line"><br /></div>
+<div class="line">———————————————————————-</div>
+<div class="line">Methods inherited from RawTurtle:</div>
+<div class="line"><br /></div>
+<div class="line">begin_fill(self)</div>
+<div class="line-block">
+<div class="line">Called just before drawing a shape to be filled.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.color(“black”, “red”)</div>
+<div class="line">&gt;&gt;&gt; turtle.begin_fill()</div>
+<div class="line">&gt;&gt;&gt; turtle.circle(60)</div>
+<div class="line">&gt;&gt;&gt; turtle.end_fill()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">begin_poly(self)</div>
+<div class="line-block">
+<div class="line">Start recording the vertices of a polygon.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Start recording the vertices of a polygon. Current turtle position</div>
+<div class="line">is first point of polygon.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.begin_poly()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">clear(self)</div>
+<div class="line-block">
+<div class="line">Delete the turtle’s drawings from the screen. Do not move turtle.</div>
+<div class="line"><br /></div>
+<div class="line">No arguments.</div>
+<div class="line"><br /></div>
+<div class="line">Delete the turtle’s drawings from the screen. Do not move turtle.</div>
+<div class="line">State and position of the turtle as well as drawings of other</div>
+<div class="line">turtles are not affected.</div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.clear()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">clearstamp(self, stampid)</div>
+<div class="line-block">
+<div class="line">Delete stamp with given stampid</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">stampid - an integer, must be return value of previous stamp() call.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.color(“blue”)</div>
+<div class="line">&gt;&gt;&gt; astamp = turtle.stamp()</div>
+<div class="line">&gt;&gt;&gt; turtle.fd(50)</div>
+<div class="line">&gt;&gt;&gt; turtle.clearstamp(astamp)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">clearstamps(self, n=None)</div>
+<div class="line-block">
+<div class="line">Delete all or first/last n of turtle’s stamps.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argument:</div>
+<div class="line">n – an integer</div>
+<div class="line"><br /></div>
+<div class="line">If n is None, delete all of pen’s stamps,</div>
+<div class="line">else if n &gt; 0 delete first n stamps</div>
+<div class="line">else if n &lt; 0 delete last n stamps.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; for i in range(8):</div>
+<div class="line-block">
+<div class="line">turtle.stamp(); turtle.fd(30)</div>
+</div>
+<div class="line">…</div>
+<div class="line">&gt;&gt;&gt; turtle.clearstamps(2)</div>
+<div class="line">&gt;&gt;&gt; turtle.clearstamps(-2)</div>
+<div class="line">&gt;&gt;&gt; turtle.clearstamps()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">clone(self)</div>
+<div class="line-block">
+<div class="line">Create and return a clone of the turtle.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Create and return a clone of the turtle with same position, heading</div>
+<div class="line">and turtle properties.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named mick):</div>
+<div class="line">mick = Turtle()</div>
+<div class="line">joe = mick.clone()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">dot(self, size=None, *color)</div>
+<div class="line-block">
+<div class="line">Draw a dot with diameter size, using color.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argumentS:</div>
+<div class="line">size – an integer &gt;= 1 (if given)</div>
+<div class="line">color – a colorstring or a numeric color tuple</div>
+<div class="line"><br /></div>
+<div class="line">Draw a circular dot with diameter size, using color.</div>
+<div class="line">If size is not given, the maximum of pensize+4 and 2*pensize is used.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.dot()</div>
+<div class="line">&gt;&gt;&gt; turtle.fd(50); turtle.dot(20, “blue”); turtle.fd(50)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">end_fill(self)</div>
+<div class="line-block">
+<div class="line">Fill the shape drawn after the call begin_fill().</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.color(“black”, “red”)</div>
+<div class="line">&gt;&gt;&gt; turtle.begin_fill()</div>
+<div class="line">&gt;&gt;&gt; turtle.circle(60)</div>
+<div class="line">&gt;&gt;&gt; turtle.end_fill()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">end_poly(self)</div>
+<div class="line-block">
+<div class="line">Stop recording the vertices of a polygon.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Stop recording the vertices of a polygon. Current turtle position is</div>
+<div class="line">last point of polygon. This will be connected with the first point.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.end_poly()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">filling(self)</div>
+<div class="line-block">
+<div class="line">Return fillstate (True if filling, False else).</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.begin_fill()</div>
+<div class="line">&gt;&gt;&gt; if turtle.filling():</div>
+<div class="line-block">
+<div class="line">turtle.pensize(5)</div>
+</div>
+<div class="line">else:</div>
+<div class="line-block">
+<div class="line">turtle.pensize(3)</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">get_poly(self)</div>
+<div class="line-block">
+<div class="line">Return the lastly recorded polygon.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; p = turtle.get_poly()</div>
+<div class="line">&gt;&gt;&gt; turtle.register_shape(“myFavouriteShape”, p)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">get_shapepoly(self)</div>
+<div class="line-block">
+<div class="line">Return the current shape polygon as tuple of coordinate pairs.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.shape(“square”)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapetransform(4, -1, 0, 2)</div>
+<div class="line">&gt;&gt;&gt; turtle.get_shapepoly()</div>
+<div class="line">((50, -20), (30, 20), (-50, 20), (-30, -20))</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">getpen = getturtle(self)</div>
+<div class="line-block">
+<div class="line">Return the Turtleobject itself.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Only reasonable use: as a function to return the ‘anonymous turtle’:</div>
+<div class="line"><br /></div>
+<div class="line">Example:</div>
+<div class="line">&gt;&gt;&gt; pet = getturtle()</div>
+<div class="line">&gt;&gt;&gt; pet.fd(50)</div>
+<div class="line">&gt;&gt;&gt; pet</div>
+<div class="line">&lt;turtle.Turtle object at 0x0187D810&gt;</div>
+<div class="line">&gt;&gt;&gt; turtles()</div>
+<div class="line">[&lt;turtle.Turtle object at 0x0187D810&gt;]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">getscreen(self)</div>
+<div class="line-block">
+<div class="line">Return the TurtleScreen object, the turtle is drawing  on.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Return the TurtleScreen object, the turtle is drawing  on.</div>
+<div class="line">So TurtleScreen-methods can be called for that object.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; ts = turtle.getscreen()</div>
+<div class="line">&gt;&gt;&gt; ts</div>
+<div class="line">&lt;turtle.TurtleScreen object at 0x0106B770&gt;</div>
+<div class="line">&gt;&gt;&gt; ts.bgcolor(“pink”)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">getturtle(self)</div>
+<div class="line-block">
+<div class="line">Return the Turtleobject itself.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Only reasonable use: as a function to return the ‘anonymous turtle’:</div>
+<div class="line"><br /></div>
+<div class="line">Example:</div>
+<div class="line">&gt;&gt;&gt; pet = getturtle()</div>
+<div class="line">&gt;&gt;&gt; pet.fd(50)</div>
+<div class="line">&gt;&gt;&gt; pet</div>
+<div class="line">&lt;turtle.Turtle object at 0x0187D810&gt;</div>
+<div class="line">&gt;&gt;&gt; turtles()</div>
+<div class="line">[&lt;turtle.Turtle object at 0x0187D810&gt;]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">onclick(self, fun, btn=1, add=None)</div>
+<div class="line-block">
+<div class="line">Bind fun to mouse-click event on this turtle on canvas.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">fun –  a function with two arguments, to which will be assigned</div>
+<div class="line-block">
+<div class="line">the coordinates of the clicked point on the canvas.</div>
+</div>
+<div class="line">num –  number of the mouse-button defaults to 1 (left mouse button).</div>
+<div class="line">add –  True or False. If True, new binding will be added, otherwise</div>
+<div class="line-block">
+<div class="line">it will replace a former binding.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Example for the anonymous turtle, i. e. the procedural way:</div>
+<div class="line"><br /></div>
+<div class="line">&gt;&gt;&gt; def turn(x, y):</div>
+<div class="line-block">
+<div class="line">left(360)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&gt;&gt;&gt; onclick(turn) # Now clicking into the turtle will turn it.</div>
+<div class="line">&gt;&gt;&gt; onclick(None)  # event-binding will be removed</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">ondrag(self, fun, btn=1, add=None)</div>
+<div class="line-block">
+<div class="line">Bind fun to mouse-move event on this turtle on canvas.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">fun – a function with two arguments, to which will be assigned</div>
+<div class="line-block">
+<div class="line">the coordinates of the clicked point on the canvas.</div>
+</div>
+<div class="line">num – number of the mouse-button defaults to 1 (left mouse button).</div>
+<div class="line"><br /></div>
+<div class="line">Every sequence of mouse-move-events on a turtle is preceded by a</div>
+<div class="line">mouse-click event on that turtle.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.ondrag(turtle.goto)</div>
+<div class="line"><br /></div>
+<div class="line">### Subsequently clicking and dragging a Turtle will</div>
+<div class="line">### move it across the screen thereby producing handdrawings</div>
+<div class="line">### (if pen is down).</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">onrelease(self, fun, btn=1, add=None)</div>
+<div class="line-block">
+<div class="line">Bind fun to mouse-button-release event on this turtle on canvas.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">fun – a function with two arguments, to which will be assigned</div>
+<div class="line-block">
+<div class="line">the coordinates of the clicked point on the canvas.</div>
+</div>
+<div class="line">num –  number of the mouse-button defaults to 1 (left mouse button).</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a MyTurtle instance named joe):</div>
+<div class="line">&gt;&gt;&gt; class MyTurtle(Turtle):</div>
+<div class="line-block">
+<div class="line">def glow(self,x,y):</div>
+<div class="line-block">
+<div class="line">self.fillcolor(“red”)</div>
+</div>
+<div class="line">def unglow(self,x,y):</div>
+<div class="line-block">
+<div class="line">self.fillcolor(“”)</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">&gt;&gt;&gt; joe = MyTurtle()</div>
+<div class="line">&gt;&gt;&gt; joe.onclick(joe.glow)</div>
+<div class="line">&gt;&gt;&gt; joe.onrelease(joe.unglow)</div>
+<div class="line">### clicking on joe turns fillcolor red,</div>
+<div class="line">### unclicking turns it to transparent.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">reset(self)</div>
+<div class="line-block">
+<div class="line">Delete the turtle’s drawings and restore its default values.</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">No argument.</div>
+</div>
+<div class="line">,</div>
+<div class="line-block">
+<div class="line">Delete the turtle’s drawings from the screen, re-center the turtle</div>
+<div class="line">and set variables to the default values.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(0.00,-22.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">100.0</div>
+<div class="line">&gt;&gt;&gt; turtle.reset()</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(0.00,0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">0.0</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">settiltangle(self, angle)</div>
+<div class="line-block">
+<div class="line">Rotate the turtleshape to point in the specified direction</div>
+<div class="line"><br /></div>
+<div class="line">Argument: angle – number</div>
+<div class="line"><br /></div>
+<div class="line">Rotate the turtleshape to point in the direction specified by angle,</div>
+<div class="line">regardless of its current tilt-angle. DO NOT change the turtle’s</div>
+<div class="line">heading (direction of movement).</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.shape(“circle”)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapesize(5,2)</div>
+<div class="line">&gt;&gt;&gt; turtle.settiltangle(45)</div>
+<div class="line">&gt;&gt;&gt; stamp()</div>
+<div class="line">&gt;&gt;&gt; turtle.fd(50)</div>
+<div class="line">&gt;&gt;&gt; turtle.settiltangle(-45)</div>
+<div class="line">&gt;&gt;&gt; stamp()</div>
+<div class="line">&gt;&gt;&gt; turtle.fd(50)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">setundobuffer(self, size)</div>
+<div class="line-block">
+<div class="line">Set or disable undobuffer.</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">size – an integer or None</div>
+<div class="line"><br /></div>
+<div class="line">If size is an integer an empty undobuffer of given size is installed.</div>
+<div class="line">Size gives the maximum number of turtle-actions that can be undone</div>
+<div class="line">by the undo() function.</div>
+<div class="line">If size is None, no undobuffer is present.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.setundobuffer(42)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">shape(self, name=None)</div>
+<div class="line-block">
+<div class="line">Set turtle shape to shape with given name / return current shapename.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argument:</div>
+<div class="line">name – a string, which is a valid shapename</div>
+<div class="line"><br /></div>
+<div class="line">Set turtle shape to shape with given name or, if name is not given,</div>
+<div class="line">return name of current shape.</div>
+<div class="line">Shape with name must exist in the TurtleScreen’s shape dictionary.</div>
+<div class="line">Initially there are the following polygon shapes:</div>
+<div class="line">‘arrow’, ‘turtle’, ‘circle’, ‘square’, ‘triangle’, ‘classic’.</div>
+<div class="line">To learn about how to deal with shapes see Screen-method register_shape.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.shape()</div>
+<div class="line">‘arrow’</div>
+<div class="line">&gt;&gt;&gt; turtle.shape(“turtle”)</div>
+<div class="line">&gt;&gt;&gt; turtle.shape()</div>
+<div class="line">‘turtle’</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">shapesize(self, stretch_wid=None, stretch_len=None, outline=None)</div>
+<div class="line-block">
+<div class="line">Set/return turtle’s stretchfactors/outline. Set resizemode to “user”.</div>
+<div class="line"><br /></div>
+<div class="line">Optinonal arguments:</div>
+<div class="line-block">
+<div class="line">stretch_wid : positive number</div>
+<div class="line">stretch_len : positive number</div>
+<div class="line">outline  : positive number</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Return or set the pen’s attributes x/y-stretchfactors and/or outline.</div>
+<div class="line">Set resizemode to “user”.</div>
+<div class="line">If and only if resizemode is set to “user”, the turtle will be displayed</div>
+<div class="line">stretched according to its stretchfactors:</div>
+<div class="line">stretch_wid is stretchfactor perpendicular to orientation</div>
+<div class="line">stretch_len is stretchfactor in direction of turtles orientation.</div>
+<div class="line">outline determines the width of the shapes’s outline.</div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.resizemode(“user”)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapesize(5, 5, 12)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapesize(outline=8)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">shapetransform(self, t11=None, t12=None, t21=None, t22=None)</div>
+<div class="line-block">
+<div class="line">Set or return the current transformation matrix of the turtle shape.</div>
+<div class="line"><br /></div>
+<div class="line">Optional arguments: t11, t12, t21, t22 – numbers.</div>
+<div class="line"><br /></div>
+<div class="line">If none of the matrix elements are given, return the transformation</div>
+<div class="line">matrix.</div>
+<div class="line">Otherwise set the given elements and transform the turtleshape</div>
+<div class="line">according to the matrix consisting of first row t11, t12 and</div>
+<div class="line">second row t21, 22.</div>
+<div class="line">Modify stretchfactor, shearfactor and tiltangle according to the</div>
+<div class="line">given matrix.</div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.shape(“square”)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapesize(4,2)</div>
+<div class="line">&gt;&gt;&gt; turtle.shearfactor(-0.5)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapetransform()</div>
+<div class="line">&gt;&gt;&gt; (4.0, -1.0, -0.0, 2.0)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">shearfactor(self, shear=None)</div>
+<div class="line-block">
+<div class="line">Set or return the current shearfactor.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argument: shear – number, tangent of the shear angle</div>
+<div class="line"><br /></div>
+<div class="line">Shear the turtleshape according to the given shearfactor shear,</div>
+<div class="line">which is the tangent of the shear angle. DO NOT change the</div>
+<div class="line">turtle’s heading (direction of movement).</div>
+<div class="line">If shear is not given: return the current shearfactor, i. e. the</div>
+<div class="line">tangent of the shear angle, by which lines parallel to the</div>
+<div class="line">heading of the turtle are sheared.</div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.shape(“circle”)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapesize(5,2)</div>
+<div class="line">&gt;&gt;&gt; turtle.shearfactor(0.5)</div>
+<div class="line">&gt;&gt;&gt; turtle.shearfactor()</div>
+<div class="line">&gt;&gt;&gt; 0.5</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">stamp(self)</div>
+<div class="line-block">
+<div class="line">Stamp a copy of the turtleshape onto the canvas and return its id.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Stamp a copy of the turtle shape onto the canvas at the current</div>
+<div class="line">turtle position. Return a stamp_id for that stamp, which can be</div>
+<div class="line">used to delete it by calling clearstamp(stamp_id).</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.color(“blue”)</div>
+<div class="line">&gt;&gt;&gt; turtle.stamp()</div>
+<div class="line">13</div>
+<div class="line">&gt;&gt;&gt; turtle.fd(50)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">tilt(self, angle)</div>
+<div class="line-block">
+<div class="line">Rotate the turtleshape by angle.</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">angle - a number</div>
+<div class="line"><br /></div>
+<div class="line">Rotate the turtleshape by angle from its current tilt-angle,</div>
+<div class="line">but do NOT change the turtle’s heading (direction of movement).</div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.shape(“circle”)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapesize(5,2)</div>
+<div class="line">&gt;&gt;&gt; turtle.tilt(30)</div>
+<div class="line">&gt;&gt;&gt; turtle.fd(50)</div>
+<div class="line">&gt;&gt;&gt; turtle.tilt(30)</div>
+<div class="line">&gt;&gt;&gt; turtle.fd(50)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">tiltangle(self, angle=None)</div>
+<div class="line-block">
+<div class="line">Set or return the current tilt-angle.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argument: angle – number</div>
+<div class="line"><br /></div>
+<div class="line">Rotate the turtleshape to point in the direction specified by angle,</div>
+<div class="line">regardless of its current tilt-angle. DO NOT change the turtle’s</div>
+<div class="line">heading (direction of movement).</div>
+<div class="line">If angle is not given: return the current tilt-angle, i. e. the angle</div>
+<div class="line">between the orientation of the turtleshape and the heading of the</div>
+<div class="line">turtle (its direction of movement).</div>
+<div class="line"><br /></div>
+<div class="line">Deprecated since Python 3.1</div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.shape(“circle”)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapesize(5,2)</div>
+<div class="line">&gt;&gt;&gt; turtle.tilt(45)</div>
+<div class="line">&gt;&gt;&gt; turtle.tiltangle()</div>
+<div class="line">&gt;&gt;&gt;</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">turtlesize = shapesize(self, stretch_wid=None, stretch_len=None, outline=None)</div>
+<div class="line-block">
+<div class="line">Set/return turtle’s stretchfactors/outline. Set resizemode to “user”.</div>
+<div class="line"><br /></div>
+<div class="line">Optinonal arguments:</div>
+<div class="line-block">
+<div class="line">stretch_wid : positive number</div>
+<div class="line">stretch_len : positive number</div>
+<div class="line">outline  : positive number</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Return or set the pen’s attributes x/y-stretchfactors and/or outline.</div>
+<div class="line">Set resizemode to “user”.</div>
+<div class="line">If and only if resizemode is set to “user”, the turtle will be displayed</div>
+<div class="line">stretched according to its stretchfactors:</div>
+<div class="line">stretch_wid is stretchfactor perpendicular to orientation</div>
+<div class="line">stretch_len is stretchfactor in direction of turtles orientation.</div>
+<div class="line">outline determines the width of the shapes’s outline.</div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.resizemode(“user”)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapesize(5, 5, 12)</div>
+<div class="line">&gt;&gt;&gt; turtle.shapesize(outline=8)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">undo(self)</div>
+<div class="line-block">
+<div class="line">undo (repeatedly) the last turtle action.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">undo (repeatedly) the last turtle action.</div>
+<div class="line">Number of available undo actions is determined by the size of</div>
+<div class="line">the undobuffer.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; for i in range(4):</div>
+<div class="line-block">
+<div class="line">turtle.fd(50); turtle.lt(80)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&gt;&gt;&gt; for i in range(8):</div>
+<div class="line-block">
+<div class="line">turtle.undo()</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">undobufferentries(self)</div>
+<div class="line-block">
+<div class="line">Return count of entries in the undobuffer.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; while undobufferentries():</div>
+<div class="line-block">
+<div class="line">undo()</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">write(self, arg, move=False, align=’left’, font=(‘Arial’, 8, ‘normal’))</div>
+<div class="line-block">
+<div class="line">Write text at the current turtle position.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">arg – info, which is to be written to the TurtleScreen</div>
+<div class="line">move (optional) – True/False</div>
+<div class="line">align (optional) – one of the strings “left”, “center” or right”</div>
+<div class="line">font (optional) – a triple (fontname, fontsize, fonttype)</div>
+<div class="line"><br /></div>
+<div class="line">Write text - the string representation of arg - at the current</div>
+<div class="line">turtle position according to align (“left”, “center” or right”)</div>
+<div class="line">and with the given font.</div>
+<div class="line">If move is True, the pen is moved to the bottom-right corner</div>
+<div class="line">of the text. By default, move is False.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.write(‘Home = ‘, True, align=”center”)</div>
+<div class="line">&gt;&gt;&gt; turtle.write((0,0), True)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Data and other attributes inherited from RawTurtle:</div>
+<div class="line"><br /></div>
+<div class="line">screens = []</div>
+<div class="line"><br /></div>
+<div class="line">———————————————————————-</div>
+<div class="line">Methods inherited from TPen:</div>
+<div class="line"><br /></div>
+<div class="line">color(self, *args)</div>
+<div class="line-block">
+<div class="line">Return or set the pencolor and fillcolor.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">Several input formats are allowed.</div>
+<div class="line">They use 0, 1, 2, or 3 arguments as follows:</div>
+<div class="line"><br /></div>
+<div class="line">color()</div>
+<div class="line-block">
+<div class="line">Return the current pencolor and the current fillcolor</div>
+<div class="line">as a pair of color specification strings as are returned</div>
+<div class="line">by pencolor and fillcolor.</div>
+</div>
+<div class="line">color(colorstring), color((r,g,b)), color(r,g,b)</div>
+<div class="line-block">
+<div class="line">inputs as in pencolor, set both, fillcolor and pencolor,</div>
+<div class="line">to the given value.</div>
+</div>
+<div class="line">color(colorstring1, colorstring2),</div>
+<div class="line">color((r1,g1,b1), (r2,g2,b2))</div>
+<div class="line-block">
+<div class="line">equivalent to pencolor(colorstring1) and fillcolor(colorstring2)</div>
+<div class="line">and analogously, if the other input format is used.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">If turtleshape is a polygon, outline and interior of that polygon</div>
+<div class="line">is drawn with the newly set colors.</div>
+<div class="line">For mor info see: pencolor, fillcolor</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.color(‘red’, ‘green’)</div>
+<div class="line">&gt;&gt;&gt; turtle.color()</div>
+<div class="line">(‘red’, ‘green’)</div>
+<div class="line">&gt;&gt;&gt; colormode(255)</div>
+<div class="line">&gt;&gt;&gt; color((40, 80, 120), (160, 200, 240))</div>
+<div class="line">&gt;&gt;&gt; color()</div>
+<div class="line">(‘#285078’, ‘#a0c8f0’)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">down = pendown(self)</div>
+<div class="line-block">
+<div class="line">Pull the pen down – drawing when moving.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: pendown | pd | down</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pendown()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">fillcolor(self, *args)</div>
+<div class="line-block">
+<div class="line">Return or set the fillcolor.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">Four input formats are allowed:</div>
+<div class="line-block">
+<div class="line">- fillcolor()</div>
+<div class="line-block">
+<div class="line">Return the current fillcolor as color specification string,</div>
+<div class="line">possibly in hex-number format (see example).</div>
+<div class="line">May be used as input to another color/pencolor/fillcolor call.</div>
+</div>
+<div class="line">- fillcolor(colorstring)</div>
+<div class="line-block">
+<div class="line">s is a Tk color specification string, such as “red” or “yellow”</div>
+</div>
+<div class="line">- fillcolor((r, g, b))</div>
+<div class="line-block">
+<div class="line"><em>a tuple</em> of r, g, and b, which represent, an RGB color,</div>
+<div class="line">and each of r, g, and b are in the range 0..colormode,</div>
+<div class="line">where colormode is either 1.0 or 255</div>
+</div>
+<div class="line">- fillcolor(r, g, b)</div>
+<div class="line-block">
+<div class="line">r, g, and b represent an RGB color, and each of r, g, and b</div>
+<div class="line">are in the range 0..colormode</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">If turtleshape is a polygon, the interior of that polygon is drawn</div>
+<div class="line">with the newly set fillcolor.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.fillcolor(‘violet’)</div>
+<div class="line">&gt;&gt;&gt; col = turtle.pencolor()</div>
+<div class="line">&gt;&gt;&gt; turtle.fillcolor(col)</div>
+<div class="line">&gt;&gt;&gt; turtle.fillcolor(0, .5, 0)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">hideturtle(self)</div>
+<div class="line-block">
+<div class="line">Makes the turtle invisible.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: hideturtle | ht</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">It’s a good idea to do this while you’re in the</div>
+<div class="line">middle of a complicated drawing, because hiding</div>
+<div class="line">the turtle speeds up the drawing observably.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.hideturtle()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">ht = hideturtle(self)</div>
+<div class="line-block">
+<div class="line">Makes the turtle invisible.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: hideturtle | ht</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">It’s a good idea to do this while you’re in the</div>
+<div class="line">middle of a complicated drawing, because hiding</div>
+<div class="line">the turtle speeds up the drawing observably.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.hideturtle()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isdown(self)</div>
+<div class="line-block">
+<div class="line">Return True if pen is down, False if it’s up.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.penup()</div>
+<div class="line">&gt;&gt;&gt; turtle.isdown()</div>
+<div class="line">False</div>
+<div class="line">&gt;&gt;&gt; turtle.pendown()</div>
+<div class="line">&gt;&gt;&gt; turtle.isdown()</div>
+<div class="line">True</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isvisible(self)</div>
+<div class="line-block">
+<div class="line">Return True if the Turtle is shown, False if it’s hidden.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.hideturtle()</div>
+<div class="line">&gt;&gt;&gt; print turtle.isvisible():</div>
+<div class="line">False</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">pd = pendown(self)</div>
+<div class="line-block">
+<div class="line">Pull the pen down – drawing when moving.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: pendown | pd | down</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pendown()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">pen(self, pen=None, **pendict)</div>
+<div class="line-block">
+<div class="line">Return or set the pen’s attributes.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line-block">
+<div class="line">pen – a dictionary with some or all of the below listed keys.</div>
+<div class="line">**pendict – one or more keyword-arguments with the below</div>
+<div class="line-block">
+<div class="line">listed keys as keywords.</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">Return or set the pen’s attributes in a ‘pen-dictionary’</div>
+<div class="line">with the following key/value pairs:</div>
+<div class="line-block">
+<div class="line">“shown”      :   True/False</div>
+<div class="line">“pendown”    :   True/False</div>
+<div class="line">“pencolor”   :   color-string or color-tuple</div>
+<div class="line">“fillcolor”  :   color-string or color-tuple</div>
+<div class="line">“pensize”    :   positive number</div>
+<div class="line">“speed”      :   number in range 0..10</div>
+<div class="line">“resizemode” :   “auto” or “user” or “noresize”</div>
+<div class="line">“stretchfactor”: (positive number, positive number)</div>
+<div class="line">“shearfactor”:   number</div>
+<div class="line">“outline”    :   positive number</div>
+<div class="line">“tilt”       :   number</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">This dictionary can be used as argument for a subsequent</div>
+<div class="line">pen()-call to restore the former pen-state. Moreover one</div>
+<div class="line">or more of these attributes can be provided as keyword-arguments.</div>
+<div class="line">This can be used to set several pen attributes in one statement.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pen(fillcolor=”black”, pencolor=”red”, pensize=10)</div>
+<div class="line">&gt;&gt;&gt; turtle.pen()</div>
+<div class="line">{‘pensize’: 10, ‘shown’: True, ‘resizemode’: ‘auto’, ‘outline’: 1,</div>
+<div class="line">‘pencolor’: ‘red’, ‘pendown’: True, ‘fillcolor’: ‘black’,</div>
+<div class="line">‘stretchfactor’: (1,1), ‘speed’: 3, ‘shearfactor’: 0.0}</div>
+<div class="line">&gt;&gt;&gt; penstate=turtle.pen()</div>
+<div class="line">&gt;&gt;&gt; turtle.color(“yellow”,”“)</div>
+<div class="line">&gt;&gt;&gt; turtle.penup()</div>
+<div class="line">&gt;&gt;&gt; turtle.pen()</div>
+<div class="line">{‘pensize’: 10, ‘shown’: True, ‘resizemode’: ‘auto’, ‘outline’: 1,</div>
+<div class="line">‘pencolor’: ‘yellow’, ‘pendown’: False, ‘fillcolor’: ‘’,</div>
+<div class="line">‘stretchfactor’: (1,1), ‘speed’: 3, ‘shearfactor’: 0.0}</div>
+<div class="line">&gt;&gt;&gt; p.pen(penstate, fillcolor=”green”)</div>
+<div class="line">&gt;&gt;&gt; p.pen()</div>
+<div class="line">{‘pensize’: 10, ‘shown’: True, ‘resizemode’: ‘auto’, ‘outline’: 1,</div>
+<div class="line">‘pencolor’: ‘red’, ‘pendown’: True, ‘fillcolor’: ‘green’,</div>
+<div class="line">‘stretchfactor’: (1,1), ‘speed’: 3, ‘shearfactor’: 0.0}</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">pencolor(self, *args)</div>
+<div class="line-block">
+<div class="line">Return or set the pencolor.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">Four input formats are allowed:</div>
+<div class="line-block">
+<div class="line">- pencolor()</div>
+<div class="line-block">
+<div class="line">Return the current pencolor as color specification string,</div>
+<div class="line">possibly in hex-number format (see example).</div>
+<div class="line">May be used as input to another color/pencolor/fillcolor call.</div>
+</div>
+<div class="line">- pencolor(colorstring)</div>
+<div class="line-block">
+<div class="line">s is a Tk color specification string, such as “red” or “yellow”</div>
+</div>
+<div class="line">- pencolor((r, g, b))</div>
+<div class="line-block">
+<div class="line"><em>a tuple</em> of r, g, and b, which represent, an RGB color,</div>
+<div class="line">and each of r, g, and b are in the range 0..colormode,</div>
+<div class="line">where colormode is either 1.0 or 255</div>
+</div>
+<div class="line">- pencolor(r, g, b)</div>
+<div class="line-block">
+<div class="line">r, g, and b represent an RGB color, and each of r, g, and b</div>
+<div class="line">are in the range 0..colormode</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">If turtleshape is a polygon, the outline of that polygon is drawn</div>
+<div class="line">with the newly set pencolor.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pencolor(‘brown’)</div>
+<div class="line">&gt;&gt;&gt; tup = (0.2, 0.8, 0.55)</div>
+<div class="line">&gt;&gt;&gt; turtle.pencolor(tup)</div>
+<div class="line">&gt;&gt;&gt; turtle.pencolor()</div>
+<div class="line">‘#33cc8c’</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">pendown(self)</div>
+<div class="line-block">
+<div class="line">Pull the pen down – drawing when moving.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: pendown | pd | down</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pendown()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">pensize(self, width=None)</div>
+<div class="line-block">
+<div class="line">Set or return the line thickness.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases:  pensize | width</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">width – positive number</div>
+<div class="line"><br /></div>
+<div class="line">Set the line thickness to width or return it. If resizemode is set</div>
+<div class="line">to “auto” and turtleshape is a polygon, that polygon is drawn with</div>
+<div class="line">the same line thickness. If no argument is given, current pensize</div>
+<div class="line">is returned.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pensize()</div>
+<div class="line">1</div>
+<div class="line">turtle.pensize(10)   # from here on lines of width 10 are drawn</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">penup(self)</div>
+<div class="line-block">
+<div class="line">Pull the pen up – no drawing when moving.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: penup | pu | up</div>
+<div class="line"><br /></div>
+<div class="line">No argument</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.penup()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">pu = penup(self)</div>
+<div class="line-block">
+<div class="line">Pull the pen up – no drawing when moving.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: penup | pu | up</div>
+<div class="line"><br /></div>
+<div class="line">No argument</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.penup()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">resizemode(self, rmode=None)</div>
+<div class="line-block">
+<div class="line">Set resizemode to one of the values: “auto”, “user”, “noresize”.</div>
+<div class="line"><br /></div>
+<div class="line">(Optional) Argument:</div>
+<div class="line">rmode – one of the strings “auto”, “user”, “noresize”</div>
+<div class="line"><br /></div>
+<div class="line">Different resizemodes have the following effects:</div>
+<div class="line-block">
+<div class="line">- “auto” adapts the appearance of the turtle</div>
+<div class="line-block">
+<div class="line">corresponding to the value of pensize.</div>
+</div>
+<div class="line">- “user” adapts the appearance of the turtle according to the</div>
+<div class="line-block">
+<div class="line">values of stretchfactor and outlinewidth (outline),</div>
+<div class="line">which are set by shapesize()</div>
+</div>
+<div class="line">- “noresize” no adaption of the turtle’s appearance takes place.</div>
+</div>
+<div class="line">If no argument is given, return current resizemode.</div>
+<div class="line">resizemode(“user”) is called by a call of shapesize with arguments.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line">Examples (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.resizemode(“noresize”)</div>
+<div class="line">&gt;&gt;&gt; turtle.resizemode()</div>
+<div class="line">‘noresize’</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">showturtle(self)</div>
+<div class="line-block">
+<div class="line">Makes the turtle visible.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: showturtle | st</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.hideturtle()</div>
+<div class="line">&gt;&gt;&gt; turtle.showturtle()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">speed(self, speed=None)</div>
+<div class="line-block">
+<div class="line">Return or set the turtle’s speed.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argument:</div>
+<div class="line">speed – an integer in the range 0..10 or a speedstring (see below)</div>
+<div class="line"><br /></div>
+<div class="line">Set the turtle’s speed to an integer value in the range 0 .. 10.</div>
+<div class="line">If no argument is given: return current speed.</div>
+<div class="line"><br /></div>
+<div class="line">If input is a number greater than 10 or smaller than 0.5,</div>
+<div class="line">speed is set to 0.</div>
+<div class="line">Speedstrings  are mapped to speedvalues in the following way:</div>
+<div class="line-block">
+<div class="line">‘fastest’ :  0</div>
+<div class="line">‘fast’    :  10</div>
+<div class="line">‘normal’  :  6</div>
+<div class="line">‘slow’    :  3</div>
+<div class="line">‘slowest’ :  1</div>
+</div>
+<div class="line">speeds from 1 to 10 enforce increasingly faster animation of</div>
+<div class="line">line drawing and turtle turning.</div>
+<div class="line"><br /></div>
+<div class="line">Attention:</div>
+<div class="line">speed = 0 : <em>no</em> animation takes place. forward/back makes turtle jump</div>
+<div class="line">and likewise left/right make the turtle turn instantly.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.speed(3)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">st = showturtle(self)</div>
+<div class="line-block">
+<div class="line">Makes the turtle visible.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: showturtle | st</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.hideturtle()</div>
+<div class="line">&gt;&gt;&gt; turtle.showturtle()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">up = penup(self)</div>
+<div class="line-block">
+<div class="line">Pull the pen up – no drawing when moving.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: penup | pu | up</div>
+<div class="line"><br /></div>
+<div class="line">No argument</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.penup()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">width = pensize(self, width=None)</div>
+<div class="line-block">
+<div class="line">Set or return the line thickness.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases:  pensize | width</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">width – positive number</div>
+<div class="line"><br /></div>
+<div class="line">Set the line thickness to width or return it. If resizemode is set</div>
+<div class="line">to “auto” and turtleshape is a polygon, that polygon is drawn with</div>
+<div class="line">the same line thickness. If no argument is given, current pensize</div>
+<div class="line">is returned.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pensize()</div>
+<div class="line">1</div>
+<div class="line">turtle.pensize(10)   # from here on lines of width 10 are drawn</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Data descriptors inherited from TPen:</div>
+<div class="line"><br /></div>
+<div class="line">__dict__</div>
+<div class="line-block">
+<div class="line">dictionary for instance variables (if defined)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__weakref__</div>
+<div class="line-block">
+<div class="line">list of weak references to the object (if defined)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Methods inherited from TNavigator:</div>
+<div class="line"><br /></div>
+<div class="line">back(self, distance)</div>
+<div class="line-block">
+<div class="line">Move the turtle backward by distance.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: back | backward | bk</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">distance – a number</div>
+<div class="line"><br /></div>
+<div class="line">Move the turtle backward by distance ,opposite to the direction the</div>
+<div class="line">turtle is headed. Do not change the turtle’s heading.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(0.00, 0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.backward(30)</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(-30.00, 0.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">backward = back(self, distance)</div>
+<div class="line-block">
+<div class="line">Move the turtle backward by distance.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: back | backward | bk</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">distance – a number</div>
+<div class="line"><br /></div>
+<div class="line">Move the turtle backward by distance ,opposite to the direction the</div>
+<div class="line">turtle is headed. Do not change the turtle’s heading.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(0.00, 0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.backward(30)</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(-30.00, 0.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">bk = back(self, distance)</div>
+<div class="line-block">
+<div class="line">Move the turtle backward by distance.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: back | backward | bk</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">distance – a number</div>
+<div class="line"><br /></div>
+<div class="line">Move the turtle backward by distance ,opposite to the direction the</div>
+<div class="line">turtle is headed. Do not change the turtle’s heading.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(0.00, 0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.backward(30)</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(-30.00, 0.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">circle(self, radius, extent=None, steps=None)</div>
+<div class="line-block">
+<div class="line">Draw a circle with given radius.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">radius – a number</div>
+<div class="line">extent (optional) – a number</div>
+<div class="line">steps (optional) – an integer</div>
+<div class="line"><br /></div>
+<div class="line">Draw a circle with given radius. The center is radius units left</div>
+<div class="line">of the turtle; extent - an angle - determines which part of the</div>
+<div class="line">circle is drawn. If extent is not given, draw the entire circle.</div>
+<div class="line">If extent is not a full circle, one endpoint of the arc is the</div>
+<div class="line">current pen position. Draw the arc in counterclockwise direction</div>
+<div class="line">if radius is positive, otherwise in clockwise direction. Finally</div>
+<div class="line">the direction of the turtle is changed by the amount of extent.</div>
+<div class="line"><br /></div>
+<div class="line">As the circle is approximated by an inscribed regular polygon,</div>
+<div class="line">steps determines the number of steps to use. If not given,</div>
+<div class="line">it will be calculated automatically. Maybe used to draw regular</div>
+<div class="line">polygons.</div>
+<div class="line"><br /></div>
+<div class="line">call: circle(radius)                  # full circle</div>
+<div class="line">–or: circle(radius, extent)          # arc</div>
+<div class="line">–or: circle(radius, extent, steps)</div>
+<div class="line">–or: circle(radius, steps=6)         # 6-sided polygon</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.circle(50)</div>
+<div class="line">&gt;&gt;&gt; turtle.circle(120, 180)  # semicircle</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">degrees(self, fullcircle=360.0)</div>
+<div class="line-block">
+<div class="line">Set angle measurement units to degrees.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argument:</div>
+<div class="line">fullcircle -  a number</div>
+<div class="line"><br /></div>
+<div class="line">Set angle measurement units, i. e. set number</div>
+<div class="line">of ‘degrees’ for a full circle. Dafault value is</div>
+<div class="line">360 degrees.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.left(90)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">90</div>
+<div class="line"><br /></div>
+<div class="line">Change angle measurement unit to grad (also known as gon,</div>
+<div class="line">grade, or gradian and equals 1/100-th of the right angle.)</div>
+<div class="line">&gt;&gt;&gt; turtle.degrees(400.0)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">100</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">distance(self, x, y=None)</div>
+<div class="line-block">
+<div class="line">Return the distance from the turtle to (x,y) in turtle step units.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">x – a number   or  a pair/vector of numbers   or   a turtle instance</div>
+<div class="line">y – a number       None                            None</div>
+<div class="line"><br /></div>
+<div class="line">call: distance(x, y)         # two coordinates</div>
+<div class="line">–or: distance((x, y))       # a pair (tuple) of coordinates</div>
+<div class="line">–or: distance(vec)          # e.g. as returned by pos()</div>
+<div class="line">–or: distance(mypen)        # where mypen is another turtle</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(0.00, 0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.distance(30,40)</div>
+<div class="line">50.0</div>
+<div class="line">&gt;&gt;&gt; pen = Turtle()</div>
+<div class="line">&gt;&gt;&gt; pen.forward(77)</div>
+<div class="line">&gt;&gt;&gt; turtle.distance(pen)</div>
+<div class="line">77.0</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">fd = forward(self, distance)</div>
+<div class="line-block">
+<div class="line">Move the turtle forward by the specified distance.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: forward | fd</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">distance – a number (integer or float)</div>
+<div class="line"><br /></div>
+<div class="line">Move the turtle forward by the specified distance, in the direction</div>
+<div class="line">the turtle is headed.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(0.00, 0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.forward(25)</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(25.00,0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.forward(-75)</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(-50.00,0.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">forward(self, distance)</div>
+<div class="line-block">
+<div class="line">Move the turtle forward by the specified distance.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: forward | fd</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">distance – a number (integer or float)</div>
+<div class="line"><br /></div>
+<div class="line">Move the turtle forward by the specified distance, in the direction</div>
+<div class="line">the turtle is headed.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(0.00, 0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.forward(25)</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(25.00,0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.forward(-75)</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(-50.00,0.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">goto(self, x, y=None)</div>
+<div class="line-block">
+<div class="line">Move turtle to an absolute position.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: setpos | setposition | goto:</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">x – a number      or     a pair/vector of numbers</div>
+<div class="line">y – a number             None</div>
+<div class="line"><br /></div>
+<div class="line">call: goto(x, y)         # two coordinates</div>
+<div class="line">–or: goto((x, y))       # a pair (tuple) of coordinates</div>
+<div class="line">–or: goto(vec)          # e.g. as returned by pos()</div>
+<div class="line"><br /></div>
+<div class="line">Move turtle to an absolute position. If the pen is down,</div>
+<div class="line">a line will be drawn. The turtle’s orientation does not change.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; tp = turtle.pos()</div>
+<div class="line">&gt;&gt;&gt; tp</div>
+<div class="line">(0.00, 0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.setpos(60,30)</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(60.00,30.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.setpos((20,80))</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(20.00,80.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.setpos(tp)</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(0.00,0.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">heading(self)</div>
+<div class="line-block">
+<div class="line">Return the turtle’s current heading.</div>
+<div class="line"><br /></div>
+<div class="line">No arguments.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.left(67)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">67.0</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">home(self)</div>
+<div class="line-block">
+<div class="line">Move turtle to the origin - coordinates (0,0).</div>
+<div class="line"><br /></div>
+<div class="line">No arguments.</div>
+<div class="line"><br /></div>
+<div class="line">Move turtle to the origin - coordinates (0,0) and set its</div>
+<div class="line">heading to its start-orientation (which depends on mode).</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.home()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">left(self, angle)</div>
+<div class="line-block">
+<div class="line">Turn turtle left by angle units.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: left | lt</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">angle – a number (integer or float)</div>
+<div class="line"><br /></div>
+<div class="line">Turn turtle left by angle units. (Units are by default degrees,</div>
+<div class="line">but can be set via the degrees() and radians() functions.)</div>
+<div class="line">Angle orientation depends on mode. (See this.)</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">22.0</div>
+<div class="line">&gt;&gt;&gt; turtle.left(45)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">67.0</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">lt = left(self, angle)</div>
+<div class="line-block">
+<div class="line">Turn turtle left by angle units.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: left | lt</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">angle – a number (integer or float)</div>
+<div class="line"><br /></div>
+<div class="line">Turn turtle left by angle units. (Units are by default degrees,</div>
+<div class="line">but can be set via the degrees() and radians() functions.)</div>
+<div class="line">Angle orientation depends on mode. (See this.)</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">22.0</div>
+<div class="line">&gt;&gt;&gt; turtle.left(45)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">67.0</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">pos(self)</div>
+<div class="line-block">
+<div class="line">Return the turtle’s current location (x,y), as a Vec2D-vector.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: pos | position</div>
+<div class="line"><br /></div>
+<div class="line">No arguments.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(0.00, 240.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">position = pos(self)</div>
+<div class="line-block">
+<div class="line">Return the turtle’s current location (x,y), as a Vec2D-vector.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: pos | position</div>
+<div class="line"><br /></div>
+<div class="line">No arguments.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(0.00, 240.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">radians(self)</div>
+<div class="line-block">
+<div class="line">Set the angle measurement units to radians.</div>
+<div class="line"><br /></div>
+<div class="line">No arguments.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">90</div>
+<div class="line">&gt;&gt;&gt; turtle.radians()</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">1.5707963267948966</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">right(self, angle)</div>
+<div class="line-block">
+<div class="line">Turn turtle right by angle units.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: right | rt</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">angle – a number (integer or float)</div>
+<div class="line"><br /></div>
+<div class="line">Turn turtle right by angle units. (Units are by default degrees,</div>
+<div class="line">but can be set via the degrees() and radians() functions.)</div>
+<div class="line">Angle orientation depends on mode. (See this.)</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">22.0</div>
+<div class="line">&gt;&gt;&gt; turtle.right(45)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">337.0</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">rt = right(self, angle)</div>
+<div class="line-block">
+<div class="line">Turn turtle right by angle units.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: right | rt</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">angle – a number (integer or float)</div>
+<div class="line"><br /></div>
+<div class="line">Turn turtle right by angle units. (Units are by default degrees,</div>
+<div class="line">but can be set via the degrees() and radians() functions.)</div>
+<div class="line">Angle orientation depends on mode. (See this.)</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">22.0</div>
+<div class="line">&gt;&gt;&gt; turtle.right(45)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">337.0</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">seth = setheading(self, to_angle)</div>
+<div class="line-block">
+<div class="line">Set the orientation of the turtle to to_angle.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases:  setheading | seth</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">to_angle – a number (integer or float)</div>
+<div class="line"><br /></div>
+<div class="line">Set the orientation of the turtle to to_angle.</div>
+<div class="line">Here are some common directions in degrees:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">standard - mode:          logo-mode:</div>
+</div>
+<div class="line">——————-|——————–</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line-block">
+<div class="line">0 - east                0 - north</div>
+</div>
+<div class="line">90 - north              90 - east</div>
+</div>
+<div class="line">180 - west              180 - south</div>
+<div class="line">270 - south             270 - west</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.setheading(90)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">90</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">setheading(self, to_angle)</div>
+<div class="line-block">
+<div class="line">Set the orientation of the turtle to to_angle.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases:  setheading | seth</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">to_angle – a number (integer or float)</div>
+<div class="line"><br /></div>
+<div class="line">Set the orientation of the turtle to to_angle.</div>
+<div class="line">Here are some common directions in degrees:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">standard - mode:          logo-mode:</div>
+</div>
+<div class="line">——————-|——————–</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line-block">
+<div class="line">0 - east                0 - north</div>
+</div>
+<div class="line">90 - north              90 - east</div>
+</div>
+<div class="line">180 - west              180 - south</div>
+<div class="line">270 - south             270 - west</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.setheading(90)</div>
+<div class="line">&gt;&gt;&gt; turtle.heading()</div>
+<div class="line">90</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">setpos = goto(self, x, y=None)</div>
+<div class="line-block">
+<div class="line">Move turtle to an absolute position.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: setpos | setposition | goto:</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">x – a number      or     a pair/vector of numbers</div>
+<div class="line">y – a number             None</div>
+<div class="line"><br /></div>
+<div class="line">call: goto(x, y)         # two coordinates</div>
+<div class="line">–or: goto((x, y))       # a pair (tuple) of coordinates</div>
+<div class="line">–or: goto(vec)          # e.g. as returned by pos()</div>
+<div class="line"><br /></div>
+<div class="line">Move turtle to an absolute position. If the pen is down,</div>
+<div class="line">a line will be drawn. The turtle’s orientation does not change.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; tp = turtle.pos()</div>
+<div class="line">&gt;&gt;&gt; tp</div>
+<div class="line">(0.00, 0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.setpos(60,30)</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(60.00,30.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.setpos((20,80))</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(20.00,80.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.setpos(tp)</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(0.00,0.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">setposition = goto(self, x, y=None)</div>
+<div class="line-block">
+<div class="line">Move turtle to an absolute position.</div>
+<div class="line"><br /></div>
+<div class="line">Aliases: setpos | setposition | goto:</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">x – a number      or     a pair/vector of numbers</div>
+<div class="line">y – a number             None</div>
+<div class="line"><br /></div>
+<div class="line">call: goto(x, y)         # two coordinates</div>
+<div class="line">–or: goto((x, y))       # a pair (tuple) of coordinates</div>
+<div class="line">–or: goto(vec)          # e.g. as returned by pos()</div>
+<div class="line"><br /></div>
+<div class="line">Move turtle to an absolute position. If the pen is down,</div>
+<div class="line">a line will be drawn. The turtle’s orientation does not change.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; tp = turtle.pos()</div>
+<div class="line">&gt;&gt;&gt; tp</div>
+<div class="line">(0.00, 0.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.setpos(60,30)</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(60.00,30.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.setpos((20,80))</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(20.00,80.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.setpos(tp)</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(0.00,0.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">setx(self, x)</div>
+<div class="line-block">
+<div class="line">Set the turtle’s first coordinate to x</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">x – a number (integer or float)</div>
+<div class="line"><br /></div>
+<div class="line">Set the turtle’s first coordinate to x, leave second coordinate</div>
+<div class="line">unchanged.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(0.00, 240.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.setx(10)</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(10.00, 240.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">sety(self, y)</div>
+<div class="line-block">
+<div class="line">Set the turtle’s second coordinate to y</div>
+<div class="line"><br /></div>
+<div class="line">Argument:</div>
+<div class="line">y – a number (integer or float)</div>
+<div class="line"><br /></div>
+<div class="line">Set the turtle’s first coordinate to x, second coordinate remains</div>
+<div class="line">unchanged.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(0.00, 40.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.sety(-10)</div>
+<div class="line">&gt;&gt;&gt; turtle.position()</div>
+<div class="line">(0.00, -10.00)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">towards(self, x, y=None)</div>
+<div class="line-block">
+<div class="line">Return the angle of the line from the turtle’s position to (x, y).</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">x – a number   or  a pair/vector of numbers   or   a turtle instance</div>
+<div class="line">y – a number       None                            None</div>
+<div class="line"><br /></div>
+<div class="line">call: distance(x, y)         # two coordinates</div>
+<div class="line">–or: distance((x, y))       # a pair (tuple) of coordinates</div>
+<div class="line">–or: distance(vec)          # e.g. as returned by pos()</div>
+<div class="line">–or: distance(mypen)        # where mypen is another turtle</div>
+<div class="line"><br /></div>
+<div class="line">Return the angle, between the line from turtle-position to position</div>
+<div class="line">specified by x, y and the turtle’s start orientation. (Depends on</div>
+<div class="line">modes - “standard” or “logo”)</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.pos()</div>
+<div class="line">(10.00, 10.00)</div>
+<div class="line">&gt;&gt;&gt; turtle.towards(0,0)</div>
+<div class="line">225.0</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">xcor(self)</div>
+<div class="line-block">
+<div class="line">Return the turtle’s x coordinate.</div>
+<div class="line"><br /></div>
+<div class="line">No arguments.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; reset()</div>
+<div class="line">&gt;&gt;&gt; turtle.left(60)</div>
+<div class="line">&gt;&gt;&gt; turtle.forward(100)</div>
+<div class="line">&gt;&gt;&gt; print turtle.xcor()</div>
+<div class="line">50.0</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">ycor(self)</div>
+<div class="line-block">
+<div class="line">Return the turtle’s y coordinate</div>
+<div class="line">—</div>
+<div class="line">No arguments.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; reset()</div>
+<div class="line">&gt;&gt;&gt; turtle.left(60)</div>
+<div class="line">&gt;&gt;&gt; turtle.forward(100)</div>
+<div class="line">&gt;&gt;&gt; print turtle.ycor()</div>
+<div class="line">86.6025403784</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Data and other attributes inherited from TNavigator:</div>
+<div class="line"><br /></div>
+<div class="line">DEFAULT_ANGLEOFFSET = 0</div>
+<div class="line"><br /></div>
+<div class="line">DEFAULT_ANGLEORIENT = 1</div>
+<div class="line"><br /></div>
+<div class="line">DEFAULT_MODE = ‘standard’</div>
+<div class="line"><br /></div>
+<div class="line">START_ORIENTATION = {‘logo’: (0.00,1.00), ‘standard’: (1.00,0.00), ‘wo…</div>
+</div>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap2/chap2.html">2. Computational Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap3/chap3.html">3. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap4/chap4.html">4. Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap5/chap5.html">5. Sets and Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap6/chap6.html">6. Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap7/chap7.html">7. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap11/chap11.html">8. Membership Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap8/chap8.html">9. Heaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap9/chap9.html">10. Balanced Binary Search Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap10/chap10.html">11. B-Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap12/chap12.html">12. Heuristic Search</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/appendices/appendixF.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

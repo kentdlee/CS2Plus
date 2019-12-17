@@ -1,0 +1,621 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Appendix C: The str Class &#8212; Data Structures and Algorithms with Python</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img class="logo" src="../_static/csbook.JPG" alt="Logo"/>
+          </a></p>
+        <div class="headertitle"><a
+          href="../index.html">Data Structures and Algorithms with Python</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendix-c-the-str-class">
+<h1>Appendix C: The str Class<a class="headerlink" href="#appendix-c-the-str-class" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="http://docs.python.org/py3k">Python 3 Documentation</a> site contains this and much more extensive documentation on the Python 3 language, including the <a class="reference external" href="http://docs.python.org/py3k/library/index.html">Library Reference</a> which contains this documentation. This appendix was generated from the Python help system by typing help(str) in the Python interpreter.</p>
+<p>Help on class str in module builtins:</p>
+<dl class="docutils">
+<dt>class str(object)</dt>
+<dd><div class="first last line-block">
+<div class="line">str(string[, encoding[, errors]]) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Create a new string object from the given encoded string.</div>
+<div class="line">encoding defaults to the current default string encoding.</div>
+<div class="line">errors can be ‘strict’, ‘replace’ or ‘ignore’ and defaults to ‘strict’.</div>
+<div class="line"><br /></div>
+<div class="line">Methods defined here:</div>
+<div class="line"><br /></div>
+<div class="line">__add__(…)</div>
+<div class="line-block">
+<div class="line">x.__add__(y) &lt;==&gt; x+y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__contains__(…)</div>
+<div class="line-block">
+<div class="line">x.__contains__(y) &lt;==&gt; y in x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__eq__(…)</div>
+<div class="line-block">
+<div class="line">x.__eq__(y) &lt;==&gt; x==y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__format__(…)</div>
+<div class="line-block">
+<div class="line">S.__format__(format_spec) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a formatted version of S as described by format_spec.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__ge__(…)</div>
+<div class="line-block">
+<div class="line">x.__ge__(y) &lt;==&gt; x&gt;=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__getattribute__(…)</div>
+<div class="line-block">
+<div class="line">x.__getattribute__(‘name’) &lt;==&gt; x.name</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__getitem__(…)</div>
+<div class="line-block">
+<div class="line">x.__getitem__(y) &lt;==&gt; x[y]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__getnewargs__(…)</div>
+<div class="line"><br /></div>
+<div class="line">__gt__(…)</div>
+<div class="line-block">
+<div class="line">x.__gt__(y) &lt;==&gt; x&gt;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__hash__(…)</div>
+<div class="line-block">
+<div class="line">x.__hash__() &lt;==&gt; hash(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__iter__(…)</div>
+<div class="line-block">
+<div class="line">x.__iter__() &lt;==&gt; iter(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__le__(…)</div>
+<div class="line-block">
+<div class="line">x.__le__(y) &lt;==&gt; x&lt;=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__len__(…)</div>
+<div class="line-block">
+<div class="line">x.__len__() &lt;==&gt; len(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__lt__(…)</div>
+<div class="line-block">
+<div class="line">x.__lt__(y) &lt;==&gt; x&lt;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__mod__(…)</div>
+<div class="line-block">
+<div class="line">x.__mod__(y) &lt;==&gt; x%y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__mul__(…)</div>
+<div class="line-block">
+<div class="line">x.__mul__(n) &lt;==&gt; x*n</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__ne__(…)</div>
+<div class="line-block">
+<div class="line">x.__ne__(y) &lt;==&gt; x!=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__repr__(…)</div>
+<div class="line-block">
+<div class="line">x.__repr__() &lt;==&gt; repr(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rmod__(…)</div>
+<div class="line-block">
+<div class="line">x.__rmod__(y) &lt;==&gt; y%x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rmul__(…)</div>
+<div class="line-block">
+<div class="line">x.__rmul__(n) &lt;==&gt; n*x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__sizeof__(…)</div>
+<div class="line-block">
+<div class="line">S.__sizeof__() -&gt; size of S in memory, in bytes</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__str__(…)</div>
+<div class="line-block">
+<div class="line">x.__str__() &lt;==&gt; str(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">capitalize(…)</div>
+<div class="line-block">
+<div class="line">S.capitalize() -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a capitalized version of S, i.e. make the first character</div>
+<div class="line">have upper case and the rest lower case.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">center(…)</div>
+<div class="line-block">
+<div class="line">S.center(width[, fillchar]) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return S centered in a string of length width. Padding is</div>
+<div class="line">done using the specified fill character (default is a space)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">count(…)</div>
+<div class="line-block">
+<div class="line">S.count(sub[, start[, end]]) -&gt; int</div>
+<div class="line"><br /></div>
+<div class="line">Return the number of non-overlapping occurrences of substring sub in</div>
+<div class="line">string S[start:end].  Optional arguments start and end are</div>
+<div class="line">interpreted as in slice notation.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">encode(…)</div>
+<div class="line-block">
+<div class="line">S.encode(encoding=’utf-8’, errors=’strict’) -&gt; bytes</div>
+<div class="line"><br /></div>
+<div class="line">Encode S using the codec registered for encoding. Default encoding</div>
+<div class="line">is ‘utf-8’. errors may be given to set a different error</div>
+<div class="line">handling scheme. Default is ‘strict’ meaning that encoding errors raise</div>
+<div class="line">a UnicodeEncodeError. Other possible values are ‘ignore’, ‘replace’ and</div>
+<div class="line">‘xmlcharrefreplace’ as well as any other name registered with</div>
+<div class="line">codecs.register_error that can handle UnicodeEncodeErrors.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">endswith(…)</div>
+<div class="line-block">
+<div class="line">S.endswith(suffix[, start[, end]]) -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if S ends with the specified suffix, False otherwise.</div>
+<div class="line">With optional start, test S beginning at that position.</div>
+<div class="line">With optional end, stop comparing S at that position.</div>
+<div class="line">suffix can also be a tuple of strings to try.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">expandtabs(…)</div>
+<div class="line-block">
+<div class="line">S.expandtabs([tabsize]) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a copy of S where all tab characters are expanded using spaces.</div>
+<div class="line">If tabsize is not given, a tab size of 8 characters is assumed.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">find(…)</div>
+<div class="line-block">
+<div class="line">S.find(sub[, start[, end]]) -&gt; int</div>
+<div class="line"><br /></div>
+<div class="line">Return the lowest index in S where substring sub is found,</div>
+<div class="line">such that sub is contained within s[start:end].  Optional</div>
+<div class="line">arguments start and end are interpreted as in slice notation.</div>
+<div class="line"><br /></div>
+<div class="line">Return -1 on failure.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">format(…)</div>
+<div class="line-block">
+<div class="line">S.format(*args, **kwargs) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a formatted version of S, using substitutions from args and kwargs.</div>
+<div class="line">The substitutions are identified by braces (‘{‘ and ‘}’).</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">format_map(…)</div>
+<div class="line-block">
+<div class="line">S.format_map(mapping) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a formatted version of S, using substitutions from mapping.</div>
+<div class="line">The substitutions are identified by braces (‘{‘ and ‘}’).</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">index(…)</div>
+<div class="line-block">
+<div class="line">S.index(sub[, start[, end]]) -&gt; int</div>
+<div class="line"><br /></div>
+<div class="line">Like S.find() but raise ValueError when the substring is not found.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isalnum(…)</div>
+<div class="line-block">
+<div class="line">S.isalnum() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if all characters in S are alphanumeric</div>
+<div class="line">and there is at least one character in S, False otherwise.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isalpha(…)</div>
+<div class="line-block">
+<div class="line">S.isalpha() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if all characters in S are alphabetic</div>
+<div class="line">and there is at least one character in S, False otherwise.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isdecimal(…)</div>
+<div class="line-block">
+<div class="line">S.isdecimal() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if there are only decimal characters in S,</div>
+<div class="line">False otherwise.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isdigit(…)</div>
+<div class="line-block">
+<div class="line">S.isdigit() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if all characters in S are digits</div>
+<div class="line">and there is at least one character in S, False otherwise.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isidentifier(…)</div>
+<div class="line-block">
+<div class="line">S.isidentifier() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if S is a valid identifier according</div>
+<div class="line">to the language definition.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">islower(…)</div>
+<div class="line-block">
+<div class="line">S.islower() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if all cased characters in S are lowercase and there is</div>
+<div class="line">at least one cased character in S, False otherwise.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isnumeric(…)</div>
+<div class="line-block">
+<div class="line">S.isnumeric() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if there are only numeric characters in S,</div>
+<div class="line">False otherwise.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isprintable(…)</div>
+<div class="line-block">
+<div class="line">S.isprintable() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if all characters in S are considered</div>
+<div class="line">printable in repr() or S is empty, False otherwise.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isspace(…)</div>
+<div class="line-block">
+<div class="line">S.isspace() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if all characters in S are whitespace</div>
+<div class="line">and there is at least one character in S, False otherwise.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">istitle(…)</div>
+<div class="line-block">
+<div class="line">S.istitle() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if S is a titlecased string and there is at least one</div>
+<div class="line">character in S, i.e. upper- and titlecase characters may only</div>
+<div class="line">follow uncased characters and lowercase characters only cased ones.</div>
+<div class="line">Return False otherwise.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">isupper(…)</div>
+<div class="line-block">
+<div class="line">S.isupper() -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if all cased characters in S are uppercase and there is</div>
+<div class="line">at least one cased character in S, False otherwise.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">join(…)</div>
+<div class="line-block">
+<div class="line">S.join(iterable) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a string which is the concatenation of the strings in the</div>
+<div class="line">iterable.  The separator between elements is S.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">ljust(…)</div>
+<div class="line-block">
+<div class="line">S.ljust(width[, fillchar]) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return S left-justified in a Unicode string of length width. Padding is</div>
+<div class="line">done using the specified fill character (default is a space).</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">lower(…)</div>
+<div class="line-block">
+<div class="line">S.lower() -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a copy of the string S converted to lowercase.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">lstrip(…)</div>
+<div class="line-block">
+<div class="line">S.lstrip([chars]) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a copy of the string S with leading whitespace removed.</div>
+<div class="line">If chars is given and not None, remove characters in chars instead.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">partition(…)</div>
+<div class="line-block">
+<div class="line">S.partition(sep) -&gt; (head, sep, tail)</div>
+<div class="line"><br /></div>
+<div class="line">Search for the separator sep in S, and return the part before it,</div>
+<div class="line">the separator itself, and the part after it.  If the separator is not</div>
+<div class="line">found, return S and two empty strings.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">replace(…)</div>
+<div class="line-block">
+<div class="line">S.replace(old, new[, count]) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a copy of S with all occurrences of substring</div>
+<div class="line">old replaced by new.  If the optional argument count is</div>
+<div class="line">given, only the first count occurrences are replaced.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">rfind(…)</div>
+<div class="line-block">
+<div class="line">S.rfind(sub[, start[, end]]) -&gt; int</div>
+<div class="line"><br /></div>
+<div class="line">Return the highest index in S where substring sub is found,</div>
+<div class="line">such that sub is contained within s[start:end].  Optional</div>
+<div class="line">arguments start and end are interpreted as in slice notation.</div>
+<div class="line"><br /></div>
+<div class="line">Return -1 on failure.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">rindex(…)</div>
+<div class="line-block">
+<div class="line">S.rindex(sub[, start[, end]]) -&gt; int</div>
+<div class="line"><br /></div>
+<div class="line">Like S.rfind() but raise ValueError when the substring is not found.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">rjust(…)</div>
+<div class="line-block">
+<div class="line">S.rjust(width[, fillchar]) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return S right-justified in a string of length width. Padding is</div>
+<div class="line">done using the specified fill character (default is a space).</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">rpartition(…)</div>
+<div class="line-block">
+<div class="line">S.rpartition(sep) -&gt; (head, sep, tail)</div>
+<div class="line"><br /></div>
+<div class="line">Search for the separator sep in S, starting at the end of S, and return</div>
+<div class="line">the part before it, the separator itself, and the part after it.  If the</div>
+<div class="line">separator is not found, return two empty strings and S.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">rsplit(…)</div>
+<div class="line-block">
+<div class="line">S.rsplit([sep[, maxsplit]]) -&gt; list of strings</div>
+<div class="line"><br /></div>
+<div class="line">Return a list of the words in S, using sep as the</div>
+<div class="line">delimiter string, starting at the end of the string and</div>
+<div class="line">working to the front.  If maxsplit is given, at most maxsplit</div>
+<div class="line">splits are done. If sep is not specified, any whitespace string</div>
+<div class="line">is a separator.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">rstrip(…)</div>
+<div class="line-block">
+<div class="line">S.rstrip([chars]) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a copy of the string S with trailing whitespace removed.</div>
+<div class="line">If chars is given and not None, remove characters in chars instead.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">split(…)</div>
+<div class="line-block">
+<div class="line">S.split([sep[, maxsplit]]) -&gt; list of strings</div>
+<div class="line"><br /></div>
+<div class="line">Return a list of the words in S, using sep as the</div>
+<div class="line">delimiter string.  If maxsplit is given, at most maxsplit</div>
+<div class="line">splits are done. If sep is not specified or is None, any</div>
+<div class="line">whitespace string is a separator and empty strings are</div>
+<div class="line">removed from the result.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">splitlines(…)</div>
+<div class="line-block">
+<div class="line">S.splitlines([keepends]) -&gt; list of strings</div>
+<div class="line"><br /></div>
+<div class="line">Return a list of the lines in S, breaking at line boundaries.</div>
+<div class="line">Line breaks are not included in the resulting list unless keepends</div>
+<div class="line">is given and true.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">startswith(…)</div>
+<div class="line-block">
+<div class="line">S.startswith(prefix[, start[, end]]) -&gt; bool</div>
+<div class="line"><br /></div>
+<div class="line">Return True if S starts with the specified prefix, False otherwise.</div>
+<div class="line">With optional start, test S beginning at that position.</div>
+<div class="line">With optional end, stop comparing S at that position.</div>
+<div class="line">prefix can also be a tuple of strings to try.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">strip(…)</div>
+<div class="line-block">
+<div class="line">S.strip([chars]) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a copy of the string S with leading and trailing</div>
+<div class="line">whitespace removed.</div>
+<div class="line">If chars is given and not None, remove characters in chars instead.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">swapcase(…)</div>
+<div class="line-block">
+<div class="line">S.swapcase() -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a copy of S with uppercase characters converted to lowercase</div>
+<div class="line">and vice versa.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">title(…)</div>
+<div class="line-block">
+<div class="line">S.title() -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a titlecased version of S, i.e. words start with title case</div>
+<div class="line">characters, all remaining cased characters have lower case.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">translate(…)</div>
+<div class="line-block">
+<div class="line">S.translate(table) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a copy of the string S, where all characters have been mapped</div>
+<div class="line">through the given translation table, which must be a mapping of</div>
+<div class="line">Unicode ordinals to Unicode ordinals, strings, or None.</div>
+<div class="line">Unmapped characters are left untouched. Characters mapped to None</div>
+<div class="line">are deleted.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">upper(…)</div>
+<div class="line-block">
+<div class="line">S.upper() -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Return a copy of S converted to uppercase.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">zfill(…)</div>
+<div class="line-block">
+<div class="line">S.zfill(width) -&gt; str</div>
+<div class="line"><br /></div>
+<div class="line">Pad a numeric string S with zeros on the left, to fill a field</div>
+<div class="line">of the specified width. The string S is never truncated.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Static methods defined here:</div>
+<div class="line"><br /></div>
+<div class="line">maketrans(…)</div>
+<div class="line-block">
+<div class="line">str.maketrans(x[, y[, z]]) -&gt; dict (static method)</div>
+<div class="line"><br /></div>
+<div class="line">Return a translation table usable for str.translate().</div>
+<div class="line">If there is only one argument, it must be a dictionary mapping Unicode</div>
+<div class="line">ordinals (integers) or characters to Unicode ordinals, strings or None.</div>
+<div class="line">Character keys will be then converted to ordinals.</div>
+<div class="line">If there are two arguments, they must be strings of equal length, and</div>
+<div class="line">in the resulting dictionary, each character in x will be mapped to the</div>
+<div class="line">character at the same position in y. If there is a third argument, it</div>
+<div class="line">must be a string, whose characters will be mapped to None in the result.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Data and other attributes defined here:</div>
+<div class="line"><br /></div>
+<div class="line">__new__ = &lt;built-in method __new__ of type object&gt;</div>
+<div class="line-block">
+<div class="line">T.__new__(S, …) -&gt; a new object with type S, a subtype of T</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap2/chap2.html">2. Computational Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap3/chap3.html">3. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap4/chap4.html">4. Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap5/chap5.html">5. Sets and Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap6/chap6.html">6. Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap7/chap7.html">7. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap11/chap11.html">8. Membership Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap8/chap8.html">9. Heaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap9/chap9.html">10. Balanced Binary Search Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap10/chap10.html">11. B-Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap12/chap12.html">12. Heuristic Search</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/appendices/appendixC.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

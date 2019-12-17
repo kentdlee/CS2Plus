@@ -1,0 +1,464 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Appendix A: The int Class &#8212; Data Structures and Algorithms with Python</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img class="logo" src="../_static/csbook.JPG" alt="Logo"/>
+          </a></p>
+        <div class="headertitle"><a
+          href="../index.html">Data Structures and Algorithms with Python</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendix-a-the-int-class">
+<span id="intappendix"></span><h1>Appendix A: The int Class<a class="headerlink" href="#appendix-a-the-int-class" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="http://docs.python.org/py3k">Python 3 Documentation</a> site contains this and much more extensive documentation on the Python 3 language, including the <a class="reference external" href="http://docs.python.org/py3k/library/index.html">Library Reference</a> which contains this documentation. This appendix was generated from the Python help system by typing help(int) in the Python interpreter.</p>
+<p>Help on class int in module builtins:</p>
+<dl class="docutils">
+<dt>class int(object)</dt>
+<dd><div class="first last line-block">
+<div class="line">int(x[, base]) -&gt; integer</div>
+<div class="line"><br /></div>
+<div class="line">Convert a string or number to an integer, if possible.  A floating</div>
+<div class="line">point argument will be truncated towards zero (this does not include a</div>
+<div class="line">string representation of a floating point number!)  When converting a</div>
+<div class="line">string, use the optional base.  It is an error to supply a base when</div>
+<div class="line">converting a non-string.</div>
+<div class="line"><br /></div>
+<div class="line">Methods defined here:</div>
+<div class="line"><br /></div>
+<div class="line">__abs__(…)</div>
+<div class="line-block">
+<div class="line">x.__abs__() &lt;==&gt; abs(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__add__(…)</div>
+<div class="line-block">
+<div class="line">x.__add__(y) &lt;==&gt; x+y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__and__(…)</div>
+<div class="line-block">
+<div class="line">x.__and__(y) &lt;==&gt; x&amp;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__bool__(…)</div>
+<div class="line-block">
+<div class="line">x.__bool__() &lt;==&gt; x != 0</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__ceil__(…)</div>
+<div class="line-block">
+<div class="line">Ceiling of an Integral returns itself.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__divmod__(…)</div>
+<div class="line-block">
+<div class="line">x.__divmod__(y) &lt;==&gt; divmod(x, y)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__eq__(…)</div>
+<div class="line-block">
+<div class="line">x.__eq__(y) &lt;==&gt; x==y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__float__(…)</div>
+<div class="line-block">
+<div class="line">x.__float__() &lt;==&gt; float(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__floor__(…)</div>
+<div class="line-block">
+<div class="line">Flooring an Integral returns itself.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__floordiv__(…)</div>
+<div class="line-block">
+<div class="line">x.__floordiv__(y) &lt;==&gt; x//y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__format__(…)</div>
+<div class="line"><br /></div>
+<div class="line">__ge__(…)</div>
+<div class="line-block">
+<div class="line">x.__ge__(y) &lt;==&gt; x&gt;=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__getattribute__(…)</div>
+<div class="line-block">
+<div class="line">x.__getattribute__(‘name’) &lt;==&gt; x.name</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__getnewargs__(…)</div>
+<div class="line"><br /></div>
+<div class="line">__gt__(…)</div>
+<div class="line-block">
+<div class="line">x.__gt__(y) &lt;==&gt; x&gt;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__hash__(…)</div>
+<div class="line-block">
+<div class="line">x.__hash__() &lt;==&gt; hash(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__index__(…)</div>
+<div class="line-block">
+<div class="line">x[y:z] &lt;==&gt; x[y.__index__():z.__index__()]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__int__(…)</div>
+<div class="line-block">
+<div class="line">x.__int__() &lt;==&gt; int(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__invert__(…)</div>
+<div class="line-block">
+<div class="line">x.__invert__() &lt;==&gt; ~x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__le__(…)</div>
+<div class="line-block">
+<div class="line">x.__le__(y) &lt;==&gt; x&lt;=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__lshift__(…)</div>
+<div class="line-block">
+<div class="line">x.__lshift__(y) &lt;==&gt; x&lt;&lt;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__lt__(…)</div>
+<div class="line-block">
+<div class="line">x.__lt__(y) &lt;==&gt; x&lt;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__mod__(…)</div>
+<div class="line-block">
+<div class="line">x.__mod__(y) &lt;==&gt; x%y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__mul__(…)</div>
+<div class="line-block">
+<div class="line">x.__mul__(y) &lt;==&gt; x*y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__ne__(…)</div>
+<div class="line-block">
+<div class="line">x.__ne__(y) &lt;==&gt; x!=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__neg__(…)</div>
+<div class="line-block">
+<div class="line">x.__neg__() &lt;==&gt; -x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__or__(…)</div>
+<div class="line-block">
+<div class="line">x.__or__(y) &lt;==&gt; x|y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__pos__(…)</div>
+<div class="line-block">
+<div class="line">x.__pos__() &lt;==&gt; +x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__pow__(…)</div>
+<div class="line-block">
+<div class="line">x.__pow__(y[, z]) &lt;==&gt; pow(x, y[, z])</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__radd__(…)</div>
+<div class="line-block">
+<div class="line">x.__radd__(y) &lt;==&gt; y+x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rand__(…)</div>
+<div class="line-block">
+<div class="line">x.__rand__(y) &lt;==&gt; y&amp;x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rdivmod__(…)</div>
+<div class="line-block">
+<div class="line">x.__rdivmod__(y) &lt;==&gt; divmod(y, x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__repr__(…)</div>
+<div class="line-block">
+<div class="line">x.__repr__() &lt;==&gt; repr(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rfloordiv__(…)</div>
+<div class="line-block">
+<div class="line">x.__rfloordiv__(y) &lt;==&gt; y//x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rlshift__(…)</div>
+<div class="line-block">
+<div class="line">x.__rlshift__(y) &lt;==&gt; y&lt;&lt;x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rmod__(…)</div>
+<div class="line-block">
+<div class="line">x.__rmod__(y) &lt;==&gt; y%x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rmul__(…)</div>
+<div class="line-block">
+<div class="line">x.__rmul__(y) &lt;==&gt; y*x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__ror__(…)</div>
+<div class="line-block">
+<div class="line">x.__ror__(y) &lt;==&gt; y|x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__round__(…)</div>
+<div class="line-block">
+<div class="line">Rounding an Integral returns itself.</div>
+<div class="line">Rounding with an ndigits argument also returns an integer.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rpow__(…)</div>
+<div class="line-block">
+<div class="line">y.__rpow__(x[, z]) &lt;==&gt; pow(x, y[, z])</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rrshift__(…)</div>
+<div class="line-block">
+<div class="line">x.__rrshift__(y) &lt;==&gt; y&gt;&gt;x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rshift__(…)</div>
+<div class="line-block">
+<div class="line">x.__rshift__(y) &lt;==&gt; x&gt;&gt;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rsub__(…)</div>
+<div class="line-block">
+<div class="line">x.__rsub__(y) &lt;==&gt; y-x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rtruediv__(…)</div>
+<div class="line-block">
+<div class="line">x.__rtruediv__(y) &lt;==&gt; y/x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rxor__(…)</div>
+<div class="line-block">
+<div class="line">x.__rxor__(y) &lt;==&gt; y^x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__sizeof__(…)</div>
+<div class="line-block">
+<div class="line">Returns size in memory, in bytes</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__str__(…)</div>
+<div class="line-block">
+<div class="line">x.__str__() &lt;==&gt; str(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__sub__(…)</div>
+<div class="line-block">
+<div class="line">x.__sub__(y) &lt;==&gt; x-y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__truediv__(…)</div>
+<div class="line-block">
+<div class="line">x.__truediv__(y) &lt;==&gt; x/y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__trunc__(…)</div>
+<div class="line-block">
+<div class="line">Truncating an Integral returns itself.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__xor__(…)</div>
+<div class="line-block">
+<div class="line">x.__xor__(y) &lt;==&gt; x^y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">bit_length(…)</div>
+<div class="line-block">
+<div class="line">int.bit_length() -&gt; int</div>
+<div class="line"><br /></div>
+<div class="line">Number of bits necessary to represent self in binary.</div>
+<div class="line">&gt;&gt;&gt; bin(37)</div>
+<div class="line">‘0b100101’</div>
+<div class="line">&gt;&gt;&gt; (37).bit_length()</div>
+<div class="line">6</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">conjugate(…)</div>
+<div class="line-block">
+<div class="line">Returns self, the complex conjugate of any int.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">to_bytes(…)</div>
+<div class="line-block">
+<div class="line">int.to_bytes(length, byteorder, *, signed=False) -&gt; bytes</div>
+<div class="line"><br /></div>
+<div class="line">Return an array of bytes representing an integer.</div>
+<div class="line"><br /></div>
+<div class="line">The integer is represented using length bytes.  An OverflowError is</div>
+<div class="line">raised if the integer is not representable with the given number of</div>
+<div class="line">bytes.</div>
+<div class="line"><br /></div>
+<div class="line">The byteorder argument determines the byte order used to represent the</div>
+<div class="line">integer.  If byteorder is ‘big’, the most significant byte is at the</div>
+<div class="line">beginning of the byte array.  If byteorder is ‘little’, the most</div>
+<div class="line">significant byte is at the end of the byte array.  To request the native</div>
+<div class="line">byte order of the host system, use ‘sys.byteorder’ as the byte order value.</div>
+<div class="line"><br /></div>
+<div class="line">The signed keyword-only argument determines whether two’s complement is</div>
+<div class="line">used to represent the integer.  If signed is False and a negative integer</div>
+<div class="line">is given, an OverflowError is raised.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Data descriptors defined here:</div>
+<div class="line"><br /></div>
+<div class="line">denominator</div>
+<div class="line-block">
+<div class="line">the denominator of a rational number in lowest terms</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">imag</div>
+<div class="line-block">
+<div class="line">the imaginary part of a complex number</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">numerator</div>
+<div class="line-block">
+<div class="line">the numerator of a rational number in lowest terms</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">real</div>
+<div class="line-block">
+<div class="line">the real part of a complex number</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Data and other attributes defined here:</div>
+<div class="line"><br /></div>
+<div class="line">__new__ = &lt;built-in method __new__ of type object&gt;</div>
+<div class="line-block">
+<div class="line">T.__new__(S, …) -&gt; a new object with type S, a subtype of T</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">from_bytes = &lt;built-in method from_bytes of type object&gt;</div>
+<div class="line-block">
+<div class="line">int.from_bytes(bytes, byteorder, *, signed=False) -&gt; int</div>
+<div class="line"><br /></div>
+<div class="line">Return the integer represented by the given array of bytes.</div>
+<div class="line"><br /></div>
+<div class="line">The bytes argument must either support the buffer protocol or be an</div>
+<div class="line">iterable object producing bytes.  Bytes and bytearray are examples of</div>
+<div class="line">built-in objects that support the buffer protocol.</div>
+<div class="line"><br /></div>
+<div class="line">The byteorder argument determines the byte order used to represent the</div>
+<div class="line">integer.  If byteorder is ‘big’, the most significant byte is at the</div>
+<div class="line">beginning of the byte array.  If byteorder is ‘little’, the most</div>
+<div class="line">significant byte is at the end of the byte array.  To request the native</div>
+<div class="line">byte order of the host system, use ‘sys.byteorder’ as the byte order value.</div>
+<div class="line"><br /></div>
+<div class="line">The signed keyword-only argument indicates whether two’s complement is</div>
+<div class="line">used to represent the integer.</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap2/chap2.html">2. Computational Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap3/chap3.html">3. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap4/chap4.html">4. Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap5/chap5.html">5. Sets and Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap6/chap6.html">6. Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap7/chap7.html">7. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap11/chap11.html">8. Membership Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap8/chap8.html">9. Heaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap9/chap9.html">10. Balanced Binary Search Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap10/chap10.html">11. B-Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap12/chap12.html">12. Heuristic Search</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/appendices/appendixA.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

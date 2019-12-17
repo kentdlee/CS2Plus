@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<GraphicsCommands>
+    <Command>PenUp</Command>
+    <Command x="1.0" y="1.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-4.0" y="-0.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-14.0" y="-0.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-16.0" y="-0.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-19.0" y="-0.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-22.0" y="-0.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-27.0" y="-1.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-36.0" y="-7.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-50.0" y="-15.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-64.0" y="-25.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-81.0" y="-36.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-98.0" y="-47.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-114.0" y="-59.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-139.0" y="-76.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-161.0" y="-94.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-178.0" y="-108.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-198.0" y="-127.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-220.0" y="-153.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-235.0" y="-168.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-252.0" y="-182.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-255.0" y="-184.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-267.0" y="-189.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-273.0" y="-193.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-278.0" y="-195.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-280.0" y="-195.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-280.0" y="-194.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-280.0" y="-192.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-278.0" y="-190.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-276.0" y="-187.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-275.0" y="-186.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-274.0" y="-186.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-274.0" y="-185.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-274.0" y="-184.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-274.0" y="-183.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-274.0" y="-182.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-275.0" y="-181.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-276.0" y="-180.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-278.0" y="-178.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-280.0" y="-177.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-282.0" y="-176.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-284.0" y="-174.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-287.0" y="-171.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-288.0" y="-170.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-291.0" y="-168.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-292.0" y="-166.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-293.0" y="-166.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-293.0" y="-165.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-164.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-298.0" y="-162.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-300.0" y="-161.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-160.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-158.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-156.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-154.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-153.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-150.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-148.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-146.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-300.0" y="-145.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-299.0" y="-145.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-299.0" y="-144.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-298.0" y="-142.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-297.0" y="-139.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-136.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-134.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-132.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-293.0" y="-132.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-293.0" y="-131.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-292.0" y="-130.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-292.0" y="-129.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-291.0" y="-128.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-290.0" y="-126.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-289.0" y="-126.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-289.0" y="-125.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-290.0" y="-125.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-290.0" y="-124.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-292.0" y="-124.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-293.0" y="-123.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-122.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-120.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-297.0" y="-120.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-297.0" y="-119.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-298.0" y="-119.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-299.0" y="-119.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-300.0" y="-119.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-119.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-117.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-116.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-300.0" y="-114.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-300.0" y="-113.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-299.0" y="-113.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-299.0" y="-112.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-299.0" y="-107.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-298.0" y="-103.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-297.0" y="-98.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-297.0" y="-96.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-297.0" y="-94.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-93.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-91.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-90.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-88.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-87.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-86.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-84.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-83.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-83.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-82.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-80.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-76.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-71.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-67.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-62.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-59.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-56.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-293.0" y="-53.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-293.0" y="-51.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-292.0" y="-49.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-291.0" y="-47.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-291.0" y="-46.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-290.0" y="-44.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-289.0" y="-44.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-290.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-292.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-293.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-297.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-298.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-299.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-300.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-302.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-304.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-305.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-304.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-303.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-302.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-300.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-299.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-298.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-297.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-43.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-44.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-45.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-46.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-47.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-49.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-51.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-294.0" y="-53.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-295.0" y="-53.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-53.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-296.0" y="-52.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-297.0" y="-52.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-298.0" y="-52.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-299.0" y="-52.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-300.0" y="-52.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-302.0" y="-51.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-303.0" y="-51.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-305.0" y="-51.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-304.0" y="-51.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-303.0" y="-51.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-302.0" y="-51.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-51.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-301.0" y="-50.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-302.0" y="-50.0" width="1.0" color="#000000">GoTo</Command>
+    <Command x="-303.0" y="-50.0" width="1.0" color="#000000">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command color="#804000">BeginFill</Command>
+    <Command x="299.0" y="-45.0" width="1.0" color="#804000">GoTo</Command>
+    <Command x="302.0" y="-297.0" width="1.0" color="#804000">GoTo</Command>
+    <Command x="-301.0" y="-298.0" width="1.0" color="#804000">GoTo</Command>
+    <Command x="-300.0" y="-53.0" width="1.0" color="#804000">GoTo</Command>
+    <Command>EndFill</Command>
+    <Command color="#004080">BeginFill</Command>
+    <Command x="-300.0" y="300.0" width="1.0" color="#004080">GoTo</Command>
+    <Command x="299.0" y="299.0" width="1.0" color="#004080">GoTo</Command>
+    <Command x="300.0" y="-45.0" width="1.0" color="#004080">GoTo</Command>
+    <Command>EndFill</Command>
+    <Command>PenUp</Command>
+    <Command x="0.0" y="0.0" width="1.0" color="#000000">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command radius="10.0" width="10" color="#ffffff">Circle</Command>
+    <Command radius="20.0" width="10" color="#ff0080">Circle</Command>
+    <Command x="2.0" y="-4.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="2.0" y="-5.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="2.0" y="-6.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="3.0" y="-7.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="3.0" y="-8.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="3.0" y="-9.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="3.0" y="-10.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="3.0" y="-11.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="4.0" y="-13.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="31.0" y="-134.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="2.0" y="-7.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="-18.0" y="9.0" width="10.0" color="#ff0080">GoTo</Command>
+    <Command x="-100.0" y="-90.0" width="10.0" color="#ff66ff">GoTo</Command>
+    <Command x="-18.0" y="8.0" width="10.0" color="#ff66ff">GoTo</Command>
+    <Command x="-21.0" y="29.0" width="10.0" color="#ff66ff">GoTo</Command>
+    <Command x="-138.0" y="24.0" width="10.0" color="#00ff00">GoTo</Command>
+    <Command x="-21.0" y="31.0" width="10.0" color="#00ff00">GoTo</Command>
+    <Command x="-9.0" y="39.0" width="10.0" color="#00ff00">GoTo</Command>
+    <Command x="-53.0" y="146.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="-9.0" y="42.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="9.0" y="38.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="63.0" y="151.0" width="10.0" color="#000080">GoTo</Command>
+    <Command x="10.0" y="40.0" width="10.0" color="#000080">GoTo</Command>
+    <Command x="20.0" y="25.0" width="10.0" color="#000080">GoTo</Command>
+    <Command x="124.0" y="48.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="16.0" y="22.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="17.0" y="8.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="116.0" y="-53.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command x="19.0" y="-53.0" width="10.0" color="#ff0000">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="30.0" y="-135.0" width="10.0" color="#ff0000">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="-55.0" y="-40.0" width="10.0" color="#800080">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="-102.0" y="-94.0" width="10.0" color="#800080">GoTo</Command>
+    <Command x="-83.0" y="25.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command x="-103.0" y="-91.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="-82.0" y="26.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="-140.0" y="25.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="-37.0" y="95.0" width="10.0" color="#0080ff">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="-55.0" y="149.0" width="10.0" color="#0080ff">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command>PenDown</Command>
+    <Command x="34.0" y="101.0" width="10.0" color="#6666ff">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="63.0" y="150.0" width="10.0" color="#6666ff">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="72.0" y="43.0" width="10.0" color="#00ff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="122.0" y="48.0" width="10.0" color="#00ff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="76.0" y="-23.0" width="10.0" color="#6666ff">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="0.0" y="-108.0" width="10.0" color="#6666ff">GoTo</Command>
+    <Command x="-4.0" y="-118.0" width="10.0" color="#6666ff">GoTo</Command>
+    <Command x="-2.0" y="-114.0" width="10.0" color="#6666ff">GoTo</Command>
+    <Command x="-3.0" y="-114.0" width="10.0" color="#6666ff">GoTo</Command>
+    <Command x="-4.0" y="-114.0" width="10.0" color="#6666ff">GoTo</Command>
+    <Command x="-5.0" y="-114.0" width="10.0" color="#6666ff">GoTo</Command>
+    <Command x="-5.0" y="-113.0" width="10.0" color="#6666ff">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="-5.0" y="-297.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="-3.0" y="-205.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="35.0" y="-180.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="32.0" y="-206.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="1.0" y="-249.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="-2.0" y="-204.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="-4.0" y="-180.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="-37.0" y="-155.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="-46.0" y="-179.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="-16.0" y="-222.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="-5.0" y="-239.0" width="10.0" color="#008000">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command>PenUp</Command>
+    <Command x="128.0" y="236.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="132.0" y="233.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="135.0" y="233.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="139.0" y="234.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="146.0" y="236.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="155.0" y="238.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="170.0" y="239.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="183.0" y="239.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="190.0" y="239.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="196.0" y="239.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="199.0" y="239.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="200.0" y="238.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="201.0" y="238.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="202.0" y="238.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="202.0" y="237.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="200.0" y="237.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="197.0" y="236.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="194.0" y="236.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="189.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="187.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="185.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="183.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="180.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="177.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="176.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="174.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="175.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="176.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="177.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="178.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="180.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="181.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="182.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="184.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="185.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="186.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="187.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="188.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="189.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="190.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="191.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="192.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="195.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="197.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="199.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="201.0" y="235.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="202.0" y="234.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="203.0" y="234.0" width="10.0" color="#008000">GoTo</Command>
+    <Command x="204.0" y="234.0" width="10.0" color="#008000">GoTo</Command>
+    <Command radius="30.0" width="10" color="#ff8000">Circle</Command>
+    <Command radius="30.0" width="10" color="#ff8000">Circle</Command>
+    <Command>PenDown</Command>
+    <Command>PenUp</Command>
+    <Command x="200.0" y="159.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command color="#000000">BeginFill</Command>
+    <Command color="#ff8000">BeginFill</Command>
+    <Command radius="50.0" width="10" color="#ff8000">Circle</Command>
+    <Command>EndFill</Command>
+    <Command x="203.0" y="62.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="199.0" y="194.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="285.0" y="114.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="201.0" y="221.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="299.0" y="220.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="228.0" y="231.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="273.0" y="298.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="217.0" y="237.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="174.0" y="303.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="192.0" y="255.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="95.0" y="293.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="183.0" y="249.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="61.0" y="204.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="167.0" y="231.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="104.0" y="149.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="157.0" y="194.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="147.0" y="116.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="181.0" y="190.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="216.0" y="157.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command x="235.0" y="104.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="216.0" y="155.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="254.0" y="195.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="300.0" y="170.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="246.0" y="242.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="302.0" y="284.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="214.0" y="267.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="219.0" y="301.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="178.0" y="267.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command x="172.0" y="272.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="144.0" y="301.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="156.0" y="248.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="77.0" y="260.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="144.0" y="216.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="89.0" y="184.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="152.0" y="177.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="126.0" y="131.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="182.0" y="157.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="168.0" y="99.0" width="10.0" color="#ffff00">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="197.0" y="72.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command x="193.0" y="171.0" width="10.0" color="#ff8000">GoTo</Command>
+    <Command>PenUp</Command>
+    <Command x="-225.0" y="184.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command color="#ff8000">BeginFill</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command x="-197.0" y="196.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command x="-173.0" y="212.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="-157.0" y="199.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command x="-184.0" y="168.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command x="-137.0" y="167.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command x="-214.0" y="162.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command x="-176.0" y="145.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command>PenUp</Command>
+    <Command x="-88.0" y="210.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command x="-128.0" y="248.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command>PenDown</Command>
+    <Command x="-122.0" y="221.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command x="-104.0" y="207.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="-89.0" y="182.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command x="-109.0" y="169.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command>PenUp</Command>
+    <Command x="-122.0" y="205.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command color="#66ffff">BeginFill</Command>
+    <Command radius="35.0" width="10" color="#00ffff">Circle</Command>
+    <Command>EndFill</Command>
+    <Command>PenUp</Command>
+    <Command x="-1.0" y="19.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="-1.0" y="20.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="-1.0" y="21.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="-1.0" y="22.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="-1.0" y="21.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="-1.0" y="20.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="-1.0" y="19.0" width="10.0" color="#00ffff">GoTo</Command>
+    <Command x="-4.0" y="11.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="1.0" y="13.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="0.0" y="13.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-1.0" y="13.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-2.0" y="13.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-3.0" y="13.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-3.0" y="14.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-3.0" y="15.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-2.0" y="15.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-1.0" y="15.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-1.0" y="16.0" width="10.0" color="#000000">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command color="#000000">BeginFill</Command>
+    <Command x="1.0" y="18.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="1.0" y="17.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="0.0" y="17.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-1.0" y="17.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-2.0" y="17.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-1.0" y="17.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="0.0" y="17.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="1.0" y="17.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="0.0" y="17.0" width="10.0" color="#000000">GoTo</Command>
+    <Command x="-1.0" y="17.0" width="10.0" color="#000000">GoTo</Command>
+    <Command>PenDown</Command>
+    <Command color="#000000">BeginFill</Command>
+    <Command>PenUp</Command>
+    <Command x="0.0" y="4.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="1.0" y="6.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="0.0" y="6.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="0.0" y="8.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="-1.0" y="8.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="-2.0" y="8.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="-3.0" y="9.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="-2.0" y="9.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="-1.0" y="9.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="0.0" y="9.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="-1.0" y="9.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="-1.0" y="10.0" width="8.0" color="#000000">GoTo</Command>
+    <Command color="#000000">BeginFill</Command>
+    <Command radius="10.0" width="8" color="#000000">Circle</Command>
+    <Command radius="10.0" width="8" color="#000000">Circle</Command>
+    <Command>PenDown</Command>
+    <Command radius="10.0" width="8" color="#000000">Circle</Command>
+    <Command>EndFill</Command>
+    <Command>PenUp</Command>
+    <Command x="264.0" y="-273.0" width="8.0" color="#000000">GoTo</Command>
+    <Command x="0.0" y="20.0" width="8.0" color="#000000">GoTo</Command>
+</GraphicsCommands>

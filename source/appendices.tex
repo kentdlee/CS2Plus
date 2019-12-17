@@ -1,0 +1,2083 @@
+%!TEX root =  Intro To Computing.tex
+
+%\newchapter{Glossary}
+
+%A Glossary of terms used in the book goes here.
+
+\appendix
+
+\newappendix{Integer Operators}
+
+\index{int!operators}
+This documentation was generated from the Python documentation available by typing {\em help(int)} in the Python shell. In this documentation the variables {\em x}, {\em y}, and {\em z} refer to integers.
+
+\label{intmethods}
+
+\begin{center}
+{\small
+\begin{tabular}{|l|c|p{2.2in}|} \hline
+{\bf Operator} & {\bf Returns} & {\bf Comments} \\ \hline\hline
+x+y& int & Returns the sum of x and y.
+ \\ \hline
+ x-y & int & Returns the difference of x and y.
+ \\ \hline
+ x*y & int & Returns the product of x and y.
+ \\ \hline 
+ x/y & float & Returns the quotient of x divided by y.
+ \\ \hline
+ x//y & int & Returns the integer quotient of x divided by y.
+ \\ \hline
+ x\%y & int & Returns x modulo y. This is the remainder of dividing x by y. 
+ \\ \hline
+ -x & int & Returns the negation of x. 
+ \\ \hline 
+  x\&y & int  & Returns the bit-wise {\em and} of x and y.
+ \\ \hline
+ x \verb+|+ y & int & Returns the bit-wise {\em or} of x and y.
+ \\ \hline
+ x\verb+^+y & int & Returns the bit-wise {\em exclusive or} of x and y. 
+ \\ \hline
+ x\verb+<<+y &  int & Returns a bit-wise shift left of x by y bits. Shifting left by 1 bit multiplies x by 2. 
+ \\ \hline 
+ x\verb+>>+y &int & Returns a bit-wise right shift of x by y bits. 
+ \\ \hline
+ \verb+~+x & int & Returns an integer where each bit in the x has been inverted. $x + ~x = -1$ for all x. 
+ \\ \hline  
+ abs(x) & int & Returns the absolute value of x.
+ \\ \hline
+ divmod(x, y) & (q,r) & Returns the quotient q and the remainder r as a tuple.
+ \\ \hline
+ float(x) & float & Returns the float representation of x.
+ \\ \hline
+ hex(x) & str & Returns a hexadecimal representation of x as a string.
+ \\ \hline
+ int(x) & int & Returns x.
+ \\ \hline 
+ oct(x) & str & Return an octal representation of x as a string. 
+ \\ \hline 
+ pow(x, y[, z]) & int & Returns x to the y power modulo z. If z is not specified then it returns x to the y power. 
+ \\ \hline
+ repr(x) & str & Returns a string representation of x.
+ \\ \hline
+ str(x) & str & Returns a string representation of x.
+ \\ \hline 
+\end{tabular}}
+\end{center}
+
+\newappendix{Float Operators}
+\label{floatmethods}
+
+\index{float!operators}
+This documentation was generated from the Python documentation available by typing {\em help(float)} in the Python shell. In this documentation at least one of the variables {\em x} and  {\em y} refer to floats.
+
+\begin{center}
+{\small
+\begin{tabular}{|l|c|p{2.2in}|} \hline
+{\bf Operator} & {\bf Returns} & {\bf Comments} \\ \hline\hline 
+x+y& float & Returns the sum of x and y.
+ \\ \hline
+ x-y & float & Returns the difference of x and y.
+ \\ \hline
+ x*y & float & Returns the product of x and y.
+ \\ \hline 
+ x/y & float & Returns the quotient of x divided by y.
+ \\ \hline
+ x//y & float & Returns the quotient of integer division of x divided by y. However, the result is still a float. 
+ \\ \hline
+ x\%y & float & Returns x modulo y. This is the remainder of dividing x by y. 
+ \\ \hline
+ abs(x) & int & Returns the absolute value of x.
+ \\ \hline
+ divmod(x, y) & (q,r) & Returns the quotient q and the remainder r as a tuple. Both q and r are floats, but integer division is performed. The value r is the whole and fractional part of any remainder. The value q is a whole number.
+ \\ \hline
+ float(x) & float & Returns the float representation of x.
+ \\ \hline
+ int(x) & int & Returns the floor of x as an integer.
+ \\ \hline 
+ pow(x, y) & float & Returns x to the y power.
+  \\ \hline
+ repr(x) & str & Returns a string representation of x.
+ \\ \hline
+ str(x) & str & Returns a string representation of x.
+ \\ \hline
+ \end{tabular}}
+\end{center}
+\newpage
+
+
+\newappendix{String Operators and Methods}
+\label{strmethods}
+
+\index{string!{operators and methods}}
+This documentation was generated from the Python documentation available by typing {\em help(str)} in the Python shell. In the documentation found here the variables {\em s} and {\em t} are references to strings.
+
+\newlength{\commentwidth}
+\setlength{\commentwidth}{2.2in}
+\begin{center}
+{\small
+\begin{tabular}{|l|c|p{3in}|} \hline
+
+{\bf Operator} & {\bf Returns} & {\bf Comments} \\ \hline\hline
+s+t & str & 
+Return a new string which is the  concatenation of s and t. \\ \hline
+s in t  & bool &  Returns True if s is a substring of t and False otherwise.\\ \hline
+s\verb+==+t  & bool &  
+Returns True if s and t refer to strings with   the same sequence of characters.\\ \hline
+s\verb+>=+t  & bool &  
+Returns True if s is lexicographically greater  than or equal to t.\\ \hline
+s\verb+<=+t  & bool &  
+Returns True if s is lexicographically less  than or equal to t.\\ \hline
+s\verb+>+t  & bool &  
+Returns True if s is lexicographically greater  than t.\\ \hline
+s\verb+<+t &bool & 
+Returns True if s is lexicographically less  than t.\\ \hline
+s\verb+!=+t &bool & 
+Returns True if s is lexicographically not  equal to t.\\ \hline
+s{\bf [}i{\bf ]}  & str &  
+Returns the character at index i in the string.  If i is negative then it returns the character at  index len(s)-i.\\ \hline
+s{\bf [}[i]:[j]{\bf ]} & str &
+Returns the slice of characters starting at index i and extending to index j-1 in the  string. If i is omitted then the
+slice begins at  index 0. If j is omitted then the slice extends  to the end of the list.  If i  is negative then it returns the slice starting at index len(s)+i (and likewise for the slice ending at j). 
+\\ \hline
+s $*$ i  & str & 
+Returns a new string with s repeated i times.\\ \hline
+i $*$ s  & str &  
+Returns a new string with s repeated i times. \\ \hline
+chr(i) & str & Return the ASCII character equivalent of the integer i. \\ \hline
+float(s) & float & 
+Returns the float contained in the string s. \\ \hline
+int(s) & int &
+Returns the integer contained in the string s. \\ \hline
+len(s)  & int &  
+Returns the number of characters in s.
+\\ \hline
+ord(s) & int & Returns the ASCII decimal equivalent of the single character string s. \\ \hline
+repr(s)  &  &  
+Returns a string representation of s. This adds an extra pair of quotes to s.\\ \hline
+str(s)  & str &  
+Returns a string representation of s. In this case you get just the string s. \\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{center}
+{\small
+\begin{tabular}{|l|c|p{2.2in}|} \hline
+{\bf Method} & {\bf Returns} & {\bf Comments} \\ \hline\hline  
+    s.capitalize() & str
+ &      
+       Returns a copy of the string s with the first character upper case. 
+\\ \hline
+       s.center(width[, fillchar]) & str
+ &    
+       Returns s centered in a string of   length width. Padding is
+       done using the   specified fill character (default is a   space)
+\\ \hline
+       s.count(sub[, start[, end]]) & int
+ &      
+       Returns the number of non-overlapping   
+       occurrences of substring sub in   
+       string s[start:end].  Optional arguments   
+       start and end are
+       interpreted as in slice   
+       notation.
+\\ \hline
+       s.encode([encoding[, errors]]) & bytes
+&      
+       Encodes s using the codec registered  
+       for encoding. encoding defaults to the   
+       default encoding. errors may be given  
+       to set a different error
+       handling scheme.   
+       Default is 'strict' meaning that encoding   
+       errors raise
+       a UnicodeEncodeError.   
+       Other possible values are 'ignore',   
+       'replace' and
+       'xmlcharrefreplace' as  well  
+       as any other name registered with   
+       codecs.register\_error that can  handle   
+      UnicodeEncodeErrors.    
+\\ \hline
+       s.endswith(suffix[, start[, end]]) & bool
+ &      
+       Returns True if s ends with the specified suffix, False otherwise.
+       With optional start, test s beginning at that position.
+       With optional end, stop comparing s at that position.
+       suffix can also be a tuple of strings to try.
+\\ \hline   
+      s.expandtabs([tabsize]) & str
+&      
+       Returns a copy of s where all tab characters are expanded using spaces.
+       If tabsize is not given, a tab size of 8 characters is assumed.   
+\\ \hline
+       s.find(sub[, start[, end]]) & int
+&    
+       Returns the lowest index in s where substring sub is found,
+       such that sub is contained within s[start:end].  Optional
+       arguments start and end are interpreted as in slice notation.
+       
+       Return -1 on failure.   
+\\ \hline
+       s.format(*args, **kwargs) & str
+&   
+\\ \hline
+       s.index(sub[, start[, end]]) & int
+ &      
+       Like s.find() but raise ValueError when the substring is not found.
+\\ \hline
+       s.isalnum() & bool
+ &     
+       Returns True if all characters in s are alphanumeric
+       and there is at least one character in s, False otherwise.
+\\ \hline
+       s.isalpha() & bool
+&    
+       Returns True if all characters in s are alphabetic
+       and there is at least one character in s, False otherwise.
+\\ \hline
+       s.isdecimal() & bool
+ &    
+       Returns True if there are only decimal characters in s,
+       False otherwise.   
+\\ \hline
+       s.isdigit() & bool
+&     
+       Returns True if all characters in s are digits
+       and there is at least one character in s, False otherwise.  
+\\ \hline
+       s.isidentifier() & bool
+&     
+       Returns True if s is a valid identifier according
+       to the language definition. 
+\\ \hline
+\end{tabular}}
+\end{center}
+
+
+\begin{center}
+{\small
+\begin{tabular}{|l|c|p{2.2in}|} \hline
+{\bf Method} & {\bf Returns} & {\bf Comments} \\ \hline\hline
+
+\hline
+       s.islower() & bool
+&     
+       Returns True if all cased characters in s are lowercase and there is
+       at least one cased character in s, False otherwise.   
+\\ \hline
+       s.isnumeric() & bool
+&   
+       Returns True if there are only numeric characters in s,
+       False otherwise.
+\\ \hline
+       s.isprintable() & bool
+&       
+       Returns True if all characters in s are considered
+       printable in repr() or s is empty, False otherwise.
+\\ \hline
+       s.isspace() & bool
+&      
+       Returns True if all characters in s are whitespace
+       and there is at least one character in s, False otherwise.
+\\ \hline
+       s.istitle() & bool
+&       
+       Returns True if s is a titlecased string and there is at least one
+       character in s, i.e. upper- and titlecase characters may only
+       follow uncased characters and lowercase characters only cased ones.
+       Return False otherwise.
+\\ \hline
+       s.isupper() & bool
+&       
+       Returns True if all cased characters in s are uppercase and there is
+       at least one cased character in s, False otherwise.  
+\\ \hline
+       s.join(sequence) & str
+&       
+       Returns a string which is the concatenation of the strings in the
+       sequence.  The separator between elements is s.
+\\ \hline
+       s.ljust(width[, fillchar]) & str
+&      
+       Returns s left-justified in a Unicode string of length width. Padding is
+       done using the specified fill character (default is a space).
+\\ \hline
+       s.lower() & str
+&      
+       Returns a copy of the string s converted to lowercase.
+\\ \hline
+       s.lstrip([chars]) & str
+&      
+       Returns a copy of the string s with leading whitespace removed.
+       If chars is given and not None, remove characters in chars instead. 
+\\ \hline
+       s.partition(sep) & (h,sep,t)
+&       
+       Searches for the separator sep in s, and returns the part before it,
+       the separator itself, and the part after it.  If the separator is not
+       found, returns s and two empty strings.
+\\ \hline
+       s.replace (old, new[, count]) & str
+&     
+       Returns a copy of s with all occurrences of substring
+       old replaced by new.  If the optional argument count is
+       given, only the first count occurrences are replaced.
+\\ \hline
+       s.rfind(sub[, start[, end]]) & int
+&       
+       Returns the highest index in s where substring sub is found,
+       such that sub is contained within s[start:end].  Optional
+       arguments start and end are interpreted as in slice notation.
+       
+       Returns -1 on failure.
+\\ \hline
+       s.rindex(sub[, start[, end]]) & int
+&      
+       Like s.rfind() but raise ValueError when the substring is not found.
+\\ \hline
+       s.rjust(width[, fillchar]) & str
+&    
+       Returns s right-justified in a string of length width. Padding is
+       done using the specified fill character (default is a space).
+\\ \hline
+\end{tabular}}
+\end{center}
+
+\begin{center}
+{\small
+\begin{tabular}{|l|c|p{2.2in}|} \hline
+{\bf Method} & {\bf Returns} & {\bf Comments} \\ \hline\hline 
+
+       s.rpartition(sep) & (t,sep,h)
+&     
+       Searches for the separator sep in s, starting at the end of s, and returns
+       the part before it, the separator itself, and the part after it.  If the
+       separator is not found, returns two empty strings and s.
+\\ \hline
+       s.rsplit([sep[, maxsplit]]) & string list
+&       
+       Returns a list of the words in s, using sep as the
+       delimiter string, starting at the end of the string and
+       working to the front.  If maxsplit is given, at most maxsplit
+       splits are done. If sep is not specified, any whitespace string
+       is a separator.
+\\ \hline
+       s.rstrip([chars]) & str
+&       
+       Returns a copy of the string s with trailing whitespace removed.
+       If chars is given and not None, removes characters in chars instead.
+\\ \hline
+       s.split([sep[, maxsplit]]) & string list
+&    
+       Returns a list of the words in s, using sep as the
+       delimiter string.  If maxsplit is given, at most maxsplit
+       splits are done. If sep is not specified or is None, any
+       whitespace string is a separator and empty strings are
+       removed from the result.
+\\ \hline
+       s.splitlines([keepends]) & string list
+&       
+       Returns a list of the lines in s, breaking at line boundaries.
+       Line breaks are not included in the resulting list unless keepends
+       is given and true.
+\\ \hline
+       s.startswith(prefix[, start[, end]]) & bool
+&       
+       Returns True if s starts with the specified prefix, False otherwise.
+       With optional start, test s beginning at that position.
+       With optional end, stop comparing s at that position.
+       prefix can also be a tuple of strings to try.
+\\ \hline
+       s.strip([chars]) & str
+&       
+       Returns a copy of the string s with leading and trailing
+       whitespace removed.
+       If chars is given and not None, removes characters in chars instead.
+\\ \hline
+       s.swapcase() & str
+&       
+       Returns a copy of s with uppercase characters converted to lowercase
+       and vice versa. 
+\\ \hline
+       s.title() & str
+&     
+       Returns a titlecased version of s, i.e. words start with title case
+       characters, all remaining cased characters have lower case.
+\\ \hline
+       s.translate(table) & str
+&      
+       Returns a copy of the string s, where all characters have been mapped
+       through the given translation table, which must be a mapping of
+       Unicode ordinals to Unicode ordinals, strings, or None.
+       Unmapped characters are left untouched. Characters mapped to None
+       are deleted.   
+\\ \hline
+       s.upper() & str
+&      
+       Returns a copy of s converted to uppercase.
+\\ \hline
+       s.zfill(width) & str
+&      
+       Pad a numeric string s with zeros on the left, to fill a field
+       of the specified width. The string s is never truncated.
+\\ \hline
+\end{tabular}}
+\end{center}
+
+\newpage
+
+\newappendix{List Operators and Methods}
+\label{listmethods}
+
+\index{list!{operators and methods}}
+This documentation was generated from the Python documentation available by typing {\em help(list)} in the Python shell. In the documentation found here the variables {\em x} and {\em y} are references to lists. 
+
+\begin{center}
+{\small
+\begin{tabular}{|l|c|p{3in}|} \hline
+{\bf Method} & {\bf Returns} & {\bf Comments} \\ \hline\hline 
+list() & list & Returns a new empty list. You can also use \verb+[]+ to initialize a new empty list. \\ \hline
+   list(sequence) & list & Returns new list initialized from sequence's items. \\ \hline
+   {\bf [} item [,item]+ {\bf ]} & list & Writing a number of comma-separated items in square brackets constructs a new list of those items.\\ \hline
+x+y & list & Returns a new list containing the concatenation of the items in x and y. \\ \hline  
+e in x & bool & Returns True if the item e is in x and False otherwise.\\ \hline  
+del x[i] & & Deletes the item at index i in x. This is not an expression and does not return a value. \\ \hline  
+x==y &  bool & Returns True if x and y contain the same number of items and each of those corresponding items are pairwise equal.\\ \hline  
+x\verb+>=+y & bool &  Returns True if x is greater than or equal to y according to a lexicographical ordering of the elements in x and y. If x and y have different lengths their items are == up to the shortest length, then this returns True if x is longer than y. \\ \hline 
+x\verb+<=+y & bool & Returns True if x is lexicographically before y or equal to y and False otherwise. \\ \hline 
+x\verb+>+y & bool & Returns True if x is lexicographically after y and False otherwise. \\ \hline  
+x\verb+<+y & bool & Returns True if x is lexicographically before y and False otherwise.\\ \hline 
+x\verb+!=+y & bool & Returns True if x and y are of different length or if some item of x is not == to some item of y. Otherwise it returns False.\\ \hline 
+x[i] & item & Returns the item at index i of x.\\ \hline  
+x{\bf [}[i]:[j]{\bf ]} & list &
+Returns the slice of items starting at index i and extending to index j-1 in the  string. If i is omitted then the
+slice begins at  index 0. If j is omitted then the slice extends  to the end of the list.  If i  is negative then it returns the slice starting at index len(x)+i (and likewise for the slice ending at j). 
+\\ \hline
+x[i]=e & & Assigns the position at index i the value of e in x. The list x must already have an item at index i before this assignment occurs. In other words, assigning an item to a list in this way will not extend the length of the list to accommodate it. \\ \hline     
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|c|p{3in}|} \hline
+{\bf Method} & {\bf Returns} & {\bf Comments} \\ \hline\hline 
+x+=y & & This mutates the list x to append the items in y. \\ \hline 
+x*=i & & This mutates the list x to be i copies of the original x.\\ \hline  
+iter(x) & iterator & Returns an iterator over x. \\ \hline 
+len(x) & int & Returns the number of items in x.\\ \hline 
+x*i & list & Returns a new list with the items of x repeated i times. \\ \hline  
+i*x & list & Returns a new list with the items of x repeated i times. \\ \hline  
+repr(x) & str & Returns a string representation of x.\\ \hline 
+
+   
+       x.append(e) &  None & This mutates the value of x to add e as its last element. The function returns None, but the return value is irrelevant since it mutates x. \\ \hline
+   
+   
+       x.count(e) &int & Returns the number of occurrences of e in x by using == equality. \\ \hline
+   
+   
+       x.extend(iter) & None &  Mutates x by appending elements from the iterable, iter.\\ \hline
+   
+   
+       x.index(e,[i,[j]]) & int & Returns the first index of an element that == e between the the start index, i, and the stop index, j-1.  It raises ValueError if the value is not present in the specified sequence. If j is omitted then it searches to the end of the list. If i is omitted then it searches from the beginning of the list. \\ \hline
+   
+   
+       x.insert(i, e) & None &  Insert e before index i in x, mutating x.\\ \hline
+   
+   
+       x.pop([index]) & item & Remove and return the item at index. If index is omitted then the item at len(x)-1 is removed. The pop method returns the item and mutates x. It raises IndexError if list is empty or index is out of range.\\ \hline
+   
+   
+       x.remove(e) & None & remove first occurrence of e in x, mutating x.
+       It raises ValueError if the value is not present.\\ \hline
+   
+   
+       x.reverse() & None & Reverses all the items in x, mutating x.\\ \hline
+   
+   
+       x.sort() & None & Sorts all the items of x according to their natural ordering as determined by the item's \_\_cmp\_\_ method, mutating x. Two keyword parameters are possible: key and reverse. If reverse=True is specified, then the result of sorting will have the list in reverse of the natural ordering. If key=f is specified then f must be a function that takes an item of x and returns the value of that item that should be used as the key when sorting. \\ \hline
+
+\end{tabular}}
+\end{center}
+\newpage
+
+\newappendix{Dictionary Operators and Methods}
+\label{dictmethods}
+
+This documentation was generated from the Python documentation available by typing {\em help(dict)} in the Python shell. In the documentation found here the variable {\em D} is a reference to a dictionary. A few methods were omitted here for brevity.
+
+\begin{center}
+{\small
+\begin{tabular}{|l|c|p{2.8in}|} \hline
+{\bf Method} & {\bf Returns} & {\bf Comments} \\ \hline\hline 
+
+  dict() & dict & new empty dictionary. \\ \hline
+   dict(mapping) & dict & new dictionary initialized from a mapping object's (key, value) pairs. \\ \hline
+   
+   dict(seq) & dict & new dictionary initialized as if via: \\
+ & &      D  = \{\} \\
+ & &      for k, v in seq: \\
+ & &      ~~~~D[k] = v \\ \hline
+           
+   dict(**kwargs) & dict & new dictionary initialized with the name=value pairs \\
+ & &      in the keyword arg list.  For example:  dict(one=1, two=2) \\ \hline
+
+   
+   k in D & bool &  True if D has key k, else False \\ \hline
+   
+   del D[k] & & Deletes key k from dictionary D. \\ \hline
+   
+    D1==D2 & bool & Returns True if dictionaries D1 and D2 have same keys mapped to same values. \\ \hline
+   
+     D[k] & value & Returns value k maps to in D. If k is not mapped, it \\ 
+     & type & raises a KeyError exception. \\ \hline
+   
+    iter(D) & iterator & Returns an iterator over D. \\ \hline
+   
+    len(D) & int & Returns the number of keys in D. \\ \hline
+    
+    D1!=D2 & bool & Returns True if D1 and D2 have any different keys or keys map to different values. \\ \hline
+   
+    repr(D) & str & Returns a string representation of D. \\ \hline
+   
+   D[k]=e & & Stores the key,value pair k,e in D. \\ \hline
+ 
+    D.clear() &  None &   Remove all items from D. \\ \hline
+   
+    D.copy() & dict & a shallow copy of D\\ \hline
+   
+       D.get(k[,e]) & value & D[k] if k in D, else e.  e defaults to None.\\
+       & type & \\ \hline   
+
+       D.items() & items &  a set-like object providing a view on D's items\\ \hline
+
+       D.keys() & keys & a set-like object providing a view on D's keys\\ \hline
+   
+
+       D.pop(k[,e]) &  v & remove specified key and return the corresponding value.
+       If key is not found, e is returned if given, otherwise KeyError is raised\\ \hline
+   
+
+       D.popitem() &  (k, v) & remove and return some (key, value) pair as a
+       2-tuple; but raise KeyError if D is empty.\\ \hline
+   
+
+
+       D.setdefault(k[,e]) & D.get(k,e) &  Returns D.get(k,e) and also sets d[k]=e if k not in D\\ \hline
+   
+
+       D.update(E, **F) &  None & Update D from dict/iterable E and F.\\
+    & &    If E has a .keys() method, does:     for k in E: D[k] = E[k]\\
+     & &  If E lacks .keys() method, does:     for (k, v) in E: D[k] = v\\
+     & &  In either case, this is followed by: for k in F: D[k] = F[k]\\ \hline
+
+       D.values() & values &  an object providing a view on D's values\\ \hline
+\end{tabular}}
+\end{center}
+
+\newappendix{Turtle Methods}
+This documentation was generated from the Python documentation available by typing 
+
+\index{turtle!methods}
+
+\begin{lstlisting}
+from turtle import *
+help(Turtle)
+\end{lstlisting}
+
+\noindent in the Python shell. In the documentation found here the variable {\em turtle} is a  reference to a Turtle object. This is a subset of that documentation. To see complete documentation use the Python help system as described above. 
+
+
+\label{turtlemethods}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+{\bf    turtle.back(distance)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Aliases:  backward  bk \\
+&  \\
+&        Argument: \\
+&        distance -- a number \\
+&  \\
+&        Move the turtle backward by distance, opposite to the direction the \\
+&        turtle is headed. Do not change the turtle's heading. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.position() \\
+&        (0.00, 0.00) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.backward(30) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.position() \\
+&        (-30.00, 0.00) \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.begin\_fill()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Called just before drawing a shape to be filled. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.color("black", "red") \\
+&        \verb+>+\verb+>+\verb+>+ turtle.begin\_fill() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.circle(60) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.end\_fill() \\
+\end{tabular} \\ \hline
+{\bf    turtle.begin\_poly()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Start recording the vertices of a polygon. Current turtle position \\
+&        is first point of polygon. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.begin\_poly() \\
+\end{tabular} \\ \hline
+
+
+
+
+
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+
+{\bf    turtle.circle(radius, extent=None, steps=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Arguments: \\
+&        radius -- a number \\
+&        extent (optional) -- a number \\
+&        steps (optional) -- an integer \\
+&  \\
+&        Draw a circle with given radius. The center is radius units left \\
+&        of the turtle; extent - an angle - determines which part of the \\
+&        circle is drawn. If extent is not given, draw the entire circle. \\
+&        If extent is not a full circle, one endpoint of the arc is the \\
+&        current pen position. Draw the arc in counterclockwise direction \\
+&        if radius is positive, otherwise in clockwise direction. Finally \\
+&        the direction of the turtle is changed by the amount of extent. \\
+&  \\
+&        As the circle is approximated by an inscribed regular polygon, \\
+&        steps determines the number of steps to use. If not given, \\
+&        it will be calculated automatically. Maybe used to draw regular \\
+&        polygons. \\
+&  \\
+&        call: circle(radius)                  \# full circle \\
+&        --or: circle(radius, extent)          \# arc \\
+&        --or: circle(radius, extent, steps) \\
+&        --or: circle(radius, steps=6)         \# 6-sided polygon \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.circle(50) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.circle(120, 180)  \# semicircle \\
+\end{tabular} \\ \hline
+{\bf    turtle.clear()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Delete the turtle's drawings from the screen. Do not move turtle. \\
+&        State and position of the turtle as well as drawings of other \\
+&        turtles are not affected. \\
+&  \\
+&        Examples (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.clear() \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.color(*args)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Arguments: \\
+&        Several input formats are allowed. \\
+&        They use 0, 1, 2, or 3 arguments as follows: \\
+&  \\
+&        color() \\
+&            Return the current pencolor and the current fillcolor \\
+&            as a pair of color specification strings as are returned \\
+&            by pencolor and fillcolor. \\
+&        color(colorstring), color((r,g,b)), color(r,g,b) \\
+&            inputs as in pencolor, set both, fillcolor and pencolor, \\
+&            to the given value. \\
+&        color(colorstring1, colorstring2), \\
+&        color((r1,g1,b1), (r2,g2,b2)) \\
+&            equivalent to pencolor(colorstring1) and fillcolor(colorstring2) \\
+&            and analogously, if the other input format is used. \\ 
+\end{tabular} \\ \hline
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline
+   \begin{tabular}{p{0.25in}p{4in}}
+
+&        If turtleshape is a polygon, outline and interior of that polygon \\
+&        is drawn with the newly set colors. \\
+&        For mor info see: pencolor, fillcolor \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.color('red', 'green') \\
+&        \verb+>+\verb+>+\verb+>+ turtle.color() \\
+&        ('red', 'green') \\
+&        \verb+>+\verb+>+\verb+>+ colormode(255) \\
+&        \verb+>+\verb+>+\verb+>+ color((40, 80, 120), (160, 200, 240)) \\
+&        \verb+>+\verb+>+\verb+>+ color() \\
+&        ('\#285078', '\#a0c8f0') \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.degrees()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Set the angle measurement units to degrees. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.heading() \\
+&        1.5707963267948966 \\
+&        \verb+>+\verb+>+\verb+>+ turtle.degrees() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.heading() \\
+&        90.0 \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.dot(size=None, *color)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Optional arguments: \\
+&        size -- an integer \verb+>+= 1 (if given) \\
+&        color -- a colorstring or a numeric color tuple \\
+&  \\
+&        Draw a circular dot with diameter size, using color. \\
+&        If size is not given, the maximum of pensize+4 and 2*pensize is used. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.dot() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.fd(50); turtle.dot(20, "blue"); turtle.fd(50) \\
+\end{tabular} \\ \hline
+{\bf    turtle.end\_fill()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Fill the shape drawn after the call begin\_fill(). \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.color("black", "red") \\
+&        \verb+>+\verb+>+\verb+>+ turtle.begin\_fill() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.circle(60) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.end\_fill() \\
+\end{tabular} \\ \hline
+{\bf    turtle.end\_poly()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Stop recording the vertices of a polygon. Current turtle position is \\
+&        last point of polygon. This will be connected with the first point. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.end\_poly() \\
+\end{tabular} \\ \hline
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+{\bf    turtle.filling()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return fillstate (True if filling, False else). \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.begin\_fill() \\
+&        \verb+>+\verb+>+\verb+>+ if turtle.filling(): \\
+&                ~~~~~~~~~~turtle.pensize(5) \\
+&        ~~~~~~~~else: \\
+&                ~~~~~~~~~~turtle.pensize(3) \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.fillcolor(*args)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return or set the fillcolor. \\
+&  \\
+&        Arguments: \\
+&        Four input formats are allowed: \\
+&          - fillcolor() \\
+&            Return the current fillcolor as color specification string, \\
+&            possibly in hex-number format (see example). \\
+&            May be used as input to another color/pencolor/fillcolor call. \\
+&          - fillcolor(colorstring) \\
+&            s is a Tk color specification string, such as "red" or "yellow" \\
+&          - fillcolor((r, g, b)) \\
+&            *a tuple* of r, g, and b, which represent, an RGB color, \\
+&            and each of r, g, and b are in the range 0..colormode, \\
+&            where colormode is either 1.0 or 255 \\
+&          - fillcolor(r, g, b) \\
+&            r, g, and b represent an RGB color, and each of r, g, and b \\
+&            are in the range 0..colormode \\
+&  \\
+&        If turtleshape is a polygon, the interior of that polygon is drawn \\
+&        with the newly set fillcolor. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.fillcolor('violet') \\
+&        \verb+>+\verb+>+\verb+>+ col = turtle.pencolor() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.fillcolor(col) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.fillcolor(0, .5, 0) \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.forward(distance)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Aliases:  fd \\
+&  \\
+&        Argument: \\
+&        distance -- a number (integer or float) \\
+&  \\
+&        Move the turtle forward by the specified distance, in the direction \\
+&        the turtle is headed. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.position() \\
+&        (0.00, 0.00) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.forward(25) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.position() \\
+&        (25.00,0.00) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.forward(-75) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.position() \\
+&        (-50.00,0.00) \\
+\end{tabular} \\ \hline
+
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+{\bf    turtle.get\_poly()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the lastly recorded polygon. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ p = turtle.get\_poly() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.register\_shape("myFavouriteShape", p) \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.get\_shapepoly()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the current shape polygon as tuple of coordinate pairs. \\
+&  \\
+&        Examples (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.shape("square") \\
+&        \verb+>+\verb+>+\verb+>+ turtle.shapetransform(4, -1, 0, 2) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.get\_shapepoly() \\
+&        ((50, -20), (30, 20), (-50, 20), (-30, -20)) \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.getscreen()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the TurtleScreen object, the turtle is drawing  on. \\
+&        So TurtleScreen-methods can be called for that object. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ ts = turtle.getscreen() \\
+&        \verb+>+\verb+>+\verb+>+ ts \\
+&        \verb+<+turtle.TurtleScreen object at 0x0106B770\verb+>+ \\
+&        \verb+>+\verb+>+\verb+>+ ts.bgcolor("pink") \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.goto(x, y=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Aliases: setpos  setposition \\
+&  \\
+&        Arguments: \\
+&        x -- a number      or     a pair/vector of numbers \\
+&        y -- a number             None \\
+&  \\
+&        call: goto(x, y)         \# two coordinates \\
+&        --or: goto((x, y))       \# a pair (tuple) of coordinates \\
+&        --or: goto(vec)          \# e.g. as returned by pos() \\
+&  \\
+&        Move turtle to an absolute position. If the pen is down, \\
+&        a line will be drawn. The turtle's orientation does not change. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ tp = turtle.pos() \\
+&        \verb+>+\verb+>+\verb+>+ tp \\
+&        (0.00, 0.00) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.setpos(60,30) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.pos() \\
+&        (60.00,30.00) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.setpos((20,80)) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.pos() \\
+&        (20.00,80.00) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.setpos(tp) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.pos() \\
+&        (0.00,0.00) \\
+\end{tabular} \\ \hline
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+{\bf    turtle.heading()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the turtle's current heading. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.left(67) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.heading() \\
+&        67.0 \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.hideturtle()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Makes the turtle invisible. \\
+&  \\
+&        Aliases:  ht \\
+&  \\
+&        It's a good idea to do this while you're in the \\
+&        middle of a complicated drawing, because hiding \\
+&        the turtle speeds up the drawing observably. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.hideturtle() \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.isdown()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return True if pen is down, False if it's up. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.penup() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.isdown() \\
+&        False \\
+&        \verb+>+\verb+>+\verb+>+ turtle.pendown() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.isdown() \\
+&        True \\
+\end{tabular} \\ \hline
+{\bf    turtle.isvisible()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return True if the Turtle is shown, False if it's hidden. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.hideturtle() \\
+&        \verb+>+\verb+>+\verb+>+ print(turtle.isvisible()) \\
+&        False \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.left(angle)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Aliases:  lt \\
+&  \\
+&        Argument: \\
+&        angle -- a number (integer or float) \\
+&  \\
+&        Turn turtle left by angle units. (Units are by default degrees, \\
+&        but can be set via the degrees() and radians() functions.) \\
+&        Angle orientation depends on mode. (See this.) \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.heading() \\
+&        22.0 \\
+&        \verb+>+\verb+>+\verb+>+ turtle.left(45) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.heading() \\
+&        67.0 \\
+\end{tabular} \\ \hline
+
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+
+{\bf    turtle.onclick(fun, btn=1, add=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Bind fun to mouse-click event on this turtle on canvas. \\
+&  \\
+&        Arguments: \\
+&        fun --  a function with two arguments, to which will be assigned \\
+&                the coordinates of the clicked point on the canvas. \\
+&        num --  number of the mouse-button defaults to 1 (left mouse button). \\
+&        add --  True or False. If True, new binding will be added, otherwise \\
+&                it will replace a former binding. \\
+&  \\
+&        Example for the anonymous turtle, i. e. the procedural way: \\
+&  \\
+&        \verb+>+\verb+>+\verb+>+ def turn(x, y): \\
+&                ~~~~~~~~~~~~turtle.left(360) \\
+&  \\
+&        \verb+>+\verb+>+\verb+>+ onclick(turn) \# Now clicking into the turtle will turn it. \\
+&        \verb+>+\verb+>+\verb+>+ onclick(None)  \# event-binding will be removed \\
+\end{tabular} \\ \hline
+{\bf    turtle.ondrag(fun, btn=1, add=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Bind fun to mouse-move event on this turtle on canvas. \\
+&  \\
+&        Arguments: \\
+&        fun -- a function with two arguments, to which will be assigned \\
+&               the coordinates of the clicked point on the canvas. \\
+&        num -- number of the mouse-button defaults to 1 (left mouse button). \\
+&  \\
+&        Every sequence of mouse-move-events on a turtle is preceded by a \\
+&        mouse-click event on that turtle. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.ondrag(turtle.goto) \\
+&  \\
+&        \#\#\# Subsequently clicking and dragging a Turtle will \\
+&        \#\#\# move it across the screen thereby producing handdrawings \\
+&        \#\#\# (if pen is down). \\
+\end{tabular} \\ \hline
+{\bf    turtle.onrelease(fun, btn=1, add=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Bind fun to mouse-button-release event on this turtle on canvas. \\
+&  \\
+&        Arguments: \\
+&        fun -- a function with two arguments, to which will be assigned \\
+&                the coordinates of the clicked point on the canvas. \\
+&        num --  number of the mouse-button defaults to 1 (left mouse button). \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.pencolor(*args)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return or set the pencolor. \\
+&  \\
+&        Arguments: \\
+&        Four input formats are allowed: \\
+&          - pencolor() \\
+&            Return the current pencolor as color specification string, \\
+&            possibly in hex-number format (see example). \\
+&            May be used as input to another color/pencolor/fillcolor call. \\
+\end{tabular} \\ \hline
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+   \begin{tabular}{p{0.25in}p{4in}}
+
+&          - pencolor(colorstring) \\
+&            s is a Tk color specification string, such as "red" or "yellow" \\
+&          - pencolor((r, g, b)) \\
+&            *a tuple* of r, g, and b, which represent, an RGB color, \\
+&            and each of r, g, and b are in the range 0..colormode, \\
+&            where colormode is either 1.0 or 255 \\
+&          - pencolor(r, g, b) \\
+&            r, g, and b represent an RGB color, and each of r, g, and b \\
+&            are in the range 0..colormode \\
+&  \\
+&        If turtleshape is a polygon, the outline of that polygon is drawn \\
+&        with the newly set pencolor. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.pencolor('brown') \\
+&        \verb+>+\verb+>+\verb+>+ tup = (0.2, 0.8, 0.55) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.pencolor(tup) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.pencolor() \\
+&        '\#33cc8c' \\
+\end{tabular} \\ \hline
+{\bf    turtle.pendown()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Pull the pen down -- drawing when moving. \\
+&  \\
+&        Aliases:  pd  down \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.pendown() \\
+\end{tabular} \\ \hline
+{\bf    turtle.pensize(width=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Set or return the line thickness. \\
+&  \\
+&        Aliases:   width \\
+&  \\
+&        Argument: \\
+&        width -- positive number \\
+&  \\
+&        Set the line thickness to width or return it. If resizemode is set \\
+&        to "auto" and turtleshape is a polygon, that polygon is drawn with \\
+&        the same line thickness. If no argument is given, current pensize \\
+&        is returned. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.pensize() \\
+&        1 \\
+&        turtle.pensize(10)   \# from here on lines of width 10 are drawn \\
+\end{tabular} \\ \hline
+{\bf    turtle.penup()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Pull the pen up -- no drawing when moving. \\
+&  \\
+&        Aliases:  pu  up \\
+&  \\
+
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.penup() \\
+\end{tabular} \\ \hline
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+{\bf    turtle.radians()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Set the angle measurement units to radians. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.heading() \\
+&        90 \\
+&        \verb+>+\verb+>+\verb+>+ turtle.radians() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.heading() \\
+&        1.5707963267948966 \\
+\end{tabular} \\ \hline
+
+
+{\bf    turtle.reset()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&                Delete the turtle's drawings from the screen, re-center the turtle \\
+&                and set variables to the default values. \\
+&  \\
+&                Example (for a Turtle instance named turtle): \\
+&                \verb+>+\verb+>+\verb+>+ turtle.position() \\
+&                (0.00,-22.00) \\
+&                \verb+>+\verb+>+\verb+>+ turtle.heading() \\
+&                100.0 \\
+&                \verb+>+\verb+>+\verb+>+ turtle.reset() \\
+&                \verb+>+\verb+>+\verb+>+ turtle.position() \\
+&                (0.00,0.00) \\
+&                \verb+>+\verb+>+\verb+>+ turtle.heading() \\
+&                0.0 \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.setheading(to\_angle)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Set the orientation of the turtle to to\_angle. \\
+&  \\
+&        Aliases:  seth \\
+&  \\
+&        Argument: \\
+&        to\_angle -- a number (integer or float) \\
+&  \\
+&        Set the orientation of the turtle to to\_angle. \\
+&        Here are some common directions in degrees: \\
+&  \\
+&         standard - mode:          logo-mode: \\
+&        --------------------------------------- \\
+&           0 - east                0 - north \\
+&          90 - north              90 - east \\
+&         180 - west              180 - south \\
+&         270 - south             270 - west \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.setheading(90) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.heading() \\
+&        90 \\
+\end{tabular} \\ \hline
+
+
+{\bf    turtle.shape(name=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Set turtle shape to shape with given name / return current shapename. \\
+&  \\
+&        Optional argument: \\
+&        name -- a string, which is a valid shapename \\
+&  \\
+
+\end{tabular} \\ \hline
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+   \begin{tabular}{p{0.25in}p{4in}}
+   
+&        Set turtle shape to shape with given name or, if name is not given, \\
+&        return name of current shape. \\
+&        Shape with name must exist in the TurtleScreen's shape dictionary. \\
+&        Initially there are the following polygon shapes: \\
+&        'arrow', 'turtle', 'circle', 'square', 'triangle', 'classic'. \\
+&        To learn about how to deal with shapes see Screen-method register\_shape. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.shape() \\
+&        'arrow' \\
+&        \verb+>+\verb+>+\verb+>+ turtle.shape("turtle") \\
+&        \verb+>+\verb+>+\verb+>+ turtle.shape() \\
+&        'turtle' \\
+\end{tabular} \\ \hline
+
+
+{\bf    turtle.showturtle()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Makes the turtle visible. \\
+&  \\
+&        Aliases: st \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.hideturtle() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.showturtle() \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.speed(speed=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return or set the turtle's speed. \\
+&  \\
+&        Optional argument: \\
+&        speed -- an integer in the range 0..10 or a speedstring (see below) \\
+&  \\
+&        Set the turtle's speed to an integer value in the range 0 .. 10. \\
+&        If no argument is given: return current speed. \\
+&  \\
+&        If input is a number greater than 10 or smaller than 0.5, \\
+&        speed is set to 0. \\
+&        Speedstrings  are mapped to speedvalues in the following way: \\
+&            'fastest' :  0 \\
+&            'fast'    :  10 \\
+&            'normal'  :  6 \\
+&            'slow'    :  3 \\
+&            'slowest' :  1 \\
+&        speeds from 1 to 10 enforce increasingly faster animation of \\
+&        line drawing and turtle turning. \\
+&  \\
+&        Attention: \\
+&        speed = 0 : *no* animation takes place. forward/back makes turtle jump \\
+&        and likewise left/right make the turtle turn instantly. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.speed(3) \\
+\end{tabular} \\ \hline
+
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+
+{\bf    turtle.undo()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Undo (repeatedly) the last turtle action. \\
+&        Number of available undo actions is determined by the size of \\
+&        the undobuffer. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ for i in range(4): \\
+&                turtle.fd(50); turtle.lt(80) \\
+&  \\
+&        \verb+>+\verb+>+\verb+>+ for i in range(8): \\
+&                turtle.undo() \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.write(arg, move=False, align='left', font=('Arial', 8, 'normal'))} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Write text at the current turtle position. \\
+&  \\
+&        Arguments: \\
+&        arg -- info, which is to be written to the TurtleScreen \\
+&        move (optional) -- True/False \\
+&        align (optional) -- one of the strings "left", "center" or right" \\
+&        font (optional) -- a triple (fontname, fontsize, fonttype) \\
+&  \\
+&        Write text - the string representation of arg - at the current \\
+&        turtle position according to align ("left", "center" or right") \\
+&        and with the given font. \\
+&        If move is True, the pen is moved to the bottom-right corner \\
+&        of the text. By default, move is False. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.write('Home = ', True, align="center") \\
+&        \verb+>+\verb+>+\verb+>+ turtle.write((0,0), True) \\
+\end{tabular} \\ \hline
+
+{\bf    turtle.xcor()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the turtle's x coordinate. \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ reset() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.left(60) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.forward(100) \\
+&        \verb+>+\verb+>+\verb+>+ print(turtle.xcor()) \\
+&        50.0 \\
+\end{tabular} \\ \hline
+{\bf    turtle.ycor()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the turtle's y coordinate \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ reset() \\
+&        \verb+>+\verb+>+\verb+>+ turtle.left(60) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.forward(100) \\
+&        \verb+>+\verb+>+\verb+>+ print(turtle.ycor()) \\
+&        86.6025403784 \\
+\end{tabular} \\ \hline
+\end{tabular}}
+\end{center}
+
+\newappendix{TurtleScreen Methods}
+\label{turtlescreenmethods}
+This documentation was generated from the Python documentation available by typing 
+
+\index{turtle screen!{operators and methods}}
+\index{screen!{operators and methods}}
+\begin{lstlisting}
+from turtle import *
+help(TurtleScreen)
+\end{lstlisting}
+
+\noindent in the Python shell. In the documentation found here the variable {\em turtle} is a  reference to a Turtle object and {\em screen} is a reference to the {\em TurtleScreen} object. This is a subset of that documentation. To see complete documentation use the Python help system as described above. 
+
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description} \\ \hline\hline 
+
+{\bf    screen.addshape(name)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&  Same thing as screen.register\_shape(name) \\
+\end{tabular} \\ \hline
+
+{\bf    screen.bgcolor(*args)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Set or return backgroundcolor of the TurtleScreen. \\
+&  \\
+&        Arguments (if given): a color string or three numbers \\
+&        in the range 0..colormode or a 3-tuple of such numbers. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.bgcolor("orange") \\
+&        \verb+>+\verb+>+\verb+>+ screen.bgcolor() \\
+&        'orange' \\
+&        \verb+>+\verb+>+\verb+>+ screen.bgcolor(0.5,0,0.5) \\
+&        \verb+>+\verb+>+\verb+>+ screen.bgcolor() \\
+&        '\#800080' \\
+\end{tabular} \\ \hline
+{\bf    screen.bgpic(picname=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Set background image or return name of current backgroundimage. \\
+&  \\
+&        Optional argument: \\
+&        picname -- a string, name of a gif-file or "nopic". \\
+&  \\
+&        If picname is a filename, set the corresponing image as background. \\
+&        If picname is "nopic", delete backgroundimage, if present. \\
+&        If picname is None, return the filename of the current backgroundimage. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.bgpic() \\
+&        'nopic' \\
+&        \verb+>+\verb+>+\verb+>+ screen.bgpic("landscape.gif") \\
+&        \verb+>+\verb+>+\verb+>+ screen.bgpic() \\
+&        'landscape.gif' \\
+\end{tabular} \\ \hline
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+
+
+{\bf    screen.clear()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Delete all drawings and all turtles from the TurtleScreen. \\
+&  \\
+&        Reset empty TurtleScreen to its initial state: white background, \\
+&        no backgroundimage, no eventbindings and tracing on. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        screen.clear() \\
+&  \\
+&        Note: this method is not available as function. \\
+\end{tabular} \\ \hline
+
+
+{\bf    screen.colormode(cmode=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the colormode or set it to 1.0 or 255. \\
+&  \\
+&        Optional argument: \\
+&        cmode -- one of the values 1.0 or 255 \\
+&  \\
+&        r, g, b values of colortriples have to be in range 0..cmode. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.colormode() \\
+&        1.0 \\
+&        \verb+>+\verb+>+\verb+>+ screen.colormode(255) \\
+&        \verb+>+\verb+>+\verb+>+ turtle.pencolor(240,160,80) \\
+\end{tabular} \\ \hline
+{\bf    screen.delay(delay=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return or set the drawing delay in milliseconds. \\
+&  \\
+&        Optional argument: \\
+&        delay -- positive integer \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.delay(15) \\
+&        \verb+>+\verb+>+\verb+>+ screen.delay() \\
+&        15 \\
+\end{tabular} \\ \hline
+{\bf    screen.getcanvas()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the Canvas of this TurtleScreen. \\
+&  \\
+&        Example (for a Screen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ cv = screen.getcanvas() \\
+&        \verb+>+\verb+>+\verb+>+ cv \\
+&        \verb+<+turtle.ScrolledCanvas instance at 0x010742D8\verb+>+ \\
+\end{tabular} \\ \hline
+{\bf    screen.getshapes()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return a list of names of all currently available turtle shapes. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.getshapes() \\
+&        ['arrow', 'blank', 'circle', ... , 'turtle'] \\
+
+
+\end{tabular} \\ \hline
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+
+{\bf    screen.listen(xdummy=None, ydummy=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Set focus on TurtleScreen (in order to collect key-events) \\
+&  \\
+&        Dummy arguments are provided in order \\
+&        to be able to pass listen to the onclick method. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.listen() \\
+\end{tabular} \\ \hline
+
+
+{\bf    screen.mode(mode=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Set turtle-mode ('standard', 'logo' or 'world') and perform reset. \\
+&  \\
+&        Optional argument: \\
+&        mode -- on of the strings 'standard', 'logo' or 'world' \\
+&  \\
+&        Mode 'standard' is compatible with turtle.py. \\
+&        Mode 'logo' is compatible with most Logo-Turtle-Graphics. \\
+&        Mode 'world' uses userdefined 'worldcoordinates'. *Attention*: in \\
+&        this mode angles appear distorted if x/y unit-ratio doesn't equal 1. \\
+&        If mode is not given, return the current mode. \\
+&  \\
+&             Mode      Initial turtle heading     positive angles \\
+&         -------------------------------------------------------- \\
+&          'standard'    to the right (east)       counterclockwise \\
+&            'logo'        upward    (north)         clockwise \\
+&  \\
+&        Examples: \\
+&        \verb+>+\verb+>+\verb+>+ mode('logo')   \# resets turtle heading to north \\
+&        \verb+>+\verb+>+\verb+>+ mode() \\
+&        'logo' \\
+\end{tabular} \\ \hline
+{\bf    screen.onclick(fun, btn=1, add=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Bind fun to mouse-click event on canvas. \\
+&  \\
+&        Arguments: \\
+&        fun -- a function with two arguments, the coordinates of the \\
+&               clicked point on the canvas. \\
+&        num -- the number of the mouse-button, defaults to 1 \\
+&  \\
+&        Example (for a TurtleScreen instance named screen \\
+&        and a Turtle instance named turtle): \\
+&  \\
+&        \verb+>+\verb+>+\verb+>+ screen.onclick(turtle.goto) \\
+&  \\
+&        \#\#\# Subsequently clicking into the TurtleScreen will \\
+&        \#\#\# make the turtle move to the clicked point. \\
+&        \verb+>+\verb+>+\verb+>+ screen.onclick(None) \\
+&  \\
+&        \#\#\# event-binding will be removed \\
+\end{tabular} \\ \hline
+
+
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+
+
+{\bf    screen.onkey(fun, key)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Bind fun to key-release event of key. \\
+&  \\
+&        Arguments: \\
+&        fun -- a function with no arguments \\
+&        key -- a string: key (e.g. "a") or key-symbol (e.g. "space") \\
+&  \\
+&        In order to be able to register key-events, TurtleScreen \\
+&        must have focus. (See method listen.) \\
+&  \\
+&        Example (for a TurtleScreen instance named screen \\
+&        and a Turtle instance named turtle): \\
+&  \\
+&        \verb+>+\verb+>+\verb+>+ def f(): \\
+&                ~~~~~~~~~~~~turtle.fd(50) \\
+&                ~~~~~~~~~~~~turtle.lt(60) \\
+&  \\
+&  \\
+&        \verb+>+\verb+>+\verb+>+ screen.onkey(f, "Up") \\
+&        \verb+>+\verb+>+\verb+>+ screen.listen() \\
+&  \\
+&        \#\#\# Subsequently the turtle can be moved by \\
+&        \#\#\# repeatedly pressing the up-arrow key, \\
+&        \#\#\# consequently drawing a hexagon \\
+\end{tabular} \\ \hline
+{\bf    screen.onkeypress(fun, key=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Bind fun to key-press event of key if key is given, \\
+&        or to any key-press-event if no key is given. \\
+&  \\
+&        Arguments: \\
+&        fun -- a function with no arguments \\
+&        key -- a string: key (e.g. "a") or key-symbol (e.g. "space") \\
+&  \\
+&        In order to be able to register key-events, TurtleScreen \\
+&        must have focus. (See method listen.) \\
+&  \\
+&        Example (for a TurtleScreen instance named screen \\
+&        and a Turtle instance named turtle): \\
+&  \\
+&        \verb+>+\verb+>+\verb+>+ def f(): \\
+&                ~~~~~~~~~~~~turtle.fd(50) \\
+&  \\
+&  \\
+&        \verb+>+\verb+>+\verb+>+ screen.onkey(f, "Up") \\
+&        \verb+>+\verb+>+\verb+>+ screen.listen() \\
+&  \\
+&        \#\#\# Subsequently the turtle can be moved by \\
+&        \#\#\# repeatedly pressing the up-arrow key, \\
+&        \#\#\# or by keeping pressed the up-arrow key. \\
+&        \#\#\# consequently drawing a hexagon. \\
+\end{tabular} \\ \hline
+
+
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+
+
+
+{\bf    screen.ontimer(fun, t=0)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Install a timer, which calls fun after t milliseconds. \\
+&  \\
+&        Arguments: \\
+&        fun -- a function with no arguments. \\
+&        t -- a number \verb+>+= 0 \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&  \\
+&        \verb+>+\verb+>+\verb+>+ running = True \\
+&        \verb+>+\verb+>+\verb+>+ def f(): \\
+&                if running: \\
+&                        ~~~~~~~~~~~~turtle.fd(50) \\
+&                        ~~~~~~~~~~~~turtle.lt(60) \\
+&                        ~~~~~~~~~~~~screen.ontimer(f, 250) \\
+&  \\
+&        \verb+>+\verb+>+\verb+>+ f()   \#\#\# makes the turtle marching around \\
+&        \verb+>+\verb+>+\verb+>+ running = False \\
+\end{tabular} \\ \hline
+{\bf    screen.register\_shape(name, shape=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Adds a turtle shape to TurtleScreen's shapelist. \\
+&  \\
+&        Arguments: \\
+&        (1) name is the name of a gif-file and shape is None. \\
+&            Installs the corresponding image shape. \\
+&            !! Image-shapes DO NOT rotate when turning the turtle, \\
+&            !! so they do not display the heading of the turtle! \\
+&        (2) name is an arbitrary string and shape is a tuple \\
+&            of pairs of coordinates. Installs the corresponding \\
+&            polygon shape \\
+&        (3) name is an arbitrary string and shape is a \\
+&            (compound) Shape object. Installs the corresponding \\
+&            compound shape. \\
+&        To use a shape, you have to issue the command shape(shapename). \\
+&  \\
+&        call: register\_shape("turtle.gif") \\
+&        --or: register\_shape("tri", ((0,0), (10,10), (-10,10))) \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.register\_shape("triangle", ((5,-3),(0,5),(-5,-3))) \\
+\end{tabular} \\ \hline
+{\bf    screen.reset()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Reset all Turtles on the Screen to their initial state. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.reset() \\
+\end{tabular} \\ \hline
+
+
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+
+
+{\bf    screen.screensize(canvwidth=None, canvheight=None, bg=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Resize the canvas the turtles are drawing on. \\
+&  \\
+&        Optional arguments: \\
+&        canvwidth -- positive integer, new width of canvas in pixels \\
+&        canvheight --  positive integer, new height of canvas in pixels \\
+&        bg -- colorstring or color-tupel, new backgroundcolor \\
+&        If no arguments are given, return current (canvaswidth, canvasheight) \\
+&  \\
+&        Do not alter the drawing window. To observe hidden parts of \\
+&        the canvas use the scrollbars. (Can make visible those parts \\
+&        of a drawing, which were outside the canvas before!) \\
+&  \\
+&        Example (for a Turtle instance named turtle): \\
+&        \verb+>+\verb+>+\verb+>+ turtle.screensize(2000,1500) \\
+&            \#\#\# e. g. to search for an erroneously escaped turtle ;-) \\
+\end{tabular} \\ \hline
+{\bf    screen.setworldcoordinates(llx, lly, urx, ury)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Set up a user defined coordinate-system. \\
+&  \\
+&        Arguments: \\
+&        llx -- a number, x-coordinate of lower left corner of canvas \\
+&        lly -- a number, y-coordinate of lower left corner of canvas \\
+&        urx -- a number, x-coordinate of upper right corner of canvas \\
+&        ury -- a number, y-coordinate of upper right corner of canvas \\
+&  \\
+&        Set up user coodinat-system and switch to mode 'world' if necessary. \\
+&        This performs a screen.reset. If mode 'world' is already active, \\
+&        all drawings are redrawn according to the new coordinates. \\
+&  \\
+&        But ATTENTION: in user-defined coordinatesystems angles may appear \\
+&        distorted. (see Screen.mode()) \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.setworldcoordinates(-10,-0.5,50,1.5) \\
+&        \verb+>+\verb+>+\verb+>+ for \_ in range(36): \\
+&                ~~~~~~~~~~~~turtle.left(10) \\
+&                ~~~~~~~~~~~~turtle.forward(0.5) \\ 
+\end{tabular} \\ \hline
+{\bf    screen.title(titlestr)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+& Set the title of the Turtle Graphics screen. The title appears in the title bar\\
+& of the window. \\
+\end{tabular} \\ \hline
+
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+
+
+{\bf    screen.tracer(n=None, delay=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Turns turtle animation on/off and set delay for update drawings. \\
+&  \\
+&        Optional arguments: \\
+&        n -- nonnegative  integer \\
+&        delay -- nonnegative  integer \\
+&  \\
+&        If n is given, only each n-th regular screen update is really performed. \\
+&        (Can be used to accelerate the drawing of complex graphics.) \\
+&        Second arguments sets delay value (see RawTurtle.delay()) \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.tracer(8, 25) \\
+&        \verb+>+\verb+>+\verb+>+ dist = 2 \\
+&        \verb+>+\verb+>+\verb+>+ for i in range(200): \\
+&                ~~~~~~~~~~~~turtle.fd(dist) \\
+&                ~~~~~~~~~~~~turtle.rt(90) \\
+&                ~~~~~~~~~~~~dist += 2 \\
+\end{tabular} \\ \hline
+{\bf    screen.turtles()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the list of turtles on the screen. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.turtles() \\
+&        [\verb+<+turtle.Turtle object at 0x00E11FB0\verb+>+] \\
+\end{tabular} \\ \hline
+{\bf    screen.update()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Perform a TurtleScreen update. \\
+\end{tabular} \\ \hline
+{\bf    screen.window\_height()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the height of the turtle window. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.window\_height() \\
+&        480 \\
+\end{tabular} \\ \hline
+{\bf    screen.window\_width()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Return the width of the turtle window. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.window\_width() \\
+&        640 \\
+\end{tabular} \\ \hline
+{\bf    screen.mainloop()} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Starts event loop - calling Tkinter's mainloop function. \\
+&  \\
+&        Must be last statement in a turtle graphics program. \\
+&        Must NOT be used if a script is run from within IDLE in -n mode \\
+&        (No subprocess) - for interactive use of turtle graphics. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.mainloop() \\
+\end{tabular} \\ \hline
+
+
+\end{tabular}}
+\end{center}
+\begin{center}
+{\small
+\begin{tabular}{|l|} \hline
+{\bf Method~~Description}  \\ \hline\hline 
+
+
+
+{\bf    screen.numinput(title, prompt, default=None, minval=None, maxval=None)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Pop up a dialog window for input of a number. \\
+&  \\
+&        Arguments: title is the title of the dialog window, \\
+&        prompt is a text mostly describing what numerical information to input. \\
+&        default: default value \\
+&        minval: minimum value for imput \\
+&        maxval: maximum value for input \\
+&  \\
+&        The number input must be in the range minval .. maxval if these are \\
+&        given. If not, a hint is issued and the dialog remains open for \\
+&        correction. Return the number input. \\
+&        If the dialog is canceled,  return None. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.numinput("Poker", "Your stakes:", 1000, minval=10, maxval=10000) \\
+\end{tabular} \\ \hline
+{\bf    screen.textinput(title, prompt)} \\
+   \begin{tabular}{p{0.25in}p{4in}}
+&        Pop up a dialog window for input of a string. \\
+&  \\
+&        Arguments: title is the title of the dialog window, \\
+&        prompt is a text mostly describing what information to input. \\
+&  \\
+&        Return the string input \\
+&        If the dialog is canceled, return None. \\
+&  \\
+&        Example (for a TurtleScreen instance named screen): \\
+&        \verb+>+\verb+>+\verb+>+ screen.textinput("NIM", "Name of first player:") \\
+\end{tabular} \\ \hline
+\end{tabular}}
+\end{center}
+
+
+\newappendix{The Reminder! Program}
+\label{postitcode}
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize,numbers=left]
+import sys
+import tkinter
+import tkinter.messagebox
+import os
+
+def addReminder(text,x,y,notes,reminders):
+    notewin = tkinter.Toplevel()
+    notewin.resizable(width=False,height=False)
+    notewin.geometry("+"+str(x)+"+"+str(y))
+    
+    reminder = tkinter.Text(notewin,bg="yellow", width=30,height=15)
+
+    reminder.insert(tkinter.END,text)
+    
+    reminder.pack()
+    
+    notes.append(notewin)
+    reminders.append(reminder)
+    
+    
+    def deleteWindowHandler():
+        print("Window Deleted")
+        notewin.withdraw()
+        notes.remove(notewin)
+        reminders.remove(reminder)
+    
+    notewin.protocol("WM_DELETE_WINDOW", deleteWindowHandler)
+    
+
+def main():
+    
+    def post():
+        print("Post")
+        addReminder(note.get("1.0",tkinter.END), \
+                  root.winfo_rootx()+5,root.winfo_rooty()+5,notes,reminders)
+        note.delete("1.0",tkinter.END)               
+   
+    root = tkinter.Tk()
+    
+    root.title("Reminder!")
+    root.resizable(width=False,height=False)
+
+    notes = []
+    reminders = []
+
+    bar = tkinter.Menu(root)
+    
+    fileMenu = tkinter.Menu(bar,tearoff=0)
+    fileMenu.add_command(label="Exit",command=root.quit)
+    bar.add_cascade(label="File",menu=fileMenu)
+    root.config(menu=bar)
+    
+    mainFrame = tkinter.Frame(root,borderwidth=1,padx=5,pady=5)
+    mainFrame.pack()
+    
+    note = tkinter.Text(mainFrame,bg="yellow", width=30,height=15)
+    note.pack()
+    
+    tkinter.Button(mainFrame,text="New Reminder!", command=post).pack()
+  
+    try:
+        print("reading reminders.txt file")
+        file = open("reminders.txt","r")
+        x = int(file.readline())
+        y = int(file.readline())
+        root.geometry("+"+str(x)+"+"+str(y))
+        
+        line = file.readline()
+        while line.strip() != "":
+            x = int(line)
+            y = int(file.readline())
+            text = ""
+            line = file.readline()
+            while line.strip() != "____....____._._._":
+                text = text + line
+                line = file.readline()
+                
+            text = text.strip()
+            
+            addReminder(text,x,y,notes,reminders)
+            
+            line = file.readline()
+    except:
+        print("reminders.txt not found")
+        
+        
+    
+    def appClosing():
+        print("Application Closing")
+        file = open("reminders.txt","w")
+        
+        file.write(str(root.winfo_x())+"\n")
+        file.write(str(root.winfo_y())+"\n")
+        
+        for i in range(len(notes)):
+            print(notes[i].winfo_rootx())
+            print(notes[i].winfo_rooty())
+            print(reminders[i].get("1.0",tkinter.END))
+            
+            file.write(str(notes[i].winfo_rootx())+"\n")
+            file.write(str(notes[i].winfo_rooty())+"\n")
+            file.write(reminders[i].get("1.0",tkinter.END)+"\n")
+            file.write("____....____._._._\n")
+            
+        file.close()
+        root.destroy()
+        root.quit()
+        sys.exit()
+        
+    
+    root.protocol("WM_DELETE_WINDOW", appClosing)  
+    
+         
+    tkinter.mainloop()
+    
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\newpage
+\newappendix{The Bouncing Ball Program}
+\label{bouncingball}
+
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize,numbers=left]
+from turtle import *
+import tkinter
+import random
+
+screenMaxX = 300
+screenMaxY = 300
+screenMinX = -300
+screenMinY = -300
+    
+# This is a example of a class that uses inheritance. 
+# The Ball class inherits from the RawTurtle class. 
+# This is indicated to Python by writing
+# class Ball(RawTurtle):
+# That says, class Ball inherits from RawTurtle, which 
+# means that a Ball is also a RawTurtle, but it is a 
+# little more than just a RawTurtle. The Ball class also 
+# maintains a dx and dy value that is the amount
+# to move as it is animated.         
+class Ball(RawTurtle):
+      # The __init__ is the CONSTRUCTOR. Its purpose is to 
+      # initialize the object by storing data in the object. Anytime
+      # self.variable = value is written a value is being stored in 
+      # the object referred to by self. self always points to the 
+      # current object.
+      def __init__(self,cv,dx,dy):
+            # Because the Ball class inherits from the RawTurtle class
+            # the Ball class constructor must call the RawTurtle class
+            # constructor to initialize the RawTurtle part of the object.
+            # The RawTurtle class is called the BASE class. The Ball class 
+            # is called the DERIVED class. The call to initialize the 
+            # base class part of the object is always the first thing
+            # you do in the derived class's constructor.
+            RawTurtle.__init__(self,cv)
+
+            # Then the rest of the object can be initialized.
+            self.penup()
+            self.shape("soccerball.gif")
+            self.dx = dx
+            self.dy = dy
+
+      # The move method is a mutator method. It changes the data
+      # of the object by adding something to the Ball's x and y 
+      # position. 
+      def move(self):
+            newx = self.xcor() + self.dx
+            newy = self.ycor() + self.dy
+
+            # The if statements below make the ball
+            # bounce off the walls.
+            if newx < screenMinX:
+                  newx = 2 * screenMinX - newx
+                  self.dx = -self.dx
+            if newy < screenMinY:
+                  newy = 2 * screenMinY - newy
+                  self.dy = - self.dy
+            if newx > screenMaxX:
+                  newx = 2 * screenMaxX - newx
+                  self.dx = - self.dx
+            if newy > screenMaxY:
+                  newy = 2 * screenMaxY - newy
+                  self.dy = -self.dy
+            
+            # Then we call a method on the RawTurtle 
+            # to move to the new x and y position.
+            self.goto(newx,newy)
+
+# Once the classes and functions have been defined we'll put our
+# main function at the bottom of the file. Main isn't necessarily
+# written last. It's simply put at the bottom of the file. Main
+# is not a method. It is a plain function because it is not 
+# defined inside any class. 
+def main():
+
+      # Start by creating a RawTurtle object for the window. 
+      root = tkinter.Tk()
+      root.title("Bouncing Balls!")
+      cv = ScrolledCanvas(root,600,600,600,600)
+      cv.pack(side = tkinter.LEFT)
+      t = RawTurtle(cv)
+      fram = tkinter.Frame(root)
+      fram.pack(side = tkinter.RIGHT,fill=tkinter.BOTH)
+
+      screen = t.getscreen()
+      screen.setworldcoordinates(screenMinX,screenMinY,screenMaxX,screenMaxY)
+      t.ht()
+      screen.tracer(20)
+      screen.register_shape("soccerball.gif")
+
+      # The ballList is a list of all the ball objects. This 
+      # list is needed so the balls can be animated by the 
+      # program. 
+      ballList = []
+
+      # Here is the animation handler. It is called at
+      # every timer event.
+      def animate():
+            # Tell all the balls to move
+            for ball in ballList:
+                  ball.move()
+
+            # Set the timer to go off again
+            screen.ontimer(animate)
+
+      # This code creates 10 balls heading
+      # in random directions
+      for k in range(10):
+            dx = random.random() * 3 + 1
+            dy = random.random() * 3 + 1
+            # Here is how a ball object is created. We 
+            # write ball = Ball(5,4)
+            # to create an instance of the Ball class
+            # and point the ball reference at that object.
+            # That way we can refer to the object by writing
+            # ball. 
+            ball = Ball(cv,dx,dy)
+            # Each new ball is added to the Ball list so 
+            # it can be accessed by the animation handler.
+            ballList.append(ball)
+
+      # This is the code for the quit Button handling. This
+      # function will be passed to the quitButton so it can
+      # be called by the quitButton when it wasPressed.
+      def quitHandler():
+            # close the window and quit
+            print("Good Bye")
+            root.destroy()
+            root.quit()
+            
+      # Here is where the quitButton is created. To create
+      # an object we write
+      # objectReference = Class(<Parameters to Constructor>)
+      quitButton = tkinter.Button(fram, text = "Quit", command=quitHandler)
+      quitButton.pack()
+
+      # This is another example of a method call. We've been doing 
+      # this all semester. It is an ontimer method call to the 
+      # TurtleScreen object referred to by screen.
+      screen.ontimer(animate)
+
+      tkinter.mainloop()
+
+if __name__ == "__main__":
+      main()
+\end{lstlisting}

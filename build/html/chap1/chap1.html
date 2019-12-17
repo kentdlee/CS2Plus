@@ -1,0 +1,2249 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>1. Python Programming 101 &#8212; Data Structures and Algorithms with Python</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Computational Complexity" href="../chap2/chap2.html" />
+    <link rel="prev" title="Welcome!" href="../index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img class="logo" src="../_static/csbook.JPG" alt="Logo"/>
+          </a></p>
+        <div class="headertitle"><a
+          href="../index.html">Data Structures and Algorithms with Python</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../index.html" title="Welcome!"
+             accesskey="P">previous</a> |
+          <a href="../chap2/chap2.html" title="2. Computational Complexity"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="python-programming-101">
+<h1>1. Python Programming 101<a class="headerlink" href="#python-programming-101" title="Permalink to this headline">¶</a></h1>
+<p>This first chapter introduces Python to readers that have never programmed in Python before. It also provides instructions for installing Python on your computer. The Wing Integrated Development Environment (IDE) is recommended for students learning to program. Wing IDE 101 is the free version of the IDE for educational use. The chapter goes on to introduce classes, objects, and object-oriented programming by developing a drawing application using the Tkinter graphical user interface library.</p>
+<p>An understanding of object-oriented programming concepts presented in this chapter is necessary before reading the rest of the text. The PyList datatype presented in this chapter is also used in subsequent chapters including chapter 2. Even if the reader has worked through an introductory text or has a basic understanding of Python, there are concepts from this first chapter that are used throughout the text.</p>
+<div class="section" id="the-dog-class">
+<h2>1.1. The Dog Class<a class="headerlink" href="#the-dog-class" title="Permalink to this headline">¶</a></h2>
+<p>You can download the <a class="reference download internal" download="" href="../_downloads/69c4e95b58dee8476899b291a7adb9b4/dog.py"><code class="xref download docutils literal notranslate"><span class="pre">Dog</span> <span class="pre">class</span></code></a> by clicking here.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+    <span class="c1"># This is the constructor for the class. It is called whenever a Dog</span>
+    <span class="c1"># object is created. The reference called &quot;self&quot; is created by Python</span>
+    <span class="c1"># and made to point to the space for the newly created object. Python</span>
+    <span class="c1"># does this automatically for us but we have to have &quot;self&quot; as the first</span>
+    <span class="c1"># parameter to the __init__ method (i.e. the constructor). </span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">speakText</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">month</span> <span class="o">=</span> <span class="n">month</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">=</span> <span class="n">day</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">year</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">speakText</span> <span class="o">=</span> <span class="n">speakText</span>
+        
+    <span class="c1"># This is an accessor method that returns the speakText stored in the</span>
+    <span class="c1"># object. Notice that &quot;self&quot; is a parameter. Every method has &quot;self&quot; as its</span>
+    <span class="c1"># first parameter. The &quot;self&quot; parameter is a reference to the current </span>
+    <span class="c1"># object. The current object appears on the left hand side of the dot (i.e.</span>
+    <span class="c1"># the .) when the method is called. </span>
+    <span class="k">def</span> <span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">speakText</span>
+    
+    <span class="c1"># Here is an accessor method to get the name</span>
+    <span class="k">def</span> <span class="nf">getName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+    
+    <span class="c1"># This is another accessor method that uses the birthday information to </span>
+    <span class="c1"># return a string representing the date.</span>
+    <span class="k">def</span> <span class="nf">birthDate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">month</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">day</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+    
+    <span class="c1"># This is a mutator method that changes the speakText of the Dog object.</span>
+    <span class="k">def</span> <span class="nf">changeBark</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">bark</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">speakText</span> <span class="o">=</span> <span class="n">bark</span>
+        
+    <span class="c1"># When creating the new puppy we don&#39;t know it&#39;s birthday. Pick the </span>
+    <span class="c1"># first dog&#39;s birthday plus one year. The speakText will be the </span>
+    <span class="c1"># concatenation of both dog&#39;s text. The dog on the left side of the + </span>
+    <span class="c1"># operator is the object referenced by the &quot;self&quot; parameter. The </span>
+    <span class="c1"># &quot;otherDog&quot; parameter is the dog on the right side of the + operator. </span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">otherDog</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;Puppy of &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; and &quot;</span> <span class="o">+</span> <span class="n">otherDog</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> \
+                   <span class="bp">self</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> \
+                   <span class="bp">self</span><span class="o">.</span><span class="n">speakText</span> <span class="o">+</span> <span class="n">otherDog</span><span class="o">.</span><span class="n">speakText</span><span class="p">)</span>
+  
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>      
+    <span class="n">boyDog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;Mesa&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2004</span><span class="p">,</span> <span class="s2">&quot;WOOOOF&quot;</span><span class="p">)</span>
+    <span class="n">girlDog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;Sequoia&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2004</span><span class="p">,</span> <span class="s2">&quot;barkbark&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">boyDog</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">girlDog</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">boyDog</span><span class="o">.</span><span class="n">birthDate</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">girlDog</span><span class="o">.</span><span class="n">birthDate</span><span class="p">())</span>
+    <span class="n">boyDog</span><span class="o">.</span><span class="n">changeBark</span><span class="p">(</span><span class="s2">&quot;woofywoofy&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">boyDog</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>
+    <span class="n">puppy</span> <span class="o">=</span> <span class="n">boyDog</span> <span class="o">+</span> <span class="n">girlDog</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">puppy</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">puppy</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">puppy</span><span class="o">.</span><span class="n">birthDate</span><span class="p">())</span>
+    
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="the-variable-length-records-draw-program">
+<h2>1.2. The Variable Length Records Draw Program<a class="headerlink" href="#the-variable-length-records-draw-program" title="Permalink to this headline">¶</a></h2>
+<p>You can download the <a class="reference download internal" download="" href="../_downloads/a83fb788c18582cd70b672ffef1f6d84/drawWithVariableLengthRecords.py"><code class="xref download docutils literal notranslate"><span class="pre">draw</span> <span class="pre">program</span> <span class="pre">with</span> <span class="pre">variable</span> <span class="pre">length</span> <span class="pre">records</span></code></a> by clicking this link.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># The imports include turtle graphics and tkinter modules. </span>
+<span class="c1"># The colorchooser and filedialog modules let the user</span>
+<span class="c1"># pick a color and a filename.</span>
+<span class="kn">import</span> <span class="nn">turtle</span>
+<span class="kn">import</span> <span class="nn">tkinter</span>
+<span class="kn">import</span> <span class="nn">tkinter.colorchooser</span>
+<span class="kn">import</span> <span class="nn">tkinter.filedialog</span>
+
+<span class="c1"># The following classes define the different commands that </span>
+<span class="c1"># are supported by the drawing application. </span>
+<span class="k">class</span> <span class="nc">GoToCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+        
+    <span class="c1"># The draw method for each command draws the command</span>
+    <span class="c1"># using the given turtle</span>
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        
+    <span class="c1"># The __str__ method is a special method that is called</span>
+    <span class="c1"># when a command is converted to a string. The string</span>
+    <span class="c1"># version of the command is how it appears in the graphics</span>
+    <span class="c1"># file format. </span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;goto</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> \
+               <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> 
+        
+<span class="k">class</span> <span class="nc">CircleCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+        
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;circle</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span>
+        
+<span class="k">class</span> <span class="nc">BeginFillCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">color</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+        
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">begin_fill</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;beginfill</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span>
+        
+<span class="k">class</span> <span class="nc">EndFillCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">end_fill</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;endfill&quot;</span>
+        
+<span class="k">class</span> <span class="nc">PenUpCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;penup&quot;</span>
+        
+<span class="k">class</span> <span class="nc">PenDownCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;pendown&quot;</span>
+
+<span class="c1"># This is the container class for a graphics sequence. It is meant</span>
+<span class="c1"># to hold the graphics commands sequence. </span>
+<span class="k">class</span> <span class="nc">PyList</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span> <span class="o">=</span> <span class="p">[]</span>
+        
+    <span class="c1"># The append method is used to add commands to the sequence.</span>
+    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">]</span>
+        
+    <span class="c1"># This method is used by the undo function. It slices the sequence</span>
+    <span class="c1"># to remove the last item</span>
+    <span class="k">def</span> <span class="nf">removeLast</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+       
+    <span class="c1"># This special method is called when iterating over the sequence.</span>
+    <span class="c1"># Each time yield is called another element of the sequence is returned</span>
+    <span class="c1"># to the iterator (i.e. the for loop that called this.)</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">c</span>
+    
+    <span class="c1"># This is called when the len function is called on the sequence.        </span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gcList</span><span class="p">)</span>
+       
+<span class="c1"># This class defines the drawing application. The following line says that</span>
+<span class="c1"># the DrawingApplication class inherits from the Frame class. This means</span>
+<span class="k">class</span> <span class="nc">DrawingApplication</span><span class="p">(</span><span class="n">tkinter</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">master</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">master</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buildWindow</span><span class="p">()</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span> <span class="o">=</span> <span class="n">PyList</span><span class="p">()</span>
+
+    <span class="c1"># This method is called to load a file containing graphics commands</span>
+    <span class="c1"># and add them to the self.graphicsCommands sequence.</span>
+    <span class="k">def</span> <span class="nf">loadSequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">file</span><span class="p">):</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> 
+        
+        <span class="k">while</span> <span class="n">command</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            
+            <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;goto&quot;</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+                <span class="n">width</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="n">GoToCommand</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">color</span><span class="p">)</span>
+    
+            <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;circle&quot;</span><span class="p">:</span>
+                <span class="n">radius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+                <span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="n">CircleCommand</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">color</span><span class="p">)</span>
+    
+            <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;beginfill&quot;</span><span class="p">:</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="n">BeginFillCommand</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    
+            <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;endfill&quot;</span><span class="p">:</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="n">EndFillCommand</span><span class="p">()</span>
+                
+            <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;penup&quot;</span><span class="p">:</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenUpCommand</span><span class="p">()</span>
+                
+            <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;pendown&quot;</span><span class="p">:</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenDownCommand</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Unknown Command: &quot;</span> <span class="o">+</span> <span class="n">command</span><span class="p">)</span> 
+    
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            <span class="n">command</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        
+    <span class="c1"># This method is called to create all the widgets, place them in the GUI,</span>
+    <span class="c1"># and define the event handlers for the application.</span>
+    <span class="k">def</span> <span class="nf">buildWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="c1"># The master is the root window. The title is set as below. </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Draw&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Here is how to create a menu bar. The tearoff=0 means that menus</span>
+        <span class="c1"># can&#39;t be separated from the window which is a feature of tkinter.</span>
+        <span class="n">bar</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">)</span>
+        <span class="n">fileMenu</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span><span class="n">tearoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="c1"># This code is called by the &quot;New&quot; menu item below when it is selected.</span>
+        <span class="c1"># The same applies for loadFile, addToFile, and saveFile below. The </span>
+        <span class="c1"># &quot;Exit&quot; menu item below calls quit on the &quot;master&quot; or root window. </span>
+        <span class="k">def</span> <span class="nf">newWindow</span><span class="p">():</span>
+            <span class="c1"># This sets up the turtle to be ready for a new picture to be </span>
+            <span class="c1"># drawn. It also sets the sequence back to empty. It is necessary</span>
+            <span class="c1"># for the graphicsCommands sequence to be in the object (i.e. </span>
+            <span class="c1"># self.graphicsCommands) because otherwise the statement:</span>
+            <span class="c1"># graphicsCommands = PyList()</span>
+            <span class="c1"># would make this variable a local variable in the newWindow </span>
+            <span class="c1"># method. If it were local, it would not be set anymore once the</span>
+            <span class="c1"># newWindow method returned.</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>  
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span> <span class="o">=</span> <span class="n">PyList</span><span class="p">()</span>
+            
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;New&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="n">newWindow</span><span class="p">)</span>
+            
+        <span class="k">def</span> <span class="nf">loadFile</span><span class="p">():</span>
+
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Select a Graphics File&quot;</span><span class="p">)</span>
+            <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+            
+            <span class="n">newWindow</span><span class="p">()</span>
+            
+            <span class="c1"># This re-initializes the sequence for the new picture. </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span> <span class="o">=</span> <span class="n">PyList</span><span class="p">()</span>
+            
+            <span class="c1"># calling loadSequence will read the graphics commands from the file.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loadSequence</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+               
+            <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="p">:</span>
+                <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+                
+            <span class="c1"># This line is necessary to update the window after the picture is drawn.</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            
+            
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Load...&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="n">loadFile</span><span class="p">)</span>
+        
+        <span class="k">def</span> <span class="nf">addToFile</span><span class="p">():</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Select a Graphics File&quot;</span><span class="p">)</span>
+            <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+            
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenUpCommand</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">GoToCommand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenDownCommand</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loadSequence</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+               
+            <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="p">:</span>
+                <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+                
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>            
+        
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Load Into...&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="n">addToFile</span><span class="p">)</span>
+        
+        <span class="k">def</span> <span class="nf">saveFile</span><span class="p">():</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">filedialog</span><span class="o">.</span><span class="n">asksaveasfilename</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Save Picture As...&quot;</span><span class="p">)</span>
+            <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+            
+            <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="p">:</span>
+                <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                
+            <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Save As...&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="n">saveFile</span><span class="p">)</span>
+        
+
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exit&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+        
+        <span class="n">bar</span><span class="o">.</span><span class="n">add_cascade</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;File&quot;</span><span class="p">,</span><span class="n">menu</span><span class="o">=</span><span class="n">fileMenu</span><span class="p">)</span>
+        
+        <span class="c1"># This tells the root window to display the newly created menu bar.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">menu</span><span class="o">=</span><span class="n">bar</span><span class="p">)</span>    
+        
+        <span class="c1"># Here several widgets are created. The canvas is the drawing area on </span>
+        <span class="c1"># the left side of the window. </span>
+        <span class="n">canvas</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">LEFT</span><span class="p">)</span>
+        
+        <span class="c1"># By creating a RawTurtle, we can have the turtle draw on this canvas. </span>
+        <span class="c1"># Otherwise, a RawTurtle and a Turtle are exactly the same.</span>
+        <span class="n">theTurtle</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">RawTurtle</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
+        
+        <span class="c1"># This makes the shape of the turtle a circle. </span>
+        <span class="n">theTurtle</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="s2">&quot;circle&quot;</span><span class="p">)</span>
+        <span class="n">screen</span> <span class="o">=</span> <span class="n">theTurtle</span><span class="o">.</span><span class="n">getscreen</span><span class="p">()</span>
+        
+        <span class="c1"># This causes the application to not update the screen unless </span>
+        <span class="c1"># screen.update() is called. This is necessary for the ondrag event</span>
+        <span class="c1"># handler below. Without it, the program bombs after dragging the </span>
+        <span class="c1"># turtle around for a while.</span>
+        <span class="n">screen</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+        <span class="c1"># This is the area on the right side of the window where all the </span>
+        <span class="c1"># buttons, labels, and entry boxes are located. The pad creates some empty </span>
+        <span class="c1"># space around the side. The side puts the sideBar on the right side of the </span>
+        <span class="c1"># this frame. The fill tells it to fill in all space available on the right</span>
+        <span class="c1"># side. </span>
+        <span class="n">sideBar</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">sideBar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span>
+        
+        <span class="c1"># This is a label widget. Packing it puts it at the top of the sidebar.</span>
+        <span class="n">pointLabel</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Width&quot;</span><span class="p">)</span>
+        <span class="n">pointLabel</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        
+        <span class="c1"># This entry widget allows the user to pick a width for their lines. </span>
+        <span class="c1"># With the widthSize variable below you can write widthSize.get() to get</span>
+        <span class="c1"># the contents of the entry widget and widthSize.set(val) to set the value</span>
+        <span class="c1"># of the entry widget to val. Initially the widthSize is set to 1. str(1) is needed because</span>
+        <span class="c1"># the entry widget must be given a string. </span>
+        <span class="n">widthSize</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="n">widthEntry</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">textvariable</span><span class="o">=</span><span class="n">widthSize</span><span class="p">)</span>
+        <span class="n">widthEntry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">widthSize</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        
+        <span class="n">radiusLabel</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Radius&quot;</span><span class="p">)</span>
+        <span class="n">radiusLabel</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">radiusSize</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="n">radiusEntry</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">textvariable</span><span class="o">=</span><span class="n">radiusSize</span><span class="p">)</span>
+        <span class="n">radiusSize</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">radiusEntry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        
+        <span class="c1"># A button widget calls an event handler when it is pressed. The circleHandler</span>
+        <span class="c1"># function below is the event handler when the Draw Circle button is pressed. </span>
+        <span class="k">def</span> <span class="nf">circleHandler</span><span class="p">():</span>
+            <span class="c1"># When drawing, a command is created and then the command is drawn by calling</span>
+            <span class="c1"># the draw method. Adding the command to the graphicsCommands sequence means the</span>
+            <span class="c1"># application will remember the picture. </span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">CircleCommand</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">radiusSize</span><span class="o">.</span><span class="n">get</span><span class="p">()),</span> <span class="nb">int</span><span class="p">(</span><span class="n">widthSize</span><span class="o">.</span><span class="n">get</span><span class="p">()),</span> <span class="n">penColor</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            
+            <span class="c1"># These two lines are needed to update the screen and to put the focus back</span>
+            <span class="c1"># in the drawing canvas. This is necessary because when pressing &quot;u&quot; to undo,</span>
+            <span class="c1"># the screen must have focus to receive the key press. </span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+        
+        <span class="c1"># This creates the button widget in the sideBar. The fill=tkinter.BOTH causes the button</span>
+        <span class="c1"># to expand to fill the entire width of the sideBar.</span>
+        <span class="n">circleButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Draw Circle&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">circleHandler</span><span class="p">)</span>
+        <span class="n">circleButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span>             
+
+        <span class="c1"># The color mode 255 below allows colors to be specified in RGB form (i.e. Red/</span>
+        <span class="c1"># Green/Blue). The mode allows the Red value to be set by a two digit hexadecimal</span>
+        <span class="c1"># number ranging from 00-FF. The same applies for Blue and Green values. The </span>
+        <span class="c1"># color choosers below return a string representing the selected color and a slice</span>
+        <span class="c1"># is taken to extract the #RRGGBB hexadecimal string that the color choosers return.</span>
+        <span class="n">screen</span><span class="o">.</span><span class="n">colormode</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+        <span class="n">penLabel</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Pen Color&quot;</span><span class="p">)</span>
+        <span class="n">penLabel</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">penColor</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="n">penEntry</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">textvariable</span><span class="o">=</span><span class="n">penColor</span><span class="p">)</span>
+        <span class="n">penEntry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="c1"># This is the color black.</span>
+        <span class="n">penColor</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>  
+        
+        <span class="k">def</span> <span class="nf">getPenColor</span><span class="p">():</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">colorchooser</span><span class="o">.</span><span class="n">askcolor</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">color</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">penColor</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">color</span><span class="p">)[</span><span class="o">-</span><span class="mi">9</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+            
+        <span class="n">penColorButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Pick Pen Color&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">getPenColor</span><span class="p">)</span>
+        <span class="n">penColorButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span>           
+            
+        <span class="n">fillLabel</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Fill Color&quot;</span><span class="p">)</span>
+        <span class="n">fillLabel</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">fillColor</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="n">fillEntry</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">textvariable</span><span class="o">=</span><span class="n">fillColor</span><span class="p">)</span>
+        <span class="n">fillEntry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">fillColor</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>     
+        
+        <span class="k">def</span> <span class="nf">getFillColor</span><span class="p">():</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">colorchooser</span><span class="o">.</span><span class="n">askcolor</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">color</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>    
+                <span class="n">fillColor</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">color</span><span class="p">)[</span><span class="o">-</span><span class="mi">9</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>       
+   
+        <span class="n">fillColorButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Pick Fill Color&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">getFillColor</span><span class="p">)</span>
+        <span class="n">fillColorButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span> 
+
+
+        <span class="k">def</span> <span class="nf">beginFillHandler</span><span class="p">():</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">BeginFillCommand</span><span class="p">(</span><span class="n">fillColor</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            
+        <span class="n">beginFillButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Begin Fill&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">beginFillHandler</span><span class="p">)</span>
+        <span class="n">beginFillButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span> 
+        
+        <span class="k">def</span> <span class="nf">endFillHandler</span><span class="p">():</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">EndFillCommand</span><span class="p">()</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            
+        <span class="n">endFillButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;End Fill&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">endFillHandler</span><span class="p">)</span>
+        <span class="n">endFillButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span> 
+ 
+        <span class="n">penLabel</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Pen Is Down&quot;</span><span class="p">)</span>
+        <span class="n">penLabel</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        
+        <span class="k">def</span> <span class="nf">penUpHandler</span><span class="p">():</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenUpCommand</span><span class="p">()</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="n">penLabel</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Pen Is Up&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+
+        <span class="n">penUpButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Pen Up&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">penUpHandler</span><span class="p">)</span>
+        <span class="n">penUpButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span> 
+       
+        <span class="k">def</span> <span class="nf">penDownHandler</span><span class="p">():</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenDownCommand</span><span class="p">()</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="n">penLabel</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Pen Is Down&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+
+        <span class="n">penDownButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Pen Down&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">penDownHandler</span><span class="p">)</span>
+        <span class="n">penDownButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span>          
+
+        <span class="c1"># Here is another event handler. This one handles mouse clicks on the screen.</span>
+        <span class="k">def</span> <span class="nf">clickHandler</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span> 
+            <span class="c1"># When a mouse click occurs, get the widthSize entry value and set the width of the </span>
+            <span class="c1"># pen to the widthSize value. The int(widthSize.get()) is needed because</span>
+            <span class="c1"># the width is an integer, but the entry widget stores it as a string.</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">GoToCommand</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">widthSize</span><span class="o">.</span><span class="n">get</span><span class="p">()),</span><span class="n">penColor</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>          
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+           
+        <span class="c1"># Here is how we tie the clickHandler to mouse clicks.</span>
+        <span class="n">screen</span><span class="o">.</span><span class="n">onclick</span><span class="p">(</span><span class="n">clickHandler</span><span class="p">)</span>  
+        
+        <span class="k">def</span> <span class="nf">dragHandler</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">GoToCommand</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">widthSize</span><span class="o">.</span><span class="n">get</span><span class="p">()),</span><span class="n">penColor</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>  
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+            
+        <span class="n">theTurtle</span><span class="o">.</span><span class="n">ondrag</span><span class="p">(</span><span class="n">dragHandler</span><span class="p">)</span>
+        
+        <span class="c1"># the undoHandler undoes the last command by removing it from the </span>
+        <span class="c1"># sequence and then redrawing the entire picture. </span>
+        <span class="k">def</span> <span class="nf">undoHandler</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">removeLast</span><span class="p">()</span>
+                <span class="n">theTurtle</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+                <span class="n">theTurtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+                <span class="n">theTurtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">theTurtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="p">:</span>
+                    <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+                <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+                <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+                
+        <span class="n">screen</span><span class="o">.</span><span class="n">onkeypress</span><span class="p">(</span><span class="n">undoHandler</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">)</span>
+        <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+   
+<span class="c1"># The main function in our GUI program is very simple. It creates the </span>
+<span class="c1"># root window. Then it creates the DrawingApplication frame which creates </span>
+<span class="c1"># all the widgets and has the logic for the event handlers. Calling mainloop</span>
+<span class="c1"># on the frames makes it start listening for events. The mainloop function will </span>
+<span class="c1"># return when the application is exited. </span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>  
+    <span class="n">drawingApp</span> <span class="o">=</span> <span class="n">DrawingApplication</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>  
+
+    <span class="n">drawingApp</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Program Execution Completed.&quot;</span><span class="p">)</span>
+        
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="the-final-xml-draw-program">
+<h2>1.3. The Final XML Draw Program<a class="headerlink" href="#the-final-xml-draw-program" title="Permalink to this headline">¶</a></h2>
+<p>You can download the <a class="reference download internal" download="" href="../_downloads/1f16d7783df5a6016473ffc9e6de4077/draw.py"><code class="xref download docutils literal notranslate"><span class="pre">final</span> <span class="pre">draw</span> <span class="pre">program</span> <span class="pre">with</span> <span class="pre">XML</span> <span class="pre">support</span></code></a> from Appendix H of the text by clicking this link.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># The imports include turtle graphics and tkinter modules. </span>
+<span class="c1"># The colorchooser and filedialog modules let the user</span>
+<span class="c1"># pick a color and a filename.</span>
+<span class="kn">import</span> <span class="nn">turtle</span>
+<span class="kn">import</span> <span class="nn">tkinter</span>
+<span class="kn">import</span> <span class="nn">tkinter.colorchooser</span>
+<span class="kn">import</span> <span class="nn">tkinter.filedialog</span>
+<span class="kn">import</span> <span class="nn">xml.dom.minidom</span>
+
+<span class="c1"># The following classes define the different commands that </span>
+<span class="c1"># are supported by the drawing application. </span>
+<span class="k">class</span> <span class="nc">GoToCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+        
+    <span class="c1"># The draw method for each command draws the command</span>
+    <span class="c1"># using the given turtle</span>
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        
+    <span class="c1"># The __str__ method is a special method that is called</span>
+    <span class="c1"># when a command is converted to a string. The string</span>
+    <span class="c1"># version of the command is how it appears in the graphics</span>
+    <span class="c1"># file format. </span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;Command x=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot; y=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> \
+               <span class="s1">&#39;&quot; width=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> \
+               <span class="o">+</span> <span class="s1">&#39;&quot; color=&quot;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;GoTo&lt;/Command&gt;&#39;</span> 
+        
+<span class="k">class</span> <span class="nc">CircleCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+        
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;Command radius=&quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot; width=&quot;&#39;</span> <span class="o">+</span> \
+               <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot; color=&quot;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;Circle&lt;/Command&gt;&#39;</span>
+        
+<span class="k">class</span> <span class="nc">BeginFillCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">color</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+        
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">begin_fill</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;Command color=&quot;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;BeginFill&lt;/Command&gt;&#39;</span>
+        
+<span class="k">class</span> <span class="nc">EndFillCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">end_fill</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;Command&gt;EndFill&lt;/Command&gt;&quot;</span>
+        
+<span class="k">class</span> <span class="nc">PenUpCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;Command&gt;PenUp&lt;/Command&gt;&quot;</span>
+        
+<span class="k">class</span> <span class="nc">PenDownCommand</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">turtle</span><span class="p">):</span>
+        <span class="n">turtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;Command&gt;PenDown&lt;/Command&gt;&quot;</span>
+
+<span class="c1"># This is the PyList container object. It is meant to hold a  </span>
+<span class="k">class</span> <span class="nc">PyList</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span> <span class="o">=</span> <span class="p">[]</span>
+        
+    <span class="c1"># The append method is used to add commands to the sequence.</span>
+    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">]</span>
+        
+    <span class="c1"># This method is used by the undo function. It slices the sequence</span>
+    <span class="c1"># to remove the last item</span>
+    <span class="k">def</span> <span class="nf">removeLast</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+       
+    <span class="c1"># This special method is called when iterating over the sequence.</span>
+    <span class="c1"># Each time yield is called another element of the sequence is returned</span>
+    <span class="c1"># to the iterator (i.e. the for loop that called this.)</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcList</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">c</span>
+    
+    <span class="c1"># This is called when the len function is called on the sequence.        </span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gcList</span><span class="p">)</span>            
+        
+<span class="c1"># This class defines the drawing application. The following line says that</span>
+<span class="c1"># the DrawingApplication class inherits from the Frame class. This means </span>
+<span class="c1"># that a DrawingApplication is like a Frame object except for the code</span>
+<span class="c1"># written here which redefines/extends the behavior of a Frame. </span>
+<span class="k">class</span> <span class="nc">DrawingApplication</span><span class="p">(</span><span class="n">tkinter</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">master</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">master</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buildWindow</span><span class="p">()</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span> <span class="o">=</span> <span class="n">PyList</span><span class="p">()</span>
+ 
+    <span class="c1"># This method is called to create all the widgets, place them in the GUI,</span>
+    <span class="c1"># and define the event handlers for the application.</span>
+    <span class="k">def</span> <span class="nf">buildWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="c1"># The master is the root window. The title is set as below. </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Draw&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Here is how to create a menu bar. The tearoff=0 means that menus</span>
+        <span class="c1"># can&#39;t be separated from the window which is a feature of tkinter.</span>
+        <span class="n">bar</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">)</span>
+        <span class="n">fileMenu</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span><span class="n">tearoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="c1"># This code is called by the &quot;New&quot; menu item below when it is selected.</span>
+        <span class="c1"># The same applies for loadFile, addToFile, and saveFile below. The </span>
+        <span class="c1"># &quot;Exit&quot; menu item below calls quit on the &quot;master&quot; or root window. </span>
+        <span class="k">def</span> <span class="nf">newWindow</span><span class="p">():</span>
+            <span class="c1"># This sets up the turtle to be ready for a new picture to be </span>
+            <span class="c1"># drawn. It also sets the sequence back to empty. It is necessary</span>
+            <span class="c1"># for the graphicsCommands sequence to be in the object (i.e. </span>
+            <span class="c1"># self.graphicsCommands) because otherwise the statement:</span>
+            <span class="c1"># graphicsCommands = PyList()</span>
+            <span class="c1"># would make this variable a local variable in the newWindow </span>
+            <span class="c1"># method. If it were local, it would not be set anymore once the</span>
+            <span class="c1"># newWindow method returned.</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>  
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span> <span class="o">=</span> <span class="n">PyList</span><span class="p">()</span>
+            
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;New&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="n">newWindow</span><span class="p">)</span>
+
+        <span class="c1"># The parse function adds the contents of an XML file to the sequence.</span>
+        <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+            <span class="n">xmldoc</span> <span class="o">=</span> <span class="n">xml</span><span class="o">.</span><span class="n">dom</span><span class="o">.</span><span class="n">minidom</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            
+            <span class="n">graphicsCommandsElement</span> <span class="o">=</span> <span class="n">xmldoc</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;GraphicsCommands&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            
+            <span class="n">graphicsCommands</span> <span class="o">=</span> <span class="n">graphicsCommandsElement</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;Command&quot;</span><span class="p">)</span>
+            
+            <span class="k">for</span> <span class="n">commandElement</span> <span class="ow">in</span> <span class="n">graphicsCommands</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">commandElement</span><span class="p">))</span>
+                <span class="n">command</span> <span class="o">=</span> <span class="n">commandElement</span><span class="o">.</span><span class="n">firstChild</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">attr</span> <span class="o">=</span> <span class="n">commandElement</span><span class="o">.</span><span class="n">attributes</span>
+                <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;GoTo&quot;</span><span class="p">:</span>
+                    <span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">attr</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                    <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">attr</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                    <span class="n">width</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">attr</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                    <span class="n">color</span> <span class="o">=</span> <span class="n">attr</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="n">cmd</span> <span class="o">=</span> <span class="n">GoToCommand</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">color</span><span class="p">)</span>
+        
+                <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;Circle&quot;</span><span class="p">:</span>
+                    <span class="n">radius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">attr</span><span class="p">[</span><span class="s2">&quot;radius&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                    <span class="n">width</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">attr</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+                    <span class="n">color</span> <span class="o">=</span> <span class="n">attr</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="n">cmd</span> <span class="o">=</span> <span class="n">CircleCommand</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">color</span><span class="p">)</span>
+        
+                <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;BeginFill&quot;</span><span class="p">:</span>
+                    <span class="n">color</span> <span class="o">=</span> <span class="n">attr</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="n">cmd</span> <span class="o">=</span> <span class="n">BeginFillCommand</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        
+                <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;EndFill&quot;</span><span class="p">:</span>
+                    <span class="n">cmd</span> <span class="o">=</span> <span class="n">EndFillCommand</span><span class="p">()</span>
+                    
+                <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;PenUp&quot;</span><span class="p">:</span>
+                    <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenUpCommand</span><span class="p">()</span>
+                    
+                <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;PenDown&quot;</span><span class="p">:</span>
+                    <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenDownCommand</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Unknown Command: &quot;</span> <span class="o">+</span> <span class="n">command</span><span class="p">)</span> 
+        
+                <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">loadFile</span><span class="p">():</span>
+
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Select a Graphics File&quot;</span><span class="p">)</span>
+            
+            <span class="n">newWindow</span><span class="p">()</span>
+            
+            <span class="c1"># This re-initializes the sequence for the new picture. </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span> <span class="o">=</span> <span class="n">PyList</span><span class="p">()</span>
+            
+            <span class="c1"># calling parse will read the graphics commands from the file.</span>
+            <span class="n">parse</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+               
+            <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="p">:</span>
+                <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+                
+            <span class="c1"># This line is necessary to update the window after the picture is drawn.</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            
+            
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Load...&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="n">loadFile</span><span class="p">)</span>
+        
+        <span class="k">def</span> <span class="nf">addToFile</span><span class="p">():</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Select a Graphics File&quot;</span><span class="p">)</span>
+            
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>
+            <span class="n">theTurtle</span><span class="o">.</span><span class="n">fillcolor</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenUpCommand</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">GoToCommand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenDownCommand</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="n">parse</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+               
+            <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="p">:</span>
+                <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+                
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>            
+        
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Load Into...&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="n">addToFile</span><span class="p">)</span>
+        
+        <span class="c1"># The write function writes an XML file to the given filename</span>
+        <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+            <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+            <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;GraphicsCommands&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="p">:</span>
+                <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                
+            <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/GraphicsCommands&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                
+            <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  
+
+        <span class="k">def</span> <span class="nf">saveFile</span><span class="p">():</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">filedialog</span><span class="o">.</span><span class="n">asksaveasfilename</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Save Picture As...&quot;</span><span class="p">)</span>
+            <span class="n">write</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Save As...&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="n">saveFile</span><span class="p">)</span>
+        
+
+        <span class="n">fileMenu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exit&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+        
+        <span class="n">bar</span><span class="o">.</span><span class="n">add_cascade</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;File&quot;</span><span class="p">,</span><span class="n">menu</span><span class="o">=</span><span class="n">fileMenu</span><span class="p">)</span>
+        
+        <span class="c1"># This tells the root window to display the newly created menu bar.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">menu</span><span class="o">=</span><span class="n">bar</span><span class="p">)</span>    
+        
+        <span class="c1"># Here several widgets are created. The canvas is the drawing area on </span>
+        <span class="c1"># the left side of the window. </span>
+        <span class="n">canvas</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">LEFT</span><span class="p">)</span>
+        
+        <span class="c1"># By creating a RawTurtle, we can have the turtle draw on this canvas. </span>
+        <span class="c1"># Otherwise, a RawTurtle and a Turtle are exactly the same.</span>
+        <span class="n">theTurtle</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">RawTurtle</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
+        
+        <span class="c1"># This makes the shape of the turtle a circle. </span>
+        <span class="n">theTurtle</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="s2">&quot;circle&quot;</span><span class="p">)</span>
+        <span class="n">screen</span> <span class="o">=</span> <span class="n">theTurtle</span><span class="o">.</span><span class="n">getscreen</span><span class="p">()</span>
+        
+        <span class="c1"># This causes the application to not update the screen unless </span>
+        <span class="c1"># screen.update() is called. This is necessary for the ondrag event</span>
+        <span class="c1"># handler below. Without it, the program bombs after dragging the </span>
+        <span class="c1"># turtle around for a while.</span>
+        <span class="n">screen</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+        <span class="c1"># This is the area on the right side of the window where all the </span>
+        <span class="c1"># buttons, labels, and entry boxes are located. The pad creates some empty </span>
+        <span class="c1"># space around the side. The side puts the sideBar on the right side of the </span>
+        <span class="c1"># this frame. The fill tells it to fill in all space available on the right</span>
+        <span class="c1"># side. </span>
+        <span class="n">sideBar</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">sideBar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span>
+        
+        <span class="c1"># This is a label widget. Packing it puts it at the top of the sidebar.</span>
+        <span class="n">pointLabel</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Width&quot;</span><span class="p">)</span>
+        <span class="n">pointLabel</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        
+        <span class="c1"># This entry widget allows the user to pick a width for their lines. </span>
+        <span class="c1"># With the widthSize variable below you can write widthSize.get() to get</span>
+        <span class="c1"># the contents of the entry widget and widthSize.set(val) to set the value</span>
+        <span class="c1"># of the entry widget to val. Initially the widthSize is set to 1. str(1) is </span>
+        <span class="c1"># needed because the entry widget must be given a string. </span>
+        <span class="n">widthSize</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="n">widthEntry</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">textvariable</span><span class="o">=</span><span class="n">widthSize</span><span class="p">)</span>
+        <span class="n">widthEntry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">widthSize</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        
+        <span class="n">radiusLabel</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Radius&quot;</span><span class="p">)</span>
+        <span class="n">radiusLabel</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">radiusSize</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="n">radiusEntry</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">textvariable</span><span class="o">=</span><span class="n">radiusSize</span><span class="p">)</span>
+        <span class="n">radiusSize</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">radiusEntry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        
+        <span class="c1"># A button widget calls an event handler when it is pressed. The circleHandler</span>
+        <span class="c1"># function below is the event handler when the Draw Circle button is pressed. </span>
+        <span class="k">def</span> <span class="nf">circleHandler</span><span class="p">():</span>
+            <span class="c1"># When drawing, a command is created and then the command is drawn by calling</span>
+            <span class="c1"># the draw method. Adding the command to the graphicsCommands sequence means the</span>
+            <span class="c1"># application will remember the picture. </span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">CircleCommand</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">radiusSize</span><span class="o">.</span><span class="n">get</span><span class="p">()),</span> <span class="nb">float</span><span class="p">(</span><span class="n">widthSize</span><span class="o">.</span><span class="n">get</span><span class="p">()),</span> <span class="n">penColor</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            
+            <span class="c1"># These two lines are needed to update the screen and to put the focus back</span>
+            <span class="c1"># in the drawing canvas. This is necessary because when pressing &quot;u&quot; to undo,</span>
+            <span class="c1"># the screen must have focus to receive the key press. </span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+        
+        <span class="c1"># This creates the button widget in the sideBar. The fill=tkinter.BOTH causes the button</span>
+        <span class="c1"># to expand to fill the entire width of the sideBar.</span>
+        <span class="n">circleButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Draw Circle&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">circleHandler</span><span class="p">)</span>
+        <span class="n">circleButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span>             
+
+        <span class="c1"># The color mode 255 below allows colors to be specified in RGB form (i.e. Red/</span>
+        <span class="c1"># Green/Blue). The mode allows the Red value to be set by a two digit hexadecimal</span>
+        <span class="c1"># number ranging from 00-FF. The same applies for Blue and Green values. The </span>
+        <span class="c1"># color choosers below return a string representing the selected color and a slice</span>
+        <span class="c1"># is taken to extract the #RRGGBB hexadecimal string that the color choosers return.</span>
+        <span class="n">screen</span><span class="o">.</span><span class="n">colormode</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+        <span class="n">penLabel</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Pen Color&quot;</span><span class="p">)</span>
+        <span class="n">penLabel</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">penColor</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="n">penEntry</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">textvariable</span><span class="o">=</span><span class="n">penColor</span><span class="p">)</span>
+        <span class="n">penEntry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="c1"># This is the color black.</span>
+        <span class="n">penColor</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>  
+        
+        <span class="k">def</span> <span class="nf">getPenColor</span><span class="p">():</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">colorchooser</span><span class="o">.</span><span class="n">askcolor</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">color</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">penColor</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">color</span><span class="p">)[</span><span class="o">-</span><span class="mi">9</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+            
+        <span class="n">penColorButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Pick Pen Color&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">getPenColor</span><span class="p">)</span>
+        <span class="n">penColorButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span>           
+            
+        <span class="n">fillLabel</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Fill Color&quot;</span><span class="p">)</span>
+        <span class="n">fillLabel</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">fillColor</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+        <span class="n">fillEntry</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">textvariable</span><span class="o">=</span><span class="n">fillColor</span><span class="p">)</span>
+        <span class="n">fillEntry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">fillColor</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;#000000&quot;</span><span class="p">)</span>     
+        
+        <span class="k">def</span> <span class="nf">getFillColor</span><span class="p">():</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">colorchooser</span><span class="o">.</span><span class="n">askcolor</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">color</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>    
+                <span class="n">fillColor</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">color</span><span class="p">)[</span><span class="o">-</span><span class="mi">9</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>       
+   
+        <span class="n">fillColorButton</span> <span class="o">=</span> \
+            <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Pick Fill Color&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">getFillColor</span><span class="p">)</span>
+        <span class="n">fillColorButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span> 
+
+
+        <span class="k">def</span> <span class="nf">beginFillHandler</span><span class="p">():</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">BeginFillCommand</span><span class="p">(</span><span class="n">fillColor</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            
+        <span class="n">beginFillButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Begin Fill&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">beginFillHandler</span><span class="p">)</span>
+        <span class="n">beginFillButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span> 
+        
+        <span class="k">def</span> <span class="nf">endFillHandler</span><span class="p">():</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">EndFillCommand</span><span class="p">()</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            
+        <span class="n">endFillButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;End Fill&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">endFillHandler</span><span class="p">)</span>
+        <span class="n">endFillButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span> 
+ 
+        <span class="n">penLabel</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Pen Is Down&quot;</span><span class="p">)</span>
+        <span class="n">penLabel</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        
+        <span class="k">def</span> <span class="nf">penUpHandler</span><span class="p">():</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenUpCommand</span><span class="p">()</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="n">penLabel</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Pen Is Up&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+
+        <span class="n">penUpButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Pen Up&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">penUpHandler</span><span class="p">)</span>
+        <span class="n">penUpButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span> 
+       
+        <span class="k">def</span> <span class="nf">penDownHandler</span><span class="p">():</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">PenDownCommand</span><span class="p">()</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="n">penLabel</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Pen Is Down&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+
+        <span class="n">penDownButton</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">sideBar</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Pen Down&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">penDownHandler</span><span class="p">)</span>
+        <span class="n">penDownButton</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">)</span>          
+
+        <span class="c1"># Here is another event handler. This one handles mouse clicks on the screen.</span>
+        <span class="k">def</span> <span class="nf">clickHandler</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span> 
+            <span class="c1"># When a mouse click occurs, get the widthSize entry value and set the width of the </span>
+            <span class="c1"># pen to the widthSize value. The float(widthSize.get()) is needed because</span>
+            <span class="c1"># the width is an integer, but the entry widget stores it as a string.</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">GoToCommand</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="n">widthSize</span><span class="o">.</span><span class="n">get</span><span class="p">()),</span><span class="n">penColor</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>          
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+           
+        <span class="c1"># Here is how we tie the clickHandler to mouse clicks.</span>
+        <span class="n">screen</span><span class="o">.</span><span class="n">onclick</span><span class="p">(</span><span class="n">clickHandler</span><span class="p">)</span>  
+        
+        <span class="k">def</span> <span class="nf">dragHandler</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">GoToCommand</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="n">widthSize</span><span class="o">.</span><span class="n">get</span><span class="p">()),</span><span class="n">penColor</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>  
+            <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+            <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+            
+        <span class="n">theTurtle</span><span class="o">.</span><span class="n">ondrag</span><span class="p">(</span><span class="n">dragHandler</span><span class="p">)</span>
+        
+        <span class="c1"># the undoHandler undoes the last command by removing it from the </span>
+        <span class="c1"># sequence and then redrawing the entire picture. </span>
+        <span class="k">def</span> <span class="nf">undoHandler</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="o">.</span><span class="n">removeLast</span><span class="p">()</span>
+                <span class="n">theTurtle</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+                <span class="n">theTurtle</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+                <span class="n">theTurtle</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">theTurtle</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphicsCommands</span><span class="p">:</span>
+                    <span class="n">cmd</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">theTurtle</span><span class="p">)</span>
+                <span class="n">screen</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+                <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+                
+        <span class="n">screen</span><span class="o">.</span><span class="n">onkeypress</span><span class="p">(</span><span class="n">undoHandler</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">)</span>
+        <span class="n">screen</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
+   
+<span class="c1"># The main function in our GUI program is very simple. It creates the </span>
+<span class="c1"># root window. Then it creates the DrawingApplication frame which creates </span>
+<span class="c1"># all the widgets and has the logic for the event handlers. Calling mainloop</span>
+<span class="c1"># on the frames makes it start listening for events. The mainloop function will </span>
+<span class="c1"># return when the application is exited. </span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>  
+    <span class="n">drawingApp</span> <span class="o">=</span> <span class="n">DrawingApplication</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>  
+
+    <span class="n">drawingApp</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Program Execution Completed.&quot;</span><span class="p">)</span>
+        
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="figures-from-text">
+<h2>1.4. Figures from Text<a class="headerlink" href="#figures-from-text" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id1">
+<img alt="../_images/wingide1.png" src="../_images/wingide1.png" />
+<p class="caption"><span class="caption-text">Fig. 1: The Wing IDE</span></p>
+</div>
+<div class="figure" id="id2">
+<img alt="../_images/xref.png" src="../_images/xref.png" />
+<p class="caption"><span class="caption-text">Fig. 2: A Reference and Object</span></p>
+</div>
+<div class="figure" id="id3">
+<img alt="../_images/dogobjects.png" src="../_images/dogobjects.png" />
+<p class="caption"><span class="caption-text">Fig. 3: A Couple of Dog Objects</span></p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="11%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method Defintion</th>
+<th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>__add__(self,y)</td>
+<td>x + y</td>
+<td>The addition of two objects. The type of <em>x</em> determines
+which add operator is called.</td>
+</tr>
+<tr class="row-odd"><td>__contains__(self,y)</td>
+<td>y in x</td>
+<td>When <em>x</em> is a collection you can test to see if <em>y</em> is in it.</td>
+</tr>
+<tr class="row-even"><td>__eq__(self,y)</td>
+<td>x == y</td>
+<td>Returns <em>True</em> or <em>False</em> depending on the values of <em>x</em> and <em>y</em>.</td>
+</tr>
+<tr class="row-odd"><td>__ge__(self,y)</td>
+<td>x &gt;= y</td>
+<td>Returns <em>True</em> or <em>False</em> depending on the values of <em>x</em> and <em>y</em>.</td>
+</tr>
+<tr class="row-even"><td>__getitem__(self,y)</td>
+<td>x[y]</td>
+<td>Returns the item at the y<sup>th</sup> position in x.</td>
+</tr>
+<tr class="row-odd"><td>__gt__(self,y)</td>
+<td>x &gt; y</td>
+<td>Returns <em>True</em> or <em>False</em> depending on the values of <em>x</em> and <em>y</em>.</td>
+</tr>
+<tr class="row-even"><td>__hash__(self)</td>
+<td>hash(x)</td>
+<td>Returns an integral value for <em>x</em>.</td>
+</tr>
+<tr class="row-odd"><td>__int__(self)</td>
+<td>int(x)</td>
+<td>Returns an integer representation of <em>x</em>.</td>
+</tr>
+<tr class="row-even"><td>__iter__(self)</td>
+<td>for v in x</td>
+<td>Returns an iterator object for the sequence <em>x</em>.</td>
+</tr>
+<tr class="row-odd"><td>__le__(self,y)</td>
+<td>x &lt;= y</td>
+<td>Returns <em>True</em> or <em>False</em> depending on the values of <em>x</em> and <em>y</em>.</td>
+</tr>
+<tr class="row-even"><td>__len__(self)</td>
+<td>len(x)</td>
+<td>Returns the size of <em>x</em> where <em>x</em> has some length attribute.</td>
+</tr>
+<tr class="row-odd"><td>__lt__(self,y)</td>
+<td>x &lt; y</td>
+<td>Returns <em>True</em> or <em>False</em> depending on the values of <em>x</em> and <em>y</em>.</td>
+</tr>
+<tr class="row-even"><td>__mod__(self,y)</td>
+<td>x % y</td>
+<td>Returns the value of <em>x</em> modulo <em>y</em>. This is the remainder of <em>x/y</em>.</td>
+</tr>
+<tr class="row-odd"><td>__mul__(self,y)</td>
+<td>x * y</td>
+<td>Returns the product of <em>x</em> and <em>y</em>.</td>
+</tr>
+<tr class="row-even"><td>__ne__(self,y)</td>
+<td>x != y</td>
+<td>Returns <em>True</em> or <em>False</em> depending on the values of <em>x</em> and <em>y</em>.</td>
+</tr>
+<tr class="row-odd"><td>__neg__(self)</td>
+<td>-x</td>
+<td>Returns the unary negation of <em>x</em>.</td>
+</tr>
+<tr class="row-even"><td>__repr__(self)</td>
+<td>repr(x)</td>
+<td>Returns a string version of x suitable to be evaluated by the <em>eval</em> function.</td>
+</tr>
+<tr class="row-odd"><td>__setitem__(self,i,y)</td>
+<td>x[i] = y</td>
+<td>Sets the item at the i<sup>th</sup> position in <em>x</em> to <em>y</em>.</td>
+</tr>
+<tr class="row-even"><td>__str__(self)</td>
+<td>str(x)</td>
+<td>Return a string representation of <em>x</em> suitable for user-level interaction.</td>
+</tr>
+<tr class="row-odd"><td>__sub__(self,y)</td>
+<td>x - y</td>
+<td>The difference of two objects.</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" id="id4">
+<img alt="../_images/pixel.png" src="../_images/pixel.png" />
+<p class="caption"><span class="caption-text">Fig. 4: Python Operator Magic Methods</span></p>
+</div>
+<div class="figure" id="id5">
+<img alt="../_images/blockindent.png" src="../_images/blockindent.png" />
+<p class="caption"><span class="caption-text">Fig. 5: Adjusting Indentation in Wing IDE 101</span></p>
+</div>
+<div class="figure" id="id6">
+<img alt="../_images/Draw.png" src="../_images/Draw.png" />
+<p class="caption"><span class="caption-text">Fig. 6: The Draw Program</span></p>
+</div>
+<div class="figure" id="id7">
+<img alt="../_images/labelledGUI.png" src="../_images/labelledGUI.png" />
+<p class="caption"><span class="caption-text">Fig. 7: The Draw Program Layout</span></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Python Programming 101</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-dog-class">1.1. The Dog Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-variable-length-records-draw-program">1.2. The Variable Length Records Draw Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-final-xml-draw-program">1.3. The Final XML Draw Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#figures-from-text">1.4. Figures from Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chap2/chap2.html">2. Computational Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap3/chap3.html">3. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap4/chap4.html">4. Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap5/chap5.html">5. Sets and Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap6/chap6.html">6. Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap7/chap7.html">7. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap11/chap11.html">8. Membership Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap8/chap8.html">9. Heaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap9/chap9.html">10. Balanced Binary Search Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap10/chap10.html">11. B-Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap12/chap12.html">12. Heuristic Search</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../index.html" title="Welcome!"
+              >previous</a> |
+            <a href="../chap2/chap2.html" title="2. Computational Complexity"
+              >next</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/chap1/chap1.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,289 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Appendix D: The list Class &#8212; Data Structures and Algorithms with Python</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img class="logo" src="../_static/csbook.JPG" alt="Logo"/>
+          </a></p>
+        <div class="headertitle"><a
+          href="../index.html">Data Structures and Algorithms with Python</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendix-d-the-list-class">
+<span id="listappendix"></span><h1>Appendix D: The list Class<a class="headerlink" href="#appendix-d-the-list-class" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="http://docs.python.org/py3k">Python 3 Documentation</a> site contains this and much more extensive documentation on the Python 3 language, including the <a class="reference external" href="http://docs.python.org/py3k/library/index.html">Library Reference</a> which contains this documentation. This appendix was generated from the Python help system by typing help(list) in the Python interpreter.</p>
+<p>Help on class list in module builtins:</p>
+<dl class="docutils">
+<dt>class list(object)</dt>
+<dd><div class="first last line-block">
+<div class="line">list() -&gt; new empty list</div>
+<div class="line">list(iterable) -&gt; new list initialized from iterable’s items</div>
+<div class="line"><br /></div>
+<div class="line">Methods defined here:</div>
+<div class="line"><br /></div>
+<div class="line">__add__(…)</div>
+<div class="line-block">
+<div class="line">x.__add__(y) &lt;==&gt; x+y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__contains__(…)</div>
+<div class="line-block">
+<div class="line">x.__contains__(y) &lt;==&gt; y in x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__delitem__(…)</div>
+<div class="line-block">
+<div class="line">x.__delitem__(y) &lt;==&gt; del x[y]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__eq__(…)</div>
+<div class="line-block">
+<div class="line">x.__eq__(y) &lt;==&gt; x==y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__ge__(…)</div>
+<div class="line-block">
+<div class="line">x.__ge__(y) &lt;==&gt; x&gt;=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__getattribute__(…)</div>
+<div class="line-block">
+<div class="line">x.__getattribute__(‘name’) &lt;==&gt; x.name</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__getitem__(…)</div>
+<div class="line-block">
+<div class="line">x.__getitem__(y) &lt;==&gt; x[y]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__gt__(…)</div>
+<div class="line-block">
+<div class="line">x.__gt__(y) &lt;==&gt; x&gt;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__iadd__(…)</div>
+<div class="line-block">
+<div class="line">x.__iadd__(y) &lt;==&gt; x+=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__imul__(…)</div>
+<div class="line-block">
+<div class="line">x.__imul__(y) &lt;==&gt; x*=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__init__(…)</div>
+<div class="line-block">
+<div class="line">x.__init__(…) initializes x; see help(type(x)) for signature</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__iter__(…)</div>
+<div class="line-block">
+<div class="line">x.__iter__() &lt;==&gt; iter(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__le__(…)</div>
+<div class="line-block">
+<div class="line">x.__le__(y) &lt;==&gt; x&lt;=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__len__(…)</div>
+<div class="line-block">
+<div class="line">x.__len__() &lt;==&gt; len(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__lt__(…)</div>
+<div class="line-block">
+<div class="line">x.__lt__(y) &lt;==&gt; x&lt;y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__mul__(…)</div>
+<div class="line-block">
+<div class="line">x.__mul__(n) &lt;==&gt; x*n</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__ne__(…)</div>
+<div class="line-block">
+<div class="line">x.__ne__(y) &lt;==&gt; x!=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__repr__(…)</div>
+<div class="line-block">
+<div class="line">x.__repr__() &lt;==&gt; repr(x)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__reversed__(…)</div>
+<div class="line-block">
+<div class="line">L.__reversed__() – return a reverse iterator over the list</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__rmul__(…)</div>
+<div class="line-block">
+<div class="line">x.__rmul__(n) &lt;==&gt; n*x</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__setitem__(…)</div>
+<div class="line-block">
+<div class="line">x.__setitem__(i, y) &lt;==&gt; x[i]=y</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__sizeof__(…)</div>
+<div class="line-block">
+<div class="line">L.__sizeof__() – size of L in memory, in bytes</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">append(…)</div>
+<div class="line-block">
+<div class="line">L.append(object) – append object to end</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">count(…)</div>
+<div class="line-block">
+<div class="line">L.count(value) -&gt; integer – return number of occurrences of value</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">extend(…)</div>
+<div class="line-block">
+<div class="line">L.extend(iterable) – extend list by appending elements from the iterable</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">index(…)</div>
+<div class="line-block">
+<div class="line">L.index(value, [start, [stop]]) -&gt; integer – return first index of value.</div>
+<div class="line">Raises ValueError if the value is not present.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">insert(…)</div>
+<div class="line-block">
+<div class="line">L.insert(index, object) – insert object before index</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">pop(…)</div>
+<div class="line-block">
+<div class="line">L.pop([index]) -&gt; item – remove and return item at index (default last).</div>
+<div class="line">Raises IndexError if list is empty or index is out of range.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">remove(…)</div>
+<div class="line-block">
+<div class="line">L.remove(value) – remove first occurrence of value.</div>
+<div class="line">Raises ValueError if the value is not present.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">reverse(…)</div>
+<div class="line-block">
+<div class="line">L.reverse() – reverse <em>IN PLACE</em></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">sort(…)</div>
+<div class="line-block">
+<div class="line">L.sort(key=None, reverse=False) – stable sort <em>IN PLACE</em></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Data and other attributes defined here:</div>
+<div class="line"><br /></div>
+<div class="line">__hash__ = None</div>
+<div class="line"><br /></div>
+<div class="line">__new__ = &lt;built-in method __new__ of type object&gt;</div>
+<div class="line-block">
+<div class="line">T.__new__(S, …) -&gt; a new object with type S, a subtype of T</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap2/chap2.html">2. Computational Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap3/chap3.html">3. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap4/chap4.html">4. Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap5/chap5.html">5. Sets and Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap6/chap6.html">6. Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap7/chap7.html">7. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap11/chap11.html">8. Membership Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap8/chap8.html">9. Heaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap9/chap9.html">10. Balanced Binary Search Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap10/chap10.html">11. B-Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap12/chap12.html">12. Heuristic Search</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/appendices/appendixD.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

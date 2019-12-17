@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph width="595.80" height="229.20" directed="True" weighted="False">
+  <Vertices>
+    <Vertex vertexId="12" x="343.15" y="156.10" label="10"/>
+    <Vertex vertexId="11" x="246.15" y="161.10" label="9"/>
+    <Vertex vertexId="10" x="288.15" y="58.10" label="0"/>
+    <Vertex vertexId="9" x="374.15" y="58.10" label="1"/>
+    <Vertex vertexId="8" x="135.15" y="156.10" label="6"/>
+    <Vertex vertexId="7" x="49.65" y="83.10" label="2"/>
+    <Vertex vertexId="6" x="167.15" y="83.05" label="3"/>
+    <Vertex vertexId="5" x="121.15" y="19.10" label="8"/>
+    <Vertex vertexId="4" x="419.15" y="204.10" label="11"/>
+    <Vertex vertexId="3" x="426.15" y="87.10" label="4"/>
+    <Vertex vertexId="2" x="546.15" y="96.10" label="5"/>
+    <Vertex vertexId="1" x="546.15" y="210.10" label="7"/>
+    <Vertex vertexId="0" x="485.15" y="161.10" label="12"/>
+  </Vertices>
+  <Edges>
+    <Edge tail="12" head="10"/>
+    <Edge tail="10" head="6"/>
+    <Edge tail="6" head="11"/>
+    <Edge tail="7" head="6"/>
+    <Edge tail="7" head="8"/>
+    <Edge tail="7" head="5"/>
+    <Edge tail="11" head="12"/>
+    <Edge tail="12" head="4"/>
+    <Edge tail="4" head="0"/>
+    <Edge tail="0" head="2"/>
+    <Edge tail="2" head="1"/>
+    <Edge tail="2" head="3"/>
+    <Edge tail="3" head="9"/>
+    <Edge tail="9" head="10"/>
+    <Edge tail="9" head="12"/>
+  </Edges>
+</Graph>

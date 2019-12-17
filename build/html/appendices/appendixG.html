@@ -1,0 +1,605 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Appendix G: The TurtleScreen Class &#8212; Data Structures and Algorithms with Python</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img class="logo" src="../_static/csbook.JPG" alt="Logo"/>
+          </a></p>
+        <div class="headertitle"><a
+          href="../index.html">Data Structures and Algorithms with Python</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendix-g-the-turtlescreen-class">
+<h1>Appendix G: The TurtleScreen Class<a class="headerlink" href="#appendix-g-the-turtlescreen-class" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="http://docs.python.org/py3k">Python 3 Documentation</a> site contains this and much more extensive documentation on the Python 3 language, including the <a class="reference external" href="http://docs.python.org/py3k/library/index.html">Library Reference</a> which contains this documentation. This appendix was generated from the Python help system by typing help(TurtleScreen) in the Python interpreter after importing the turtle module.</p>
+<p>Help on class TurtleScreen in module turtle:</p>
+<dl class="docutils">
+<dt>class TurtleScreen(TurtleScreenBase)</dt>
+<dd><div class="first last line-block">
+<div class="line-block">
+<div class="line">Provides screen oriented methods like setbg etc.</div>
+<div class="line"><br /></div>
+<div class="line">Only relies upon the methods of TurtleScreenBase and NOT</div>
+<div class="line">upon components of the underlying graphics toolkit -</div>
+<div class="line">which is Tkinter in this case.</div>
+<div class="line"><br /></div>
+<div class="line">Method resolution order:</div>
+<div class="line-block">
+<div class="line">TurtleScreen</div>
+<div class="line">TurtleScreenBase</div>
+<div class="line">builtins.object</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">Methods defined here:</div>
+<div class="line"><br /></div>
+<div class="line">__init__(self, cv, mode=’standard’, colormode=1.0, delay=10)</div>
+<div class="line"><br /></div>
+<div class="line">addshape = register_shape(self, name, shape=None)</div>
+<div class="line"><br /></div>
+<div class="line">bgcolor(self, *args)</div>
+<div class="line-block">
+<div class="line">Set or return backgroundcolor of the TurtleScreen.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments (if given): a color string or three numbers</div>
+<div class="line">in the range 0..colormode or a 3-tuple of such numbers.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.bgcolor(“orange”)</div>
+<div class="line">&gt;&gt;&gt; screen.bgcolor()</div>
+<div class="line">‘orange’</div>
+<div class="line">&gt;&gt;&gt; screen.bgcolor(0.5,0,0.5)</div>
+<div class="line">&gt;&gt;&gt; screen.bgcolor()</div>
+<div class="line">‘#800080’</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">bgpic(self, picname=None)</div>
+<div class="line-block">
+<div class="line">Set background image or return name of current backgroundimage.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argument:</div>
+<div class="line">picname – a string, name of a gif-file or “nopic”.</div>
+<div class="line"><br /></div>
+<div class="line">If picname is a filename, set the corresponing image as background.</div>
+<div class="line">If picname is “nopic”, delete backgroundimage, if present.</div>
+<div class="line">If picname is None, return the filename of the current backgroundimage.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.bgpic()</div>
+<div class="line">‘nopic’</div>
+<div class="line">&gt;&gt;&gt; screen.bgpic(“landscape.gif”)</div>
+<div class="line">&gt;&gt;&gt; screen.bgpic()</div>
+<div class="line">‘landscape.gif’</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">clear(self)</div>
+<div class="line-block">
+<div class="line">Delete all drawings and all turtles from the TurtleScreen.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Reset empty TurtleScreen to its initial state: white background,</div>
+<div class="line">no backgroundimage, no eventbindings and tracing on.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">screen.clear()</div>
+<div class="line"><br /></div>
+<div class="line">Note: this method is not available as function.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">clearscreen = clear(self)</div>
+<div class="line"><br /></div>
+<div class="line">colormode(self, cmode=None)</div>
+<div class="line-block">
+<div class="line">Return the colormode or set it to 1.0 or 255.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argument:</div>
+<div class="line">cmode – one of the values 1.0 or 255</div>
+<div class="line"><br /></div>
+<div class="line">r, g, b values of colortriples have to be in range 0..cmode.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.colormode()</div>
+<div class="line">1.0</div>
+<div class="line">&gt;&gt;&gt; screen.colormode(255)</div>
+<div class="line">&gt;&gt;&gt; turtle.pencolor(240,160,80)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">delay(self, delay=None)</div>
+<div class="line-block">
+<div class="line">Return or set the drawing delay in milliseconds.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argument:</div>
+<div class="line">delay – positive integer</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.delay(15)</div>
+<div class="line">&gt;&gt;&gt; screen.delay()</div>
+<div class="line">15</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">getcanvas(self)</div>
+<div class="line-block">
+<div class="line">Return the Canvas of this TurtleScreen.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Screen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; cv = screen.getcanvas()</div>
+<div class="line">&gt;&gt;&gt; cv</div>
+<div class="line">&lt;turtle.ScrolledCanvas instance at 0x010742D8&gt;</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">getshapes(self)</div>
+<div class="line-block">
+<div class="line">Return a list of names of all currently available turtle shapes.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.getshapes()</div>
+<div class="line">[‘arrow’, ‘blank’, ‘circle’, … , ‘turtle’]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">listen(self, xdummy=None, ydummy=None)</div>
+<div class="line-block">
+<div class="line">Set focus on TurtleScreen (in order to collect key-events)</div>
+<div class="line"><br /></div>
+<div class="line">No arguments.</div>
+<div class="line">Dummy arguments are provided in order</div>
+<div class="line">to be able to pass listen to the onclick method.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.listen()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">mode(self, mode=None)</div>
+<div class="line-block">
+<div class="line">Set turtle-mode (‘standard’, ‘logo’ or ‘world’) and perform reset.</div>
+<div class="line"><br /></div>
+<div class="line">Optional argument:</div>
+<div class="line">mode – on of the strings ‘standard’, ‘logo’ or ‘world’</div>
+<div class="line"><br /></div>
+<div class="line">Mode ‘standard’ is compatible with turtle.py.</div>
+<div class="line">Mode ‘logo’ is compatible with most Logo-Turtle-Graphics.</div>
+<div class="line">Mode ‘world’ uses userdefined ‘worldcoordinates’. <em>Attention</em>: in</div>
+<div class="line">this mode angles appear distorted if x/y unit-ratio doesn’t equal 1.</div>
+<div class="line">If mode is not given, return the current mode.</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">Mode      Initial turtle heading     positive angles</div>
+</div>
+<div class="line">————<a href="#id1"><span class="problematic" id="id2">|-------------------------|</span></a>——————-</div>
+<div class="line-block">
+<div class="line">‘standard’    to the right (east)       counterclockwise</div>
+<div class="line-block">
+<div class="line">‘logo’        upward    (north)         clockwise</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="line">Examples:</div>
+<div class="line">&gt;&gt;&gt; mode(‘logo’)   # resets turtle heading to north</div>
+<div class="line">&gt;&gt;&gt; mode()</div>
+<div class="line">‘logo’</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">onclick(self, fun, btn=1, add=None)</div>
+<div class="line-block">
+<div class="line">Bind fun to mouse-click event on canvas.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">fun – a function with two arguments, the coordinates of the</div>
+<div class="line-block">
+<div class="line">clicked point on the canvas.</div>
+</div>
+<div class="line">num – the number of the mouse-button, defaults to 1</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen</div>
+<div class="line">and a Turtle instance named turtle):</div>
+<div class="line"><br /></div>
+<div class="line">&gt;&gt;&gt; screen.onclick(turtle.goto)</div>
+<div class="line"><br /></div>
+<div class="line">### Subsequently clicking into the TurtleScreen will</div>
+<div class="line">### make the turtle move to the clicked point.</div>
+<div class="line">&gt;&gt;&gt; screen.onclick(None)</div>
+<div class="line"><br /></div>
+<div class="line">### event-binding will be removed</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">onkey(self, fun, key)</div>
+<div class="line-block">
+<div class="line">Bind fun to key-release event of key.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">fun – a function with no arguments</div>
+<div class="line">key – a string: key (e.g. “a”) or key-symbol (e.g. “space”)</div>
+<div class="line"><br /></div>
+<div class="line">In order to be able to register key-events, TurtleScreen</div>
+<div class="line">must have focus. (See method listen.)</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen</div>
+<div class="line">and a Turtle instance named turtle):</div>
+<div class="line"><br /></div>
+<div class="line">&gt;&gt;&gt; def f():</div>
+<div class="line-block">
+<div class="line">fd(50)</div>
+<div class="line">lt(60)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&gt;&gt;&gt; screen.onkey(f, “Up”)</div>
+<div class="line">&gt;&gt;&gt; screen.listen()</div>
+<div class="line"><br /></div>
+<div class="line">### Subsequently the turtle can be moved by</div>
+<div class="line">### repeatedly pressing the up-arrow key,</div>
+<div class="line">### consequently drawing a hexagon</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">onkeypress(self, fun, key=None)</div>
+<div class="line-block">
+<div class="line">Bind fun to key-press event of key if key is given,</div>
+<div class="line">or to any key-press-event if no key is given.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">fun – a function with no arguments</div>
+<div class="line">key – a string: key (e.g. “a”) or key-symbol (e.g. “space”)</div>
+<div class="line"><br /></div>
+<div class="line">In order to be able to register key-events, TurtleScreen</div>
+<div class="line">must have focus. (See method listen.)</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen</div>
+<div class="line">and a Turtle instance named turtle):</div>
+<div class="line"><br /></div>
+<div class="line">&gt;&gt;&gt; def f():</div>
+<div class="line-block">
+<div class="line">fd(50)</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">&gt;&gt;&gt; screen.onkey(f, “Up”)</div>
+<div class="line">&gt;&gt;&gt; screen.listen()</div>
+<div class="line"><br /></div>
+<div class="line">### Subsequently the turtle can be moved by</div>
+<div class="line">### repeatedly pressing the up-arrow key,</div>
+<div class="line">### or by keeping pressed the up-arrow key.</div>
+<div class="line">### consequently drawing a hexagon.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">onkeyrelease = onkey(self, fun, key)</div>
+<div class="line"><br /></div>
+<div class="line">onscreenclick = onclick(self, fun, btn=1, add=None)</div>
+<div class="line"><br /></div>
+<div class="line">ontimer(self, fun, t=0)</div>
+<div class="line-block">
+<div class="line">Install a timer, which calls fun after t milliseconds.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">fun – a function with no arguments.</div>
+<div class="line">t – a number &gt;= 0</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line"><br /></div>
+<div class="line">&gt;&gt;&gt; running = True</div>
+<div class="line">&gt;&gt;&gt; def f():</div>
+<div class="line-block">
+<div class="line">if running:</div>
+<div class="line-block">
+<div class="line">fd(50)</div>
+<div class="line">lt(60)</div>
+<div class="line">screen.ontimer(f, 250)</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">&gt;&gt;&gt; f()   ### makes the turtle marching around</div>
+<div class="line">&gt;&gt;&gt; running = False</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">register_shape(self, name, shape=None)</div>
+<div class="line-block">
+<div class="line">Adds a turtle shape to TurtleScreen’s shapelist.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">(1) name is the name of a gif-file and shape is None.</div>
+<div class="line-block">
+<div class="line">Installs the corresponding image shape.</div>
+<div class="line">!! Image-shapes DO NOT rotate when turning the turtle,</div>
+<div class="line">!! so they do not display the heading of the turtle!</div>
+</div>
+<div class="line">(2) name is an arbitrary string and shape is a tuple</div>
+<div class="line-block">
+<div class="line">of pairs of coordinates. Installs the corresponding</div>
+<div class="line">polygon shape</div>
+</div>
+<div class="line">(3) name is an arbitrary string and shape is a</div>
+<div class="line-block">
+<div class="line">(compound) Shape object. Installs the corresponding</div>
+<div class="line">compound shape.</div>
+</div>
+<div class="line">To use a shape, you have to issue the command shape(shapename).</div>
+<div class="line"><br /></div>
+<div class="line">call: register_shape(“turtle.gif”)</div>
+<div class="line">–or: register_shape(“tri”, ((0,0), (10,10), (-10,10)))</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.register_shape(“triangle”, ((5,-3),(0,5),(-5,-3)))</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">reset(self)</div>
+<div class="line-block">
+<div class="line">Reset all Turtles on the Screen to their initial state.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.reset()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">resetscreen = reset(self)</div>
+<div class="line"><br /></div>
+<div class="line">screensize(self, canvwidth=None, canvheight=None, bg=None)</div>
+<div class="line-block">
+<div class="line">Resize the canvas the turtles are drawing on.</div>
+<div class="line"><br /></div>
+<div class="line">Optional arguments:</div>
+<div class="line">canvwidth – positive integer, new width of canvas in pixels</div>
+<div class="line">canvheight –  positive integer, new height of canvas in pixels</div>
+<div class="line">bg – colorstring or color-tupel, new backgroundcolor</div>
+<div class="line">If no arguments are given, return current (canvaswidth, canvasheight)</div>
+<div class="line"><br /></div>
+<div class="line">Do not alter the drawing window. To observe hidden parts of</div>
+<div class="line">the canvas use the scrollbars. (Can make visible those parts</div>
+<div class="line">of a drawing, which were outside the canvas before!)</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a Turtle instance named turtle):</div>
+<div class="line">&gt;&gt;&gt; turtle.screensize(2000,1500)</div>
+<div class="line-block">
+<div class="line">### e. g. to search for an erroneously escaped turtle ;-)</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">setworldcoordinates(self, llx, lly, urx, ury)</div>
+<div class="line-block">
+<div class="line">Set up a user defined coordinate-system.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments:</div>
+<div class="line">llx – a number, x-coordinate of lower left corner of canvas</div>
+<div class="line">lly – a number, y-coordinate of lower left corner of canvas</div>
+<div class="line">urx – a number, x-coordinate of upper right corner of canvas</div>
+<div class="line">ury – a number, y-coordinate of upper right corner of canvas</div>
+<div class="line"><br /></div>
+<div class="line">Set up user coodinat-system and switch to mode ‘world’ if necessary.</div>
+<div class="line">This performs a screen.reset. If mode ‘world’ is already active,</div>
+<div class="line">all drawings are redrawn according to the new coordinates.</div>
+<div class="line"><br /></div>
+<div class="line">But ATTENTION: in user-defined coordinatesystems angles may appear</div>
+<div class="line">distorted. (see Screen.mode())</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.setworldcoordinates(-10,-0.5,50,1.5)</div>
+<div class="line">&gt;&gt;&gt; for _ in range(36):</div>
+<div class="line-block">
+<div class="line">left(10)</div>
+<div class="line">forward(0.5)</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">tracer(self, n=None, delay=None)</div>
+<div class="line-block">
+<div class="line">Turns turtle animation on/off and set delay for update drawings.</div>
+<div class="line"><br /></div>
+<div class="line">Optional arguments:</div>
+<div class="line">n – nonnegative  integer</div>
+<div class="line">delay – nonnegative  integer</div>
+<div class="line"><br /></div>
+<div class="line">If n is given, only each n-th regular screen update is really performed.</div>
+<div class="line">(Can be used to accelerate the drawing of complex graphics.)</div>
+<div class="line">Second arguments sets delay value (see RawTurtle.delay())</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.tracer(8, 25)</div>
+<div class="line">&gt;&gt;&gt; dist = 2</div>
+<div class="line">&gt;&gt;&gt; for i in range(200):</div>
+<div class="line-block">
+<div class="line">fd(dist)</div>
+<div class="line">rt(90)</div>
+<div class="line">dist += 2</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">turtles(self)</div>
+<div class="line-block">
+<div class="line">Return the list of turtles on the screen.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.turtles()</div>
+<div class="line">[&lt;turtle.Turtle object at 0x00E11FB0&gt;]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">update(self)</div>
+<div class="line-block">
+<div class="line">Perform a TurtleScreen update.</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">window_height(self)</div>
+<div class="line-block">
+<div class="line">Return the height of the turtle window.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.window_height()</div>
+<div class="line">480</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">window_width(self)</div>
+<div class="line-block">
+<div class="line">Return the width of the turtle window.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.window_width()</div>
+<div class="line">640</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">———————————————————————-</div>
+<div class="line">Methods inherited from TurtleScreenBase:</div>
+<div class="line"><br /></div>
+<div class="line">mainloop(self)</div>
+<div class="line-block">
+<div class="line">Starts event loop - calling Tkinter’s mainloop function.</div>
+<div class="line"><br /></div>
+<div class="line">No argument.</div>
+<div class="line"><br /></div>
+<div class="line">Must be last statement in a turtle graphics program.</div>
+<div class="line">Must NOT be used if a script is run from within IDLE in -n mode</div>
+<div class="line">(No subprocess) - for interactive use of turtle graphics.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.mainloop()</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">numinput(self, title, prompt, default=None, minval=None, maxval=None)</div>
+<div class="line-block">
+<div class="line">Pop up a dialog window for input of a number.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments: title is the title of the dialog window,</div>
+<div class="line">prompt is a text mostly describing what numerical information to input.</div>
+<div class="line">default: default value</div>
+<div class="line">minval: minimum value for imput</div>
+<div class="line">maxval: maximum value for input</div>
+<div class="line"><br /></div>
+<div class="line">The number input must be in the range minval .. maxval if these are</div>
+<div class="line">given. If not, a hint is issued and the dialog remains open for</div>
+<div class="line">correction. Return the number input.</div>
+<div class="line">If the dialog is canceled,  return None.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.numinput(“Poker”, “Your stakes:”, 1000, minval=10, maxval=10000)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">textinput(self, title, prompt)</div>
+<div class="line-block">
+<div class="line">Pop up a dialog window for input of a string.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments: title is the title of the dialog window,</div>
+<div class="line">prompt is a text mostly describing what information to input.</div>
+<div class="line"><br /></div>
+<div class="line">Return the string input</div>
+<div class="line">If the dialog is canceled, return None.</div>
+<div class="line"><br /></div>
+<div class="line">Example (for a TurtleScreen instance named screen):</div>
+<div class="line">&gt;&gt;&gt; screen.textinput(“NIM”, “Name of first player:”)</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">————————————————————————-</div>
+<div class="line-block">
+<div class="line">Data descriptors inherited from TurtleScreenBase:</div>
+<div class="line"><br /></div>
+<div class="line">__dict__</div>
+<div class="line-block">
+<div class="line">dictionary for instance variables (if defined)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">__weakref__</div>
+<div class="line-block">
+<div class="line">list of weak references to the object (if defined)</div>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul>
+<li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap2/chap2.html">2. Computational Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap3/chap3.html">3. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap4/chap4.html">4. Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap5/chap5.html">5. Sets and Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap6/chap6.html">6. Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap7/chap7.html">7. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap11/chap11.html">8. Membership Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap8/chap8.html">9. Heaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap9/chap9.html">10. Balanced Binary Search Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap10/chap10.html">11. B-Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap12/chap12.html">12. Heuristic Search</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/appendices/appendixG.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

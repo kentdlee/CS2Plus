@@ -1,0 +1,1404 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>5. Sets and Maps &#8212; Data Structures and Algorithms with Python</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Trees" href="../chap6/chap6.html" />
+    <link rel="prev" title="4. Sequences" href="../chap4/chap4.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img class="logo" src="../_static/csbook.JPG" alt="Logo"/>
+          </a></p>
+        <div class="headertitle"><a
+          href="../index.html">Data Structures and Algorithms with Python</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../chap4/chap4.html" title="4. Sequences"
+             accesskey="P">previous</a> |
+          <a href="../chap6/chap6.html" title="6. Trees"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sets-and-maps">
+<span id="setsmaps"></span><h1>5. Sets and Maps<a class="headerlink" href="#sets-and-maps" title="Permalink to this headline">¶</a></h1>
+<p>In the last chapter we studied sequences which are used to keep track of lists of things where duplicate values are allowed. For instance, there can be two sixes in a sequence or list of integers. In this chapter we look at <em>sets</em> where duplicate values are not allowed. After examining sets we’ll move on to talk about <em>maps</em>. <em>Maps</em> may also be called <em>dictionaries</em> or <em>hash tables</em>.</p>
+<p>The term <em>hash table</em> actually suggests an implementation of a set or map. The primary focus of this chapter is in understanding <em>hashing</em>. Hashing is a very important concept in Computer Science because it is a very efficient method of searching for a value. To begin the chapter we’ll motivate our interest in hashing, then we’ll develop a hashing algorithm for finding values in a set. We’ll also apply hashing to the building of sets and maps. Then we’ll look at an important technique that uses hashing called <em>memoization</em> and we’ll apply that technique to a couple of problems.</p>
+<div class="section" id="the-hashset-datatype">
+<h2>5.1. The HashSet Datatype<a class="headerlink" href="#the-hashset-datatype" title="Permalink to this headline">¶</a></h2>
+<p>You can <a class="reference download internal" download="" href="../_downloads/5346a7f542508780ab29d2778425e202/hashset.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> HashSet datatype implementation here. The implementation is partial. The remainder of the set implementation is left as an exercise for the reader.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#################################################################################</span>
+<span class="c1"># HashSet.py - A hashtable implementation of a set datatype. </span>
+<span class="c1">#################################################################################</span>
+<span class="c1"># To complete this implementation you must complete the code for all methods that </span>
+<span class="c1"># currently have a &quot;pass&quot; in them. Consult the documentation for these methods</span>
+<span class="c1"># to see what they should return. Many of these methods can be implemented</span>
+<span class="c1"># by calling other supporting methods, so make sure you don&#39;t write more </span>
+<span class="c1"># code than necessary. Many methods take exactly one line of code to implement.</span>
+<span class="c1"># The test main function at the bottom should completely run passing all tests</span>
+<span class="c1"># once you have implemented the methods here. The test main function is not</span>
+<span class="c1"># intended to completely test the entire class though. You have to write</span>
+<span class="c1"># additional tests to throroughly test the HashSet class. </span>
+
+<span class="k">class</span> <span class="nc">HashSet</span><span class="p">:</span>
+    <span class="k">class</span> <span class="nc">__Placeholder</span><span class="p">:</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">pass</span>
+        
+        <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        
+    <span class="k">def</span> <span class="nf">__add</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">items</span><span class="p">):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        
+        <span class="k">while</span> <span class="n">items</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">items</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">item</span><span class="p">:</span>
+                <span class="c1"># item already in set</span>
+                <span class="k">return</span> <span class="bp">False</span>
+            
+            <span class="k">if</span> <span class="n">loc</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="o">==</span> <span class="n">HashSet</span><span class="o">.</span><span class="n">__Placeholder</span><span class="p">:</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">idx</span>
+                
+            <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+            
+        <span class="k">if</span> <span class="n">loc</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="n">idx</span>
+            
+        <span class="n">items</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>  
+        
+        <span class="k">return</span> <span class="bp">True</span>
+    
+    <span class="k">def</span> <span class="nf">__remove</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">items</span><span class="p">):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+        
+        <span class="k">while</span> <span class="n">items</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">items</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">item</span><span class="p">:</span>
+                <span class="n">nextIdx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">items</span><span class="p">[</span><span class="n">nextIdx</span><span class="p">]</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">items</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">items</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">HashSet</span><span class="o">.</span><span class="n">__Placeholder</span><span class="p">()</span>
+                <span class="k">return</span> <span class="bp">True</span>
+            
+            <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="bp">False</span>
+        
+    <span class="k">def</span> <span class="nf">__rehash</span><span class="p">(</span><span class="n">oldList</span><span class="p">,</span> <span class="n">newList</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">oldList</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HashSet</span><span class="o">.</span><span class="n">__Placeholder</span><span class="p">:</span>
+                <span class="n">HashSet</span><span class="o">.</span><span class="n">__add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">newList</span><span class="p">)</span>
+                
+        <span class="k">return</span> <span class="n">newList</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">contents</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numItems</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">contents</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+          
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">!=</span> <span class="n">HashSet</span><span class="o">.</span><span class="n">__Placeholder</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>    
+    
+    <span class="c1"># Following are the mutator set methods </span>
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">HashSet</span><span class="o">.</span><span class="n">__add</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">numItems</span> <span class="o">+=</span> <span class="mi">1</span>             
+            <span class="n">load</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numItems</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">load</span> <span class="o">&gt;=</span> <span class="mf">0.75</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">HashSet</span><span class="o">.</span><span class="n">__rehash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">,[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">HashSet</span><span class="o">.</span><span class="n">__remove</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">numItems</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">load</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numItems</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">load</span> <span class="o">&lt;=</span> <span class="mf">0.25</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">HashSet</span><span class="o">.</span><span class="n">__rehash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">,[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Item not in HashSet&quot;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">discard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">pass</span>
+        
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+            
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+        
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+            
+    <span class="k">def</span> <span class="nf">intersection_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+            
+    <span class="k">def</span> <span class="nf">difference_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">other</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                
+    <span class="k">def</span> <span class="nf">symmetric_difference_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+                
+    <span class="c1"># Following are the accessor methods for the HashSet  </span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">==</span> <span class="n">item</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+            
+            <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="c1"># One extra method for use with the HashMap class. This method is not needed in the </span>
+    <span class="c1"># HashSet implementation, but it is used by the HashMap implementation. </span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">pass</span>      
+        
+    <span class="k">def</span> <span class="nf">not__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">isdisjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    
+    <span class="k">def</span> <span class="nf">issubset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+            
+    
+    <span class="k">def</span> <span class="nf">issuperset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="c1">#done</span>
+    <span class="k">def</span> <span class="nf">difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">symmetric_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="c1"># Operator Definitions</span>
+    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__xor__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__ior__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__iand__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">__ixor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>    
+    
+    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">HashSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
+    
+    <span class="n">t</span> <span class="o">=</span> <span class="n">HashSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span>
+    
+    <span class="n">u</span> <span class="o">=</span> <span class="n">HashSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 1 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 1 Failed&quot;</span><span class="p">)</span>
+        
+    <span class="n">s</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 2 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 2 Failed&quot;</span><span class="p">)</span>
+        
+    <span class="n">s</span> <span class="o">=</span> <span class="n">HashSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
+    
+    <span class="n">t</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 3 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 3 Failed&quot;</span><span class="p">)</span>
+        
+    <span class="n">t</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 4 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 4 Failed&quot;</span><span class="p">)</span>
+        
+    <span class="n">s</span><span class="o">.</span><span class="n">difference_update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    
+    <span class="n">test5Passed</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">test6Passed</span> <span class="o">=</span> <span class="bp">True</span>
+    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">test5Passed</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 5 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+            
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">test6Passed</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 6 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+            
+    <span class="k">if</span> <span class="n">test5Passed</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 5 Passed&quot;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">test6Passed</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 6 Passed&quot;</span><span class="p">)</span>
+        
+
+    <span class="n">test7Passed</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">test8Passed</span> <span class="o">=</span> <span class="bp">True</span>
+    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">test7Passed</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 7 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+            
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">test8Passed</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 8 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+            
+    <span class="k">if</span> <span class="n">test7Passed</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 7 Passed&quot;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">test8Passed</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 8 Passed&quot;</span><span class="p">)</span>   
+        
+    <span class="n">x</span> <span class="o">=</span> <span class="n">HashSet</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;j&quot;</span><span class="p">,</span><span class="s2">&quot;k&quot;</span><span class="p">])</span>
+    
+    <span class="n">y</span> <span class="o">=</span> <span class="n">HashSet</span><span class="p">([</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;l&quot;</span><span class="p">,</span><span class="s2">&quot;m&quot;</span><span class="p">,</span><span class="s2">&quot;n&quot;</span><span class="p">])</span>
+    
+    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 9 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 9 Failed&quot;</span><span class="p">)</span>
+        
+    <span class="n">test10Passed</span> <span class="o">=</span> <span class="bp">True</span>
+    
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">z</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;j&quot;</span><span class="p">,</span><span class="s2">&quot;k&quot;</span><span class="p">]:</span>
+            <span class="n">test10Passed</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 10 Failed on&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+            
+    <span class="k">if</span> <span class="n">test10Passed</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 10 Passed&quot;</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 11 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 11 Failed&quot;</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 12 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 12 Failed&quot;</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 13 Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 13 Passed&quot;</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="n">z</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 14 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 14 Failed&quot;</span><span class="p">)</span>
+        
+    <span class="n">r</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">z</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 15 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 15 Failed&quot;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+        <span class="n">z</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+        <span class="n">z</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">z</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 16 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 16 Failed&quot;</span><span class="p">)</span>    
+        
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+        <span class="n">z</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+        <span class="n">z</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>  
+    
+    <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">z</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 17 Passed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 17 Failed&quot;</span><span class="p">)</span>    
+   
+    
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+    
+    
+                
+        
+        
+        
+        
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="the-hashmap-datatype">
+<h2>5.2. The HashMap Datatype<a class="headerlink" href="#the-hashmap-datatype" title="Permalink to this headline">¶</a></h2>
+<p>You can <a class="reference download internal" download="" href="../_downloads/5227e59ab56b2416a1564fe73a7609e4/hashmap.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> HashMap datatype implementation here. The implementation is partial. The remainder of the set implementation is left as an exercise for the reader. The HashMap datatype requires a module called hashset.py containing the HashSet datatype.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashset</span>
+
+<span class="k">class</span> <span class="nc">HashMap</span><span class="p">:</span>
+    <span class="k">class</span> <span class="nc">__KVPair</span><span class="p">:</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+            
+        <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">False</span>
+            
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">key</span>
+        
+        <span class="k">def</span> <span class="nf">getKey</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span>
+        
+        <span class="k">def</span> <span class="nf">getValue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+        
+        <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>        
+        
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span> <span class="o">=</span> <span class="n">hashset</span><span class="o">.</span><span class="n">HashSet</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">HashMap</span><span class="o">.</span><span class="n">__KVPair</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="bp">None</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span>
+    
+    <span class="k">def</span> <span class="nf">not__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">item</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span>
+    
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">HashMap</span><span class="o">.</span><span class="n">__KVPair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">))</span>
+        
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">HashMap</span><span class="o">.</span><span class="n">__KVPair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="bp">None</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">[</span><span class="n">HashMap</span><span class="o">.</span><span class="n">__KVPair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="bp">None</span><span class="p">)]</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">val</span>
+
+        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Key &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; not in HashMap&quot;</span><span class="p">)</span>        
+    
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">HashMap</span><span class="o">.</span><span class="n">__KVPair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="bp">None</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">[</span><span class="n">HashMap</span><span class="o">.</span><span class="n">__KVPair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="bp">None</span><span class="p">)]</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default</span>
+        
+    <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">HashMap</span><span class="o">.</span><span class="n">__KVPair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="bp">None</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Key &quot;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s2">&quot; not in HashMap&quot;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">getKey</span><span class="p">(),</span><span class="n">x</span><span class="o">.</span><span class="n">getValue</span><span class="p">()))</span>
+        <span class="k">return</span> <span class="n">result</span>
+    
+    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">getKey</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">result</span>    
+    
+    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">getValue</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">result</span>   
+    
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">HashMap</span><span class="o">.</span><span class="n">__KVPair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="bp">None</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">:</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>   
+            <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Key &quot;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s2">&quot; not in HashMap&quot;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">popitem</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">getKey</span><span class="p">(),</span><span class="n">item</span><span class="o">.</span><span class="n">getValue</span><span class="p">())</span>
+    
+    <span class="k">def</span> <span class="nf">setdefault</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSet</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">x</span><span class="o">.</span><span class="n">getKey</span><span class="p">()</span>
+    
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">HashMap</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+    <span class="n">d</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cat&quot;</span>
+    <span class="n">d</span><span class="p">[</span><span class="s2">&quot;batman&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;joker&quot;</span>
+    <span class="n">d</span><span class="p">[</span><span class="s2">&quot;superman&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;lex luther&quot;</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> 
+        
+    <span class="n">d</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;skunk&quot;</span>
+    
+    <span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">())</span>
+    
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="sudoku-puzzles">
+<h2>5.3. Sudoku Puzzles<a class="headerlink" href="#sudoku-puzzles" title="Permalink to this headline">¶</a></h2>
+<p>Here are six sudoku puzzles that can be solved using the sudoku solver rules that are discussed in this chapter.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" download="" href="../_downloads/dfbb482a88fc16a6342becbe34ce07f3/sudoku1.txt"><code class="xref download docutils literal notranslate"><span class="pre">sudoku1.txt</span></code></a></li>
+<li><a class="reference download internal" download="" href="../_downloads/c7ab2ec2020e1008243e0e54c3179933/sudoku2.txt"><code class="xref download docutils literal notranslate"><span class="pre">sudoku2.txt</span></code></a></li>
+<li><a class="reference download internal" download="" href="../_downloads/87ff18775fd644ab6cd1b71337fde247/sudoku3.txt"><code class="xref download docutils literal notranslate"><span class="pre">sudoku3.txt</span></code></a></li>
+<li><a class="reference download internal" download="" href="../_downloads/e3beb0ec017ef7a1f352dc0aaf14fb8f/sudoku4.txt"><code class="xref download docutils literal notranslate"><span class="pre">sudoku4.txt</span></code></a></li>
+<li><a class="reference download internal" download="" href="../_downloads/5726ec619d9a4b541675ace04de122dd/sudoku5.txt"><code class="xref download docutils literal notranslate"><span class="pre">sudoku5.txt</span></code></a></li>
+<li><a class="reference download internal" download="" href="../_downloads/2cb253726215c5414528533ef5c1a9f7/sudoku6.txt"><code class="xref download docutils literal notranslate"><span class="pre">sudoku6.txt</span></code></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="figures-from-text">
+<h2>5.4. Figures from Text<a class="headerlink" href="#figures-from-text" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id1">
+<img alt="../_images/sudoku-2.png" src="../_images/sudoku-2.png" />
+<p class="caption"><span class="caption-text">Fig. 1: A Sudoku Puzzle</span></p>
+</div>
+<div class="figure" id="id2">
+<img alt="../_images/sudoku-2annotated.png" src="../_images/sudoku-2annotated.png" />
+<p class="caption"><span class="caption-text">Fig. 2: Annotated Sudoku Puzzle</span></p>
+</div>
+<div class="figure" id="id3">
+<img alt="../_images/sudoku-2reduce-once.png" src="../_images/sudoku-2reduce-once.png" />
+<p class="caption"><span class="caption-text">Fig. 3: Sudoku Puzzle After One Pass</span></p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="8%" />
+<col width="19%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Complexity</th>
+<th class="head">Usage</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Set Creation</td>
+<td>O(1)</td>
+<td>s=set([iterable])</td>
+<td>Calls the set constructor to create a set. Iterable is an optional initial contents in
+which case we have O(n) complexity.</td>
+</tr>
+<tr class="row-odd"><td>Set Creation</td>
+<td>O(1)</td>
+<td>s=frozenset([iterable])</td>
+<td>Calls the frozenset constructor for immutable set objects to create a frozenset object.</td>
+</tr>
+<tr class="row-even"><td>Cardinality</td>
+<td>O(1)</td>
+<td>len(s)</td>
+<td>The number of elements in <em>s</em> is returned.</td>
+</tr>
+<tr class="row-odd"><td>Membership</td>
+<td>O(1)</td>
+<td>e in s</td>
+<td>Returns True if <em>e</em> is in <em>s</em> and False otherwise.</td>
+</tr>
+<tr class="row-even"><td>non-Membership</td>
+<td>O(1)</td>
+<td>e not in s</td>
+<td>Returns True if <em>e</em> is not in <em>s</em> and False otherwise.</td>
+</tr>
+<tr class="row-odd"><td>Disjoint</td>
+<td>O(n)</td>
+<td>s.isdisjoint(t)</td>
+<td>Returns True if <em>s</em> and <em>t</em> share no elements, and False otherwise.</td>
+</tr>
+<tr class="row-even"><td>Subset</td>
+<td>O(n)</td>
+<td>s.issubset(t)</td>
+<td>Returns True if <em>s</em> is a subset of <em>t</em>, and False otherwise.</td>
+</tr>
+<tr class="row-odd"><td>Superset</td>
+<td>O(n)</td>
+<td>s.issuperset(t)</td>
+<td>Returns True if <em>s</em> is a superset of <em>t</em> and False otherwise.</td>
+</tr>
+<tr class="row-even"><td>Union</td>
+<td>O(n)</td>
+<td>s.union(t)</td>
+<td>Returns a new set which contains all elements in <em>s</em> and <em>t</em>.</td>
+</tr>
+<tr class="row-odd"><td>Intersection</td>
+<td>O(n)</td>
+<td>s.intersection(t)</td>
+<td>Returns a new set which contains only the elements in both <em>s</em> and <em>t</em>.</td>
+</tr>
+<tr class="row-even"><td>Set Difference</td>
+<td>O(n)</td>
+<td>s.difference(t)</td>
+<td>Returns a new set which contains the elements of <em>s</em> that are not in <em>t</em>.</td>
+</tr>
+<tr class="row-odd"><td>Symmetric Difference</td>
+<td>O(n)</td>
+<td>s.symmetric_diff- erence(t)</td>
+<td>Returns a new set which contains <em>s.difference(t).union(t.difference(s))</em>.</td>
+</tr>
+<tr class="row-even"><td>Set Copy</td>
+<td>O(n)</td>
+<td>s.copy()</td>
+<td>Returns a shallow copy of <em>s</em>.</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" id="id4">
+<img alt="../_images/pixel2.png" src="../_images/pixel2.png" />
+<p class="caption"><span class="caption-text">Fig. 4: Set and Frozen Set Operations</span></p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="7%" />
+<col width="22%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Complexity</th>
+<th class="head">Usage</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Union</td>
+<td>O(n)</td>
+<td>s.update(t)</td>
+<td>Adds the contents of <em>t</em> to <em>s</em>.</td>
+</tr>
+<tr class="row-odd"><td>Intersection</td>
+<td>O(n)</td>
+<td>s.intersection_update(t)</td>
+<td>Updates s to contain only the intersection of the elements from <em>s</em> and <em>t</em>.</td>
+</tr>
+<tr class="row-even"><td>Set Difference</td>
+<td>O(n)</td>
+<td>s.difference_update(t)</td>
+<td>Subtracts from <em>s</em> the elements of <em>t</em>.</td>
+</tr>
+<tr class="row-odd"><td>Symmetric Difference</td>
+<td>O(n)</td>
+<td>s.symmetric_diff- erence_update(t)</td>
+<td>Updates <em>s</em> with the symmetric difference of <em>s</em> and <em>t</em>.</td>
+</tr>
+<tr class="row-even"><td>Add</td>
+<td>O(1)</td>
+<td>s.add(e)</td>
+<td>Add the element <em>e</em> to the set <em>s</em>.</td>
+</tr>
+<tr class="row-odd"><td>Remove</td>
+<td>O(1)</td>
+<td>s.remove(e)</td>
+<td>Remove the element <em>e</em> from the set <em>s</em>. This raises <em>KeyError</em> if <em>e</em> does not exist in <em>s</em>.</td>
+</tr>
+<tr class="row-even"><td>Discard</td>
+<td>O(1)</td>
+<td>s.discard(e)</td>
+<td>Remove the element <em>e</em> if it exists in <em>s</em> and ignore it otherwise.</td>
+</tr>
+<tr class="row-odd"><td>Pop</td>
+<td>O(1)</td>
+<td>s.pop()</td>
+<td>Remove an arbitrary element of <em>s</em>.</td>
+</tr>
+<tr class="row-even"><td>Clear</td>
+<td>O(1)</td>
+<td>s.clear()</td>
+<td>Remove all the elements of <em>s</em> leaving the set empty.</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" id="id5">
+<img alt="../_images/pixel2.png" src="../_images/pixel2.png" />
+<p class="caption"><span class="caption-text">Fig. 5: Mutable Set Operations</span></p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="7%" />
+<col width="16%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Complexity</th>
+<th class="head">Usage</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Dictionary Creation</td>
+<td>O(1)</td>
+<td>d = {[iterable]}</td>
+<td>Calls the constructor to create a dictionary. Iterable is an optional initial contents in which case it is
+O(n) complexity.</td>
+</tr>
+<tr class="row-odd"><td>Size</td>
+<td>O(1)</td>
+<td>len(d)</td>
+<td>The number of key/value pairs in the dictionary.</td>
+</tr>
+<tr class="row-even"><td>Membership</td>
+<td>O(1)</td>
+<td>k in d</td>
+<td>Returns True if <em>k</em> is a key in <em>d</em> and False otherwise.</td>
+</tr>
+<tr class="row-odd"><td>non-Membership</td>
+<td>O(1)</td>
+<td>k not in d</td>
+<td>Returns True if <em>k</em> is not a key in <em>d</em> and False otherwise.</td>
+</tr>
+<tr class="row-even"><td>Add</td>
+<td>O(1)</td>
+<td>d[k] = v</td>
+<td>Adds <em>(k,v)</em> as a key/value pair in <em>d</em>.</td>
+</tr>
+<tr class="row-odd"><td>Lookup</td>
+<td>O(1)</td>
+<td>d[k]</td>
+<td>Returns the value associated with the key, <em>k</em>. A <em>KeyError</em> exception is raised if <em>k</em> is not in <em>d</em>.</td>
+</tr>
+<tr class="row-even"><td>Lookup</td>
+<td>O(1)</td>
+<td>d.get(k[,default])</td>
+<td>Returns <em>v</em> for the key/value pair <em>(k,v)</em>. If <em>k</em> is not in <em>d</em> returns <em>default</em> or <em>None</em> if not specified.</td>
+</tr>
+<tr class="row-odd"><td>Remove Key/Value Pair</td>
+<td>O(1)</td>
+<td>del d[k]</td>
+<td>Removes the <em>(k,v)</em> key value pair from <em>d</em>. Raises <em>KeyError</em> if <em>k</em> is not in <em>d</em>.</td>
+</tr>
+<tr class="row-even"><td>Items</td>
+<td>O(1)</td>
+<td>d.items()</td>
+<td>Returns a view of the key/value pairs in <em>d</em>. The view updates as <em>d</em> changes.</td>
+</tr>
+<tr class="row-odd"><td>Keys</td>
+<td>O(1)</td>
+<td>d.keys()</td>
+<td>Returns a view of the keys in <em>d</em>. The view updates as <em>d</em> changes.</td>
+</tr>
+<tr class="row-even"><td>Values</td>
+<td>O(1)</td>
+<td>d.values()</td>
+<td>Returns a view of the values in <em>d</em>. The view updates as <em>d</em> changes.</td>
+</tr>
+<tr class="row-odd"><td>Pop</td>
+<td>O(1)</td>
+<td>d.pop(k)</td>
+<td>Returns the value associated with key <em>k</em> and deletes the item. Raises <em>KeyError</em> if <em>k</em> is not in <em>d</em>.</td>
+</tr>
+<tr class="row-even"><td>Pop Item</td>
+<td>O(1)</td>
+<td>d.popitem()</td>
+<td>Return an abritrary key/value pair, <em>(k,v)</em>, from <em>d</em>.</td>
+</tr>
+<tr class="row-odd"><td>Set Default</td>
+<td>O(1)</td>
+<td>d.setdefault(k[,default])</td>
+<td>Sets <em>k</em> as a key in <em>d</em> and maps <em>k</em> to <em>default</em> or <em>None</em> if not specified.</td>
+</tr>
+<tr class="row-even"><td>Update</td>
+<td>O(n)</td>
+<td>d.update(e)</td>
+<td>Updates the dictionary, <em>d</em>, with the contents of dictionary <em>e</em>.</td>
+</tr>
+<tr class="row-odd"><td>Clear</td>
+<td>O(1)</td>
+<td>d.clear()</td>
+<td>Removes all key/value pairs from <em>d</em>.</td>
+</tr>
+<tr class="row-even"><td>Dictionary Copy</td>
+<td>O(n)</td>
+<td>d.copy()</td>
+<td>Returns a shallow copy of <em>d</em>.</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" id="id6">
+<img alt="../_images/pixel2.png" src="../_images/pixel2.png" />
+<p class="caption"><span class="caption-text">Fig. 6: Dictionary Operations</span></p>
+</div>
+<div class="figure" id="id7">
+<img alt="../_images/fib.png" src="../_images/fib.png" />
+<p class="caption"><span class="caption-text">Fig. 7: Computing fib(5)</span></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap2/chap2.html">2. Computational Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap3/chap3.html">3. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap4/chap4.html">4. Sequences</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Sets and Maps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-hashset-datatype">5.1. The HashSet Datatype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-hashmap-datatype">5.2. The HashMap Datatype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sudoku-puzzles">5.3. Sudoku Puzzles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#figures-from-text">5.4. Figures from Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chap6/chap6.html">6. Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap7/chap7.html">7. Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap11/chap11.html">8. Membership Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap8/chap8.html">9. Heaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap9/chap9.html">10. Balanced Binary Search Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap10/chap10.html">11. B-Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chap12/chap12.html">12. Heuristic Search</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../chap4/chap4.html" title="4. Sequences"
+              >previous</a> |
+            <a href="../chap6/chap6.html" title="6. Trees"
+              >next</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/chap5/chap5.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
