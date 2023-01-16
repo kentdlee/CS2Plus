@@ -26,9 +26,9 @@ import sys, os
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 sys.path.append(os.path.abspath('exts'))
-extensions = ['sphinx.ext.todo','sphinx.ext.imgmath','numfig','numsec']
-pngmath_latex = '/usr/texbin/latex'
-pngmath_dvipng = '/usr/texbin/dvipng'
+extensions = ['sphinx.ext.todo','sphinx.ext.imgmath', 'numfig', 'numsec']
+imgmath_latex = '/Library/TeX/texbin/latex'
+imgmath_dvipng = '/Library/TeX/texbin/dvipng'
 
 
 # Add any paths that contain templates here, relative to this directory.

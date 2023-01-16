@@ -49,7 +49,7 @@ def doctree_resolved(app, doctree, docname):
     i = 1
     figids = {}
     for figure_info in doctree.traverse(figure):
-                
+
         if app.builder.name != 'latex' and app.config.number_figures:
             for cap in figure_info.traverse(caption):
                 cap[0] = Text("%s %d: %s" % (app.config.figure_caption_prefix, i, cap[0]))
@@ -79,7 +79,7 @@ def doctree_resolved(app, doctree, docname):
                                   target)
                 html = '<a class="pageref" href="%s">%s</a>' % (link, labelfmt %(figids[target]))
                 ref_info.replace_self(raw(html, html, format='html'))
-                print "Completed", html
+                print("Completed", html)
             else:
                 ref_info.replace_self(Text(labelfmt % (figids[target])))
 

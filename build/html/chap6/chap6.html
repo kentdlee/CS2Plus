@@ -1,19 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>6. Trees &#8212; Data Structures and Algorithms with Python</title>
-    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/agogo.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -46,1227 +46,707 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="trees">
-<span id="chap6"></span><h1>6. Trees<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h1>
+  <section id="trees">
+<span id="chap6"></span><h1><span class="section-number">6. </span>Trees<a class="headerlink" href="#trees" title="Permalink to this heading">¶</a></h1>
 <p>When we see a tree in our everyday lives the roots are generally in the ground and the leaves are up in the air. The branches of a tree spread out from the roots in a more or less organized fashion. The word <em>tree</em> is used in Computer Science when talking about a way data may be organized. Trees have some similarilties to the linked list organization found in <a class="reference internal" href="../chap4/chap4.html#chap4">chapter 4</a>. In a tree there are nodes which have links to other nodes. In a linked list each node has one link, to the next node in the list. In a tree each node may have two or more links to other nodes. A tree is not a sequential data structure. It is organized like a tree, except the root is at the top of tree data structures and the leaves are at the bottom. A tree in computer science is usually drawn inverted when compared to the trees we see in nature. There are many uses for trees in computer science.</p>
 <p>In this chapter we’ll explore trees and when it makes sense to build and or use a tree in a program. Not every program will need a tree data structure. Nevertheless, trees are used in many types of programs. A knowledge of them is not only a necessity, proper use of them can greatly simplify some types of programs.</p>
-<div class="section" id="abstract-syntax-trees">
-<h2>6.1. Abstract Syntax Trees<a class="headerlink" href="#abstract-syntax-trees" title="Permalink to this headline">¶</a></h2>
-<p>You can <a class="reference download internal" download="" href="../_downloads/01f9c50e873be211bc8980a46b7100da/ast.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> prefix expression parser and abstract syntax tree code here. You must have access to the <a class="reference internal" href="../chap4/chap4.html#queuecode"><span class="std std-ref">queue code from chapter 4</span></a> to run this program.</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">queue</span>
-
-<span class="k">class</span> <span class="nc">TimesNode</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
-        
-    <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-    
-    <span class="k">def</span> <span class="nf">inorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">inorder</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; * &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">inorder</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span> 
-    
-<span class="k">class</span> <span class="nc">PlusNode</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
-        
-    <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-    
-    
-    <span class="k">def</span> <span class="nf">inorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">inorder</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; + &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">inorder</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>  
-    
-<span class="k">class</span> <span class="nc">NumNode</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span>
-        
-    <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span>
-    
-    <span class="k">def</span> <span class="nf">inorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
- 
-<span class="k">def</span> <span class="nf">E</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid Prefix Expression&quot;</span><span class="p">)</span>
-    
-    <span class="n">token</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
-    
-    <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">PlusNode</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="n">q</span><span class="p">),</span><span class="n">E</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
-    
-    <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">TimesNode</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="n">q</span><span class="p">),</span><span class="n">E</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
-    
-    <span class="k">return</span> <span class="n">NumNode</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
-    
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">NumNode</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">NumNode</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">PlusNode</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">TimesNode</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">NumNode</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
-    <span class="n">root</span> <span class="o">=</span> <span class="n">PlusNode</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">NumNode</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-    
-    <span class="k">print</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">inorder</span><span class="p">())</span>
-    
-    <span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a prefix expression: &quot;</span><span class="p">)</span>
-    
-    <span class="n">lst</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
-    
-    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
-        <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-        
-    <span class="n">root</span> <span class="o">=</span> <span class="n">E</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-    
-    <span class="k">print</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">inorder</span><span class="p">())</span>
-    
-        
-    
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
-    
+<section id="abstract-syntax-trees">
+<h2><span class="section-number">6.1. </span>Abstract Syntax Trees<a class="headerlink" href="#abstract-syntax-trees" title="Permalink to this heading">¶</a></h2>
+<p>You can <a class="reference download internal" download="" href="../_downloads/1acf8b529649ffb8512f0c47e44a42e7/ast.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> prefix expression parser and abstract syntax tree code here. You must have access to the <a class="reference internal" href="../chap4/chap4.html#queuecode"><span class="std std-ref">queue code from chapter 4</span></a> to run this program.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">queue</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span> <span class="nc">TimesNode</span><span class="p">:</span>
+<span class="linenos"> 4</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="linenos"> 5</span>        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
+<span class="linenos"> 6</span>        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
+<span class="linenos"> 7</span>        
+<span class="linenos"> 8</span>    <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 9</span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="linenos">10</span>    
+<span class="linenos">11</span>    <span class="k">def</span> <span class="nf">inorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">12</span>        <span class="k">return</span> <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">inorder</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; * &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">inorder</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span> 
+<span class="linenos">13</span>    
+<span class="linenos">14</span><span class="k">class</span> <span class="nc">PlusNode</span><span class="p">:</span>
+<span class="linenos">15</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="linenos">16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
+<span class="linenos">18</span>        
+<span class="linenos">19</span>    <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">20</span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="linenos">21</span>    
+<span class="linenos">22</span>    
+<span class="linenos">23</span>    <span class="k">def</span> <span class="nf">inorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">24</span>        <span class="k">return</span> <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">inorder</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; + &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">inorder</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>  
+<span class="linenos">25</span>    
+<span class="linenos">26</span><span class="k">class</span> <span class="nc">NumNode</span><span class="p">:</span>
+<span class="linenos">27</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+<span class="linenos">28</span>        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span>
+<span class="linenos">29</span>        
+<span class="linenos">30</span>    <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">31</span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span>
+<span class="linenos">32</span>    
+<span class="linenos">33</span>    <span class="k">def</span> <span class="nf">inorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">34</span>        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">)</span>
+<span class="linenos">35</span> 
+<span class="linenos">36</span><span class="k">def</span> <span class="nf">E</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+<span class="linenos">37</span>    <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+<span class="linenos">38</span>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid Prefix Expression&quot;</span><span class="p">)</span>
+<span class="linenos">39</span>    
+<span class="linenos">40</span>    <span class="n">token</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
+<span class="linenos">41</span>    
+<span class="linenos">42</span>    <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+<span class="linenos">43</span>        <span class="k">return</span> <span class="n">PlusNode</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="n">q</span><span class="p">),</span><span class="n">E</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+<span class="linenos">44</span>    
+<span class="linenos">45</span>    <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
+<span class="linenos">46</span>        <span class="k">return</span> <span class="n">TimesNode</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="n">q</span><span class="p">),</span><span class="n">E</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+<span class="linenos">47</span>    
+<span class="linenos">48</span>    <span class="k">return</span> <span class="n">NumNode</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+<span class="linenos">49</span>    
+<span class="linenos">50</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">51</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">NumNode</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="linenos">52</span>    <span class="n">y</span> <span class="o">=</span> <span class="n">NumNode</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="linenos">53</span>    <span class="n">p</span> <span class="o">=</span> <span class="n">PlusNode</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="linenos">54</span>    <span class="n">t</span> <span class="o">=</span> <span class="n">TimesNode</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">NumNode</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="linenos">55</span>    <span class="n">root</span> <span class="o">=</span> <span class="n">PlusNode</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">NumNode</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="linenos">56</span>    
+<span class="linenos">57</span>    <span class="nb">print</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
+<span class="linenos">58</span>    <span class="nb">print</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">inorder</span><span class="p">())</span>
+<span class="linenos">59</span>    
+<span class="linenos">60</span>    <span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a prefix expression: &quot;</span><span class="p">)</span>
+<span class="linenos">61</span>    
+<span class="linenos">62</span>    <span class="n">lst</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="linenos">63</span>    <span class="n">q</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+<span class="linenos">64</span>    
+<span class="linenos">65</span>    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+<span class="linenos">66</span>        <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+<span class="linenos">67</span>        
+<span class="linenos">68</span>    <span class="n">root</span> <span class="o">=</span> <span class="n">E</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<span class="linenos">69</span>    
+<span class="linenos">70</span>    <span class="nb">print</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
+<span class="linenos">71</span>    <span class="nb">print</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">inorder</span><span class="p">())</span>
+<span class="linenos">72</span>    
+<span class="linenos">73</span>        
+<span class="linenos">74</span>    
+<span class="linenos">75</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">76</span>    <span class="n">main</span><span class="p">()</span>
+<span class="linenos">77</span>    
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="binary-search-trees">
-<h2>6.2. Binary Search Trees<a class="headerlink" href="#binary-search-trees" title="Permalink to this headline">¶</a></h2>
-<p>You can <a class="reference download internal" download="" href="../_downloads/515d2dfa4974d907afafe1850b1df076/binarysearchtree.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> binary search tree code here.</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
-    <span class="c1"># This is a Node class that is internal to the BinarySearchTree class. </span>
-    <span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">left</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
-            
-        <span class="k">def</span> <span class="nf">getVal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span>
-        
-        <span class="k">def</span> <span class="nf">setVal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newval</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">newval</span>
-            
-        <span class="k">def</span> <span class="nf">getLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span>
-        
-        <span class="k">def</span> <span class="nf">getRight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span>
-        
-        <span class="k">def</span> <span class="nf">setLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newleft</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">newleft</span>
-            
-        <span class="k">def</span> <span class="nf">setRight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newright</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">newright</span>
-            
-        <span class="c1"># This method deserves a little explanation. It does an inorder traversal</span>
-        <span class="c1"># of the nodes of the tree yielding all the values. In this way, we get</span>
-        <span class="c1"># the values in ascending order.</span>
-        <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
-                    <span class="k">yield</span> <span class="n">elem</span>
-                    
-            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span>
-            
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
-                    <span class="k">yield</span> <span class="n">elem</span>
-
-        <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">return</span> <span class="s2">&quot;BinarySearchTree.Node(&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>            
-            
-    <span class="c1"># Below are the methods of the BinarySearchTree class. </span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
-        
-    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span><span class="n">val</span><span class="p">)</span>
-        
-    <span class="k">def</span> <span class="nf">__insert</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">root</span><span class="o">.</span><span class="n">getVal</span><span class="p">():</span>
-            <span class="n">root</span><span class="o">.</span><span class="n">setLeft</span><span class="p">(</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">getLeft</span><span class="p">(),</span><span class="n">val</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">root</span><span class="o">.</span><span class="n">setRight</span><span class="p">(</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">getRight</span><span class="p">(),</span><span class="n">val</span><span class="p">))</span>
-            
-        <span class="k">return</span> <span class="n">root</span>
-        
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">iter</span><span class="p">([])</span>
-
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;BinarySearchTree(&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
- 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a list of numbers: &quot;</span><span class="p">)</span>
-    <span class="n">lst</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-    
-    <span class="n">tree</span> <span class="o">=</span> <span class="n">BinarySearchTree</span><span class="p">()</span>
-    
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
-        <span class="n">tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-        
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tree</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+</section>
+<section id="binary-search-trees">
+<h2><span class="section-number">6.2. </span>Binary Search Trees<a class="headerlink" href="#binary-search-trees" title="Permalink to this heading">¶</a></h2>
+<p>You can <a class="reference download internal" download="" href="../_downloads/e28085a68a426dbab1d564e9a975547d/binarysearchtree.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> binary search tree code here.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
+<span class="linenos"> 2</span>    <span class="c1"># This is a Node class that is internal to the BinarySearchTree class. </span>
+<span class="linenos"> 3</span>    <span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+<span class="linenos"> 4</span>        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos"> 5</span>            <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+<span class="linenos"> 6</span>            <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
+<span class="linenos"> 7</span>            <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
+<span class="linenos"> 8</span>            
+<span class="linenos"> 9</span>        <span class="k">def</span> <span class="nf">getVal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">10</span>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span>
+<span class="linenos">11</span>        
+<span class="linenos">12</span>        <span class="k">def</span> <span class="nf">setVal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newval</span><span class="p">):</span>
+<span class="linenos">13</span>            <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">newval</span>
+<span class="linenos">14</span>            
+<span class="linenos">15</span>        <span class="k">def</span> <span class="nf">getLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">16</span>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span>
+<span class="linenos">17</span>        
+<span class="linenos">18</span>        <span class="k">def</span> <span class="nf">getRight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">19</span>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span>
+<span class="linenos">20</span>        
+<span class="linenos">21</span>        <span class="k">def</span> <span class="nf">setLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newleft</span><span class="p">):</span>
+<span class="linenos">22</span>            <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">newleft</span>
+<span class="linenos">23</span>            
+<span class="linenos">24</span>        <span class="k">def</span> <span class="nf">setRight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newright</span><span class="p">):</span>
+<span class="linenos">25</span>            <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">newright</span>
+<span class="linenos">26</span>            
+<span class="linenos">27</span>        <span class="c1"># This method deserves a little explanation. It does an inorder traversal</span>
+<span class="linenos">28</span>        <span class="c1"># of the nodes of the tree yielding all the values. In this way, we get</span>
+<span class="linenos">29</span>        <span class="c1"># the values in ascending order.</span>
+<span class="linenos">30</span>        <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">31</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">32</span>                <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+<span class="linenos">33</span>                    <span class="k">yield</span> <span class="n">elem</span>
+<span class="linenos">34</span>                    
+<span class="linenos">35</span>            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span>
+<span class="linenos">36</span>            
+<span class="linenos">37</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">38</span>                <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+<span class="linenos">39</span>                    <span class="k">yield</span> <span class="n">elem</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span>        <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">42</span>            <span class="k">return</span> <span class="s2">&quot;BinarySearchTree.Node(&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>            
+<span class="linenos">43</span>            
+<span class="linenos">44</span>    <span class="c1"># Below are the methods of the BinarySearchTree class. </span>
+<span class="linenos">45</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos">46</span>        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+<span class="linenos">47</span>        
+<span class="linenos">48</span>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+<span class="linenos">49</span>        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span><span class="n">val</span><span class="p">)</span>
+<span class="linenos">50</span>        
+<span class="linenos">51</span>    <span class="k">def</span> <span class="nf">__insert</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+<span class="linenos">52</span>        <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">53</span>            <span class="k">return</span> <span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+<span class="linenos">54</span>        
+<span class="linenos">55</span>        <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">root</span><span class="o">.</span><span class="n">getVal</span><span class="p">():</span>
+<span class="linenos">56</span>            <span class="n">root</span><span class="o">.</span><span class="n">setLeft</span><span class="p">(</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">getLeft</span><span class="p">(),</span><span class="n">val</span><span class="p">))</span>
+<span class="linenos">57</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">58</span>            <span class="n">root</span><span class="o">.</span><span class="n">setRight</span><span class="p">(</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">getRight</span><span class="p">(),</span><span class="n">val</span><span class="p">))</span>
+<span class="linenos">59</span>            
+<span class="linenos">60</span>        <span class="k">return</span> <span class="n">root</span>
+<span class="linenos">61</span>        
+<span class="linenos">62</span>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">63</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">64</span>            <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+<span class="linenos">65</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">66</span>            <span class="k">return</span> <span class="nb">iter</span><span class="p">([])</span>
+<span class="linenos">67</span>
+<span class="linenos">68</span>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">69</span>        <span class="k">return</span> <span class="s2">&quot;BinarySearchTree(&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+<span class="linenos">70</span> 
+<span class="linenos">71</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">72</span>    <span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a list of numbers: &quot;</span><span class="p">)</span>
+<span class="linenos">73</span>    <span class="n">lst</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="linenos">74</span>    
+<span class="linenos">75</span>    <span class="n">tree</span> <span class="o">=</span> <span class="n">BinarySearchTree</span><span class="p">()</span>
+<span class="linenos">76</span>    
+<span class="linenos">77</span>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+<span class="linenos">78</span>        <span class="n">tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="linenos">79</span>        
+<span class="linenos">80</span>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tree</span><span class="p">:</span>
+<span class="linenos">81</span>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos">82</span>
+<span class="linenos">83</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">84</span>    <span class="n">main</span><span class="p">()</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="sudoku-test-files">
-<h2>6.3. Sudoku Test Files<a class="headerlink" href="#sudoku-test-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sudoku-test-files">
+<h2><span class="section-number">6.3. </span>Sudoku Test Files<a class="headerlink" href="#sudoku-test-files" title="Permalink to this heading">¶</a></h2>
 <p>Here are two more sudoku test files. These can be solved if you implement the depth first search as described in  chapter 6 of the text.</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference download internal" download="" href="../_downloads/6db96fdd42745de36091004a3644e440/sudoku7.txt"><code class="xref download docutils literal notranslate"><span class="pre">sudoku7.txt</span></code></a></li>
-<li><a class="reference download internal" download="" href="../_downloads/d79ab847f6f28bb9ab8ba37288737fab/sudoku8.txt"><code class="xref download docutils literal notranslate"><span class="pre">sudoku8.txt</span></code></a></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/3255ce711d356ce15ee6a050d34aa4ca/sudoku7.txt"><code class="xref download docutils literal notranslate"><span class="pre">sudoku7.txt</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/02254cfbbd9d7c82eb30c53a0c83254b/sudoku8.txt"><code class="xref download docutils literal notranslate"><span class="pre">sudoku8.txt</span></code></a></p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="orderedtreeset">
-<h2>6.4. OrderedTreeSet<a class="headerlink" href="#orderedtreeset" title="Permalink to this headline">¶</a></h2>
-<p>Here is an <a class="reference download internal" download="" href="../_downloads/ac721421226ff1f332abeb5813ee999f/orderedtreeset.py"><code class="xref download docutils literal notranslate"><span class="pre">OrderedTreeSet</span></code></a> implementation to get you started with the ordered tree set implementation. This file has an OrderedTreeSet class with a BinarySearchTree class nested inside it.</p>
+</section>
+<section id="orderedtreeset">
+<h2><span class="section-number">6.4. </span>OrderedTreeSet<a class="headerlink" href="#orderedtreeset" title="Permalink to this heading">¶</a></h2>
+<p>Here is an <a class="reference download internal" download="" href="../_downloads/1063dccdb5c4e22131dba5e26a9b5c91/orderedtreeset.py"><code class="xref download docutils literal notranslate"><span class="pre">OrderedTreeSet</span></code></a> implementation to get you started with the ordered tree set implementation. This file has an OrderedTreeSet class with a BinarySearchTree class nested inside it.</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-
-<span class="k">class</span> <span class="nc">OrderedTreeSet</span><span class="p">:</span>
-    <span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
-        <span class="c1"># This is a Node class that is internal to the BinarySearchTree class. </span>
-        <span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
-            <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">left</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
-                
-            <span class="k">def</span> <span class="nf">getVal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span>
-            
-            <span class="k">def</span> <span class="nf">setVal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newval</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">newval</span>
-                
-            <span class="k">def</span> <span class="nf">getLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span>
-            
-            <span class="k">def</span> <span class="nf">getRight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span>
-            
-            <span class="k">def</span> <span class="nf">setLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newleft</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">newleft</span>
-                
-            <span class="k">def</span> <span class="nf">setRight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newright</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">newright</span>
-                
-            <span class="c1"># This method deserves a little explanation. It does an inorder traversal</span>
-            <span class="c1"># of the nodes of the tree yielding all the values. In this way, we get</span>
-            <span class="c1"># the values in ascending order.</span>
-            <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
-                        <span class="k">yield</span> <span class="n">elem</span>
-                        
-                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span>
-                
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
-                        <span class="k">yield</span> <span class="n">elem</span>
-
-            <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="k">return</span> <span class="s2">&quot;BinarySearchTree.Node(&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>            
-                
-        <span class="c1"># Below are the methods of the BinarySearchTree class. </span>
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
-            
-        <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">OrderedTreeSet</span><span class="o">.</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span><span class="n">val</span><span class="p">)</span>
-            
-        <span class="k">def</span> <span class="nf">__insert</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">OrderedTreeSet</span><span class="o">.</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-            
-            <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">root</span><span class="o">.</span><span class="n">getVal</span><span class="p">():</span>
-                <span class="n">root</span><span class="o">.</span><span class="n">setLeft</span><span class="p">(</span><span class="n">OrderedTreeSet</span><span class="o">.</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">getLeft</span><span class="p">(),</span><span class="n">val</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">root</span><span class="o">.</span><span class="n">setRight</span><span class="p">(</span><span class="n">OrderedTreeSet</span><span class="o">.</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">getRight</span><span class="p">(),</span><span class="n">val</span><span class="p">))</span>
-                
-            <span class="k">return</span> <span class="n">root</span>
-            
-        <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="nb">iter</span><span class="p">([])</span>
-
-        <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">return</span> <span class="s2">&quot;BinarySearchTree(&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
-            
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">contents</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span> <span class="o">=</span> <span class="n">OrderedTreeSet</span><span class="o">.</span><span class="n">BinarySearchTree</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">contents</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># randomize the list</span>
-            <span class="n">indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)))</span>
-            <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
-            
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">contents</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
-                
-            <span class="bp">self</span><span class="o">.</span><span class="n">numItems</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">numItems</span> <span class="o">=</span> <span class="mi">0</span>
-            
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">)</span>
-    
-    <span class="c1"># Following are the mutator set methods </span>
-    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">pass</span>
-                
-    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">pass</span>
-        
-    <span class="k">def</span> <span class="nf">discard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">pass</span>
-        
-    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-            
-    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-        
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-            
-    <span class="k">def</span> <span class="nf">intersection_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-            
-    <span class="k">def</span> <span class="nf">difference_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-                
-    <span class="k">def</span> <span class="nf">symmetric_difference_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-                
-    <span class="c1"># Following are the accessor methods for the HashSet  </span>
-    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="c1"># One extra method for use with the HashMap class. This method is not needed in the </span>
-    <span class="c1"># HashSet implementation, but it is used by the HashMap implementation. </span>
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">pass</span>      
-        
-    <span class="k">def</span> <span class="nf">not__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="nf">isdisjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    
-    <span class="k">def</span> <span class="nf">issubset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-            
-    
-    <span class="k">def</span> <span class="nf">issuperset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="nf">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    <span class="c1">#done</span>
-    <span class="k">def</span> <span class="nf">difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="nf">symmetric_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="c1"># Operator Definitions</span>
-    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__xor__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__ior__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__iand__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="nf">__ixor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>    
-    
-    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">pass</span>      
-                
-            
-    
- 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a list of numbers: &quot;</span><span class="p">)</span>
-    <span class="n">lst</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-    
-    <span class="n">tree</span> <span class="o">=</span> <span class="n">OrderedTreeSet</span><span class="p">()</span>
-    
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
-        <span class="n">tree</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-        
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tree</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos">  2</span>
+<span class="linenos">  3</span><span class="k">class</span> <span class="nc">OrderedTreeSet</span><span class="p">:</span>
+<span class="linenos">  4</span>    <span class="k">class</span> <span class="nc">BinarySearchTree</span><span class="p">:</span>
+<span class="linenos">  5</span>        <span class="c1"># This is a Node class that is internal to the BinarySearchTree class. </span>
+<span class="linenos">  6</span>        <span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+<span class="linenos">  7</span>            <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos">  8</span>                <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+<span class="linenos">  9</span>                <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
+<span class="linenos"> 10</span>                <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
+<span class="linenos"> 11</span>                
+<span class="linenos"> 12</span>            <span class="k">def</span> <span class="nf">getVal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 13</span>                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span>
+<span class="linenos"> 14</span>            
+<span class="linenos"> 15</span>            <span class="k">def</span> <span class="nf">setVal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newval</span><span class="p">):</span>
+<span class="linenos"> 16</span>                <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">newval</span>
+<span class="linenos"> 17</span>                
+<span class="linenos"> 18</span>            <span class="k">def</span> <span class="nf">getLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 19</span>                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span>
+<span class="linenos"> 20</span>            
+<span class="linenos"> 21</span>            <span class="k">def</span> <span class="nf">getRight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 22</span>                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span>
+<span class="linenos"> 23</span>            
+<span class="linenos"> 24</span>            <span class="k">def</span> <span class="nf">setLeft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newleft</span><span class="p">):</span>
+<span class="linenos"> 25</span>                <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">newleft</span>
+<span class="linenos"> 26</span>                
+<span class="linenos"> 27</span>            <span class="k">def</span> <span class="nf">setRight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">newright</span><span class="p">):</span>
+<span class="linenos"> 28</span>                <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">newright</span>
+<span class="linenos"> 29</span>                
+<span class="linenos"> 30</span>            <span class="c1"># This method deserves a little explanation. It does an inorder traversal</span>
+<span class="linenos"> 31</span>            <span class="c1"># of the nodes of the tree yielding all the values. In this way, we get</span>
+<span class="linenos"> 32</span>            <span class="c1"># the values in ascending order.</span>
+<span class="linenos"> 33</span>            <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 34</span>                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos"> 35</span>                    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+<span class="linenos"> 36</span>                        <span class="k">yield</span> <span class="n">elem</span>
+<span class="linenos"> 37</span>                        
+<span class="linenos"> 38</span>                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span>
+<span class="linenos"> 39</span>                
+<span class="linenos"> 40</span>                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos"> 41</span>                    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+<span class="linenos"> 42</span>                        <span class="k">yield</span> <span class="n">elem</span>
+<span class="linenos"> 43</span>
+<span class="linenos"> 44</span>            <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 45</span>                <span class="k">return</span> <span class="s2">&quot;BinarySearchTree.Node(&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>            
+<span class="linenos"> 46</span>                
+<span class="linenos"> 47</span>        <span class="c1"># Below are the methods of the BinarySearchTree class. </span>
+<span class="linenos"> 48</span>        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos"> 49</span>            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span>
+<span class="linenos"> 50</span>            
+<span class="linenos"> 51</span>        <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+<span class="linenos"> 52</span>            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">OrderedTreeSet</span><span class="o">.</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span><span class="n">val</span><span class="p">)</span>
+<span class="linenos"> 53</span>            
+<span class="linenos"> 54</span>        <span class="k">def</span> <span class="nf">__insert</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+<span class="linenos"> 55</span>            <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos"> 56</span>                <span class="k">return</span> <span class="n">OrderedTreeSet</span><span class="o">.</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+<span class="linenos"> 57</span>            
+<span class="linenos"> 58</span>            <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">root</span><span class="o">.</span><span class="n">getVal</span><span class="p">():</span>
+<span class="linenos"> 59</span>                <span class="n">root</span><span class="o">.</span><span class="n">setLeft</span><span class="p">(</span><span class="n">OrderedTreeSet</span><span class="o">.</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">getLeft</span><span class="p">(),</span><span class="n">val</span><span class="p">))</span>
+<span class="linenos"> 60</span>            <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 61</span>                <span class="n">root</span><span class="o">.</span><span class="n">setRight</span><span class="p">(</span><span class="n">OrderedTreeSet</span><span class="o">.</span><span class="n">BinarySearchTree</span><span class="o">.</span><span class="n">__insert</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">getRight</span><span class="p">(),</span><span class="n">val</span><span class="p">))</span>
+<span class="linenos"> 62</span>                
+<span class="linenos"> 63</span>            <span class="k">return</span> <span class="n">root</span>
+<span class="linenos"> 64</span>            
+<span class="linenos"> 65</span>        <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 66</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos"> 67</span>                <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+<span class="linenos"> 68</span>            <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 69</span>                <span class="k">return</span> <span class="nb">iter</span><span class="p">([])</span>
+<span class="linenos"> 70</span>
+<span class="linenos"> 71</span>        <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 72</span>            <span class="k">return</span> <span class="s2">&quot;BinarySearchTree(&quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+<span class="linenos"> 73</span>            
+<span class="linenos"> 74</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">contents</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos"> 75</span>        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span> <span class="o">=</span> <span class="n">OrderedTreeSet</span><span class="o">.</span><span class="n">BinarySearchTree</span><span class="p">()</span>
+<span class="linenos"> 76</span>        <span class="k">if</span> <span class="n">contents</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos"> 77</span>            <span class="c1"># randomize the list</span>
+<span class="linenos"> 78</span>            <span class="n">indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)))</span>
+<span class="linenos"> 79</span>            <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+<span class="linenos"> 80</span>            
+<span class="linenos"> 81</span>            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)):</span>
+<span class="linenos"> 82</span>                <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">contents</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+<span class="linenos"> 83</span>                
+<span class="linenos"> 84</span>            <span class="bp">self</span><span class="o">.</span><span class="n">numItems</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+<span class="linenos"> 85</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 86</span>            <span class="bp">self</span><span class="o">.</span><span class="n">numItems</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 87</span>            
+<span class="linenos"> 88</span>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 89</span>        <span class="k">pass</span>
+<span class="linenos"> 90</span>    
+<span class="linenos"> 91</span>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 92</span>        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">)</span>
+<span class="linenos"> 93</span>    
+<span class="linenos"> 94</span>    <span class="c1"># Following are the mutator set methods </span>
+<span class="linenos"> 95</span>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="linenos"> 96</span>        <span class="k">pass</span>
+<span class="linenos"> 97</span>                
+<span class="linenos"> 98</span>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="linenos"> 99</span>        <span class="k">pass</span>
+<span class="linenos">100</span>        
+<span class="linenos">101</span>    <span class="k">def</span> <span class="nf">discard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="linenos">102</span>        <span class="k">pass</span>
+<span class="linenos">103</span>        
+<span class="linenos">104</span>    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">105</span>        <span class="k">pass</span>
+<span class="linenos">106</span>            
+<span class="linenos">107</span>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">108</span>        <span class="k">pass</span>
+<span class="linenos">109</span>        
+<span class="linenos">110</span>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">111</span>        <span class="k">pass</span>
+<span class="linenos">112</span>            
+<span class="linenos">113</span>    <span class="k">def</span> <span class="nf">intersection_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">114</span>        <span class="k">pass</span>
+<span class="linenos">115</span>            
+<span class="linenos">116</span>    <span class="k">def</span> <span class="nf">difference_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">117</span>        <span class="k">pass</span>
+<span class="linenos">118</span>                
+<span class="linenos">119</span>    <span class="k">def</span> <span class="nf">symmetric_difference_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">120</span>        <span class="k">pass</span>
+<span class="linenos">121</span>                
+<span class="linenos">122</span>    <span class="c1"># Following are the accessor methods for the HashSet  </span>
+<span class="linenos">123</span>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">124</span>        <span class="k">pass</span>
+<span class="linenos">125</span>    
+<span class="linenos">126</span>    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="linenos">127</span>        <span class="k">pass</span>
+<span class="linenos">128</span>    
+<span class="linenos">129</span>    <span class="c1"># One extra method for use with the HashMap class. This method is not needed in the </span>
+<span class="linenos">130</span>    <span class="c1"># HashSet implementation, but it is used by the HashMap implementation. </span>
+<span class="linenos">131</span>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="linenos">132</span>        <span class="k">pass</span>      
+<span class="linenos">133</span>        
+<span class="linenos">134</span>    <span class="k">def</span> <span class="nf">not__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="linenos">135</span>        <span class="k">pass</span>
+<span class="linenos">136</span>    
+<span class="linenos">137</span>    <span class="k">def</span> <span class="nf">isdisjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">138</span>        <span class="k">pass</span>
+<span class="linenos">139</span>    
+<span class="linenos">140</span>    
+<span class="linenos">141</span>    <span class="k">def</span> <span class="nf">issubset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">142</span>        <span class="k">pass</span>
+<span class="linenos">143</span>            
+<span class="linenos">144</span>    
+<span class="linenos">145</span>    <span class="k">def</span> <span class="nf">issuperset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">146</span>        <span class="k">pass</span>
+<span class="linenos">147</span>    
+<span class="linenos">148</span>    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">149</span>        <span class="k">pass</span>
+<span class="linenos">150</span>    
+<span class="linenos">151</span>    <span class="k">def</span> <span class="nf">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">152</span>        <span class="k">pass</span>
+<span class="linenos">153</span>    <span class="c1">#done</span>
+<span class="linenos">154</span>    <span class="k">def</span> <span class="nf">difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">155</span>        <span class="k">pass</span>
+<span class="linenos">156</span>    
+<span class="linenos">157</span>    <span class="k">def</span> <span class="nf">symmetric_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">158</span>        <span class="k">pass</span>
+<span class="linenos">159</span>    
+<span class="linenos">160</span>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">161</span>        <span class="k">pass</span>
+<span class="linenos">162</span>    
+<span class="linenos">163</span>    <span class="c1"># Operator Definitions</span>
+<span class="linenos">164</span>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">165</span>        <span class="k">pass</span>
+<span class="linenos">166</span>    
+<span class="linenos">167</span>    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">168</span>        <span class="k">pass</span>
+<span class="linenos">169</span>    
+<span class="linenos">170</span>    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">171</span>        <span class="k">pass</span>
+<span class="linenos">172</span>    
+<span class="linenos">173</span>    <span class="k">def</span> <span class="fm">__xor__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">174</span>        <span class="k">pass</span>
+<span class="linenos">175</span>    
+<span class="linenos">176</span>    <span class="k">def</span> <span class="fm">__ior__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">177</span>        <span class="k">pass</span>
+<span class="linenos">178</span>    
+<span class="linenos">179</span>    <span class="k">def</span> <span class="fm">__iand__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">180</span>        <span class="k">pass</span>
+<span class="linenos">181</span>    
+<span class="linenos">182</span>    <span class="k">def</span> <span class="nf">__ixor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">183</span>        <span class="k">pass</span>    
+<span class="linenos">184</span>    
+<span class="linenos">185</span>    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">186</span>        <span class="k">pass</span>
+<span class="linenos">187</span>    
+<span class="linenos">188</span>    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">189</span>        <span class="k">pass</span>
+<span class="linenos">190</span>    
+<span class="linenos">191</span>    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">192</span>        <span class="k">pass</span>
+<span class="linenos">193</span>    
+<span class="linenos">194</span>    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">195</span>        <span class="k">pass</span>
+<span class="linenos">196</span>    
+<span class="linenos">197</span>    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="linenos">198</span>        <span class="k">pass</span>      
+<span class="linenos">199</span>                
+<span class="linenos">200</span>            
+<span class="linenos">201</span>    
+<span class="linenos">202</span> 
+<span class="linenos">203</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">204</span>    <span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a list of numbers: &quot;</span><span class="p">)</span>
+<span class="linenos">205</span>    <span class="n">lst</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="linenos">206</span>    
+<span class="linenos">207</span>    <span class="n">tree</span> <span class="o">=</span> <span class="n">OrderedTreeSet</span><span class="p">()</span>
+<span class="linenos">208</span>    
+<span class="linenos">209</span>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+<span class="linenos">210</span>        <span class="n">tree</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="linenos">211</span>        
+<span class="linenos">212</span>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tree</span><span class="p">:</span>
+<span class="linenos">213</span>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos">214</span>
+<span class="linenos">215</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">216</span>    <span class="n">main</span><span class="p">()</span>
 </pre></div>
-</td></tr></table></div>
-</div></blockquote>
 </div>
-<div class="section" id="orderedtreeset-test-program">
-<h2>6.5. OrderedTreeSet Test Program<a class="headerlink" href="#orderedtreeset-test-program" title="Permalink to this headline">¶</a></h2>
-<p>Here is an <a class="reference download internal" download="" href="../_downloads/f0559c721e4206b3c88e9d1e41aa2445/orderedtreesettest.py"><code class="xref download docutils literal notranslate"><span class="pre">OrderedTreeSet</span> <span class="pre">Test</span> <span class="pre">Program</span></code></a> that provides some tests for the OrderedTreeSet implementation. Your ordered tree set must be saved in a file called orderedtreeset.py so it can be imported into this test program.</p>
+</div></blockquote>
+</section>
+<section id="orderedtreeset-test-program">
+<h2><span class="section-number">6.5. </span>OrderedTreeSet Test Program<a class="headerlink" href="#orderedtreeset-test-program" title="Permalink to this heading">¶</a></h2>
+<p>Here is an <a class="reference download internal" download="" href="../_downloads/a65af64e4a4bb81ee2513e41011c896f/orderedtreesettest.py"><code class="xref download docutils literal notranslate"><span class="pre">OrderedTreeSet</span> <span class="pre">Test</span> <span class="pre">Program</span></code></a> that provides some tests for the OrderedTreeSet implementation. Your ordered tree set must be saved in a file called orderedtreeset.py so it can be imported into this test program.</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">orderedtreeset</span>
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
-    
-    <span class="n">t</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span>
-    
-    <span class="n">u</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span>
-    
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 1 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 1 Failed&quot;</span><span class="p">)</span>
-        
-    <span class="n">s</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 2 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 2 Failed&quot;</span><span class="p">)</span>
-        
-    <span class="n">s</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
-    
-    <span class="n">t</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 3 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 3 Failed&quot;</span><span class="p">)</span>
-        
-    <span class="n">t</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-    <span class="n">t</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 4 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 4 Failed&quot;</span><span class="p">)</span>
-        
-    <span class="n">s</span><span class="o">.</span><span class="n">difference_update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    
-    <span class="n">test5Passed</span> <span class="o">=</span> <span class="bp">True</span>
-    <span class="n">test6Passed</span> <span class="o">=</span> <span class="bp">True</span>
-    
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">test5Passed</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 5 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-            
-        <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
-            <span class="n">test6Passed</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 6 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-            
-    <span class="k">if</span> <span class="n">test5Passed</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 5 Passed&quot;</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">test6Passed</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 6 Passed&quot;</span><span class="p">)</span>
-        
-
-    <span class="n">test7Passed</span> <span class="o">=</span> <span class="bp">True</span>
-    <span class="n">test8Passed</span> <span class="o">=</span> <span class="bp">True</span>
-    
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">test7Passed</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 7 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-            
-        <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
-            <span class="n">test8Passed</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 8 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-            
-    <span class="k">if</span> <span class="n">test7Passed</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 7 Passed&quot;</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">test8Passed</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 8 Passed&quot;</span><span class="p">)</span>   
-        
-    <span class="n">x</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;j&quot;</span><span class="p">,</span><span class="s2">&quot;k&quot;</span><span class="p">])</span>
-    
-    <span class="n">y</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">([</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;l&quot;</span><span class="p">,</span><span class="s2">&quot;m&quot;</span><span class="p">,</span><span class="s2">&quot;n&quot;</span><span class="p">])</span>
-    
-    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 9 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 9 Failed&quot;</span><span class="p">)</span>
-        
-    <span class="n">test10Passed</span> <span class="o">=</span> <span class="bp">True</span>
-    
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">z</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">item</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;j&quot;</span><span class="p">,</span><span class="s2">&quot;k&quot;</span><span class="p">]:</span>
-            <span class="n">test10Passed</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 10 Failed on&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-            
-    <span class="k">if</span> <span class="n">test10Passed</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 10 Passed&quot;</span><span class="p">)</span>
-        
-    <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 11 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 11 Failed&quot;</span><span class="p">)</span>
-        
-    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 12 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 12 Failed&quot;</span><span class="p">)</span>
-        
-    <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 13 Failed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 13 Passed&quot;</span><span class="p">)</span>
-        
-    <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="n">z</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 14 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 14 Failed&quot;</span><span class="p">)</span>
-        
-    <span class="n">r</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    
-    <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">z</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 15 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 15 Failed&quot;</span><span class="p">)</span>
-        
-    <span class="n">z</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)))</span>
-        
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
-        <span class="n">z</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-        
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 16 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 16 Failed&quot;</span><span class="p">)</span>    
-        
-    <span class="n">z</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)))</span>
-        
-    <span class="n">lastItem</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99999999999999999999999999999</span>
-    <span class="n">test17Passed</span> <span class="o">=</span> <span class="bp">True</span>
-    
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">z</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">lastItem</span> <span class="o">&gt;=</span> <span class="n">item</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 17 Failed with &quot;</span><span class="p">,</span> <span class="n">lastItem</span><span class="p">,</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="s2">&quot;out of order.&quot;</span><span class="p">)</span>
-            <span class="n">test17Passed</span> <span class="o">=</span> <span class="bp">False</span>
-            
-        <span class="n">lastItem</span> <span class="o">=</span> <span class="n">item</span>
-            
-    <span class="k">if</span> <span class="n">test17Passed</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 17 Passed&quot;</span><span class="p">)</span>  
-        
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
-        <span class="n">z</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>  
-    
-    <span class="n">lastItem</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99999999999999999999999999999</span>
-    <span class="n">test18Passed</span> <span class="o">=</span> <span class="bp">True</span>
-    
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">z</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">lastItem</span> <span class="o">&gt;=</span> <span class="n">item</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 18 Failed with &quot;</span><span class="p">,</span> <span class="n">lastItem</span><span class="p">,</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="s2">&quot;out of order.&quot;</span><span class="p">)</span>
-            <span class="n">test18Passed</span> <span class="o">=</span> <span class="bp">False</span>
-            
-        <span class="n">lastItem</span> <span class="o">=</span> <span class="n">item</span>
-            
-    <span class="k">if</span> <span class="n">test18Passed</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 18 Passed&quot;</span><span class="p">)</span> 
-        
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">==</span> <span class="mi">25</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 19 Passed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test 19 Failed&quot;</span><span class="p">)</span>       
-
-    
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
-    
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kn">import</span> <span class="nn">orderedtreeset</span>
+<span class="linenos">  2</span>
+<span class="linenos">  3</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">  4</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
+<span class="linenos">  5</span>    
+<span class="linenos">  6</span>    <span class="n">t</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span>
+<span class="linenos">  7</span>    
+<span class="linenos">  8</span>    <span class="n">u</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span>
+<span class="linenos">  9</span>    
+<span class="linenos"> 10</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+<span class="linenos"> 11</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 1 Passed&quot;</span><span class="p">)</span>
+<span class="linenos"> 12</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 13</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 1 Failed&quot;</span><span class="p">)</span>
+<span class="linenos"> 14</span>        
+<span class="linenos"> 15</span>    <span class="n">s</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="linenos"> 16</span>    
+<span class="linenos"> 17</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+<span class="linenos"> 18</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 2 Passed&quot;</span><span class="p">)</span>
+<span class="linenos"> 19</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 20</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 2 Failed&quot;</span><span class="p">)</span>
+<span class="linenos"> 21</span>        
+<span class="linenos"> 22</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
+<span class="linenos"> 23</span>    
+<span class="linenos"> 24</span>    <span class="n">t</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="linenos"> 25</span>    
+<span class="linenos"> 26</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="linenos"> 27</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 3 Passed&quot;</span><span class="p">)</span>
+<span class="linenos"> 28</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 29</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 3 Failed&quot;</span><span class="p">)</span>
+<span class="linenos"> 30</span>        
+<span class="linenos"> 31</span>    <span class="n">t</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="linenos"> 32</span>    <span class="n">t</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="linenos"> 33</span>    
+<span class="linenos"> 34</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+<span class="linenos"> 35</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 4 Passed&quot;</span><span class="p">)</span>
+<span class="linenos"> 36</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 37</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 4 Failed&quot;</span><span class="p">)</span>
+<span class="linenos"> 38</span>        
+<span class="linenos"> 39</span>    <span class="n">s</span><span class="o">.</span><span class="n">difference_update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="linenos"> 40</span>    
+<span class="linenos"> 41</span>    <span class="n">test5Passed</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 42</span>    <span class="n">test6Passed</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 43</span>    
+<span class="linenos"> 44</span>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+<span class="linenos"> 45</span>        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+<span class="linenos"> 46</span>            <span class="k">pass</span>
+<span class="linenos"> 47</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 48</span>            <span class="n">test5Passed</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 49</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 5 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos"> 50</span>            
+<span class="linenos"> 51</span>        <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+<span class="linenos"> 52</span>            <span class="n">test6Passed</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 53</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 6 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos"> 54</span>            
+<span class="linenos"> 55</span>    <span class="k">if</span> <span class="n">test5Passed</span><span class="p">:</span>
+<span class="linenos"> 56</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 5 Passed&quot;</span><span class="p">)</span>
+<span class="linenos"> 57</span>    
+<span class="linenos"> 58</span>    <span class="k">if</span> <span class="n">test6Passed</span><span class="p">:</span>
+<span class="linenos"> 59</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 6 Passed&quot;</span><span class="p">)</span>
+<span class="linenos"> 60</span>        
+<span class="linenos"> 61</span>
+<span class="linenos"> 62</span>    <span class="n">test7Passed</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 63</span>    <span class="n">test8Passed</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 64</span>    
+<span class="linenos"> 65</span>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+<span class="linenos"> 66</span>        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+<span class="linenos"> 67</span>            <span class="k">pass</span>
+<span class="linenos"> 68</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 69</span>            <span class="n">test7Passed</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 70</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 7 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos"> 71</span>            
+<span class="linenos"> 72</span>        <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+<span class="linenos"> 73</span>            <span class="n">test8Passed</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 74</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 8 Failed on&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos"> 75</span>            
+<span class="linenos"> 76</span>    <span class="k">if</span> <span class="n">test7Passed</span><span class="p">:</span>
+<span class="linenos"> 77</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 7 Passed&quot;</span><span class="p">)</span>
+<span class="linenos"> 78</span>    
+<span class="linenos"> 79</span>    <span class="k">if</span> <span class="n">test8Passed</span><span class="p">:</span>
+<span class="linenos"> 80</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 8 Passed&quot;</span><span class="p">)</span>   
+<span class="linenos"> 81</span>        
+<span class="linenos"> 82</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;j&quot;</span><span class="p">,</span><span class="s2">&quot;k&quot;</span><span class="p">])</span>
+<span class="linenos"> 83</span>    
+<span class="linenos"> 84</span>    <span class="n">y</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">([</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;l&quot;</span><span class="p">,</span><span class="s2">&quot;m&quot;</span><span class="p">,</span><span class="s2">&quot;n&quot;</span><span class="p">])</span>
+<span class="linenos"> 85</span>    
+<span class="linenos"> 86</span>    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="linenos"> 87</span>    
+<span class="linenos"> 88</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+<span class="linenos"> 89</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 9 Passed&quot;</span><span class="p">)</span>
+<span class="linenos"> 90</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 91</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 9 Failed&quot;</span><span class="p">)</span>
+<span class="linenos"> 92</span>        
+<span class="linenos"> 93</span>    <span class="n">test10Passed</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 94</span>    
+<span class="linenos"> 95</span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">z</span><span class="p">:</span>
+<span class="linenos"> 96</span>        <span class="k">if</span> <span class="n">item</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;j&quot;</span><span class="p">,</span><span class="s2">&quot;k&quot;</span><span class="p">]:</span>
+<span class="linenos"> 97</span>            <span class="n">test10Passed</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 98</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 10 Failed on&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="linenos"> 99</span>            
+<span class="linenos">100</span>    <span class="k">if</span> <span class="n">test10Passed</span><span class="p">:</span>
+<span class="linenos">101</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 10 Passed&quot;</span><span class="p">)</span>
+<span class="linenos">102</span>        
+<span class="linenos">103</span>    <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="linenos">104</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 11 Passed&quot;</span><span class="p">)</span>
+<span class="linenos">105</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">106</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 11 Failed&quot;</span><span class="p">)</span>
+<span class="linenos">107</span>        
+<span class="linenos">108</span>    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+<span class="linenos">109</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 12 Passed&quot;</span><span class="p">)</span>
+<span class="linenos">110</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">111</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 12 Failed&quot;</span><span class="p">)</span>
+<span class="linenos">112</span>        
+<span class="linenos">113</span>    <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+<span class="linenos">114</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 13 Failed&quot;</span><span class="p">)</span>
+<span class="linenos">115</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">116</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 13 Passed&quot;</span><span class="p">)</span>
+<span class="linenos">117</span>        
+<span class="linenos">118</span>    <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="n">z</span><span class="p">:</span>
+<span class="linenos">119</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 14 Passed&quot;</span><span class="p">)</span>
+<span class="linenos">120</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">121</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 14 Failed&quot;</span><span class="p">)</span>
+<span class="linenos">122</span>        
+<span class="linenos">123</span>    <span class="n">r</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="linenos">124</span>    
+<span class="linenos">125</span>    <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">z</span><span class="p">:</span>
+<span class="linenos">126</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 15 Passed&quot;</span><span class="p">)</span>
+<span class="linenos">127</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">128</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 15 Failed&quot;</span><span class="p">)</span>
+<span class="linenos">129</span>        
+<span class="linenos">130</span>    <span class="n">z</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)))</span>
+<span class="linenos">131</span>        
+<span class="linenos">132</span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+<span class="linenos">133</span>        <span class="n">z</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="linenos">134</span>        
+<span class="linenos">135</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">136</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 16 Passed&quot;</span><span class="p">)</span>
+<span class="linenos">137</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">138</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 16 Failed&quot;</span><span class="p">)</span>    
+<span class="linenos">139</span>        
+<span class="linenos">140</span>    <span class="n">z</span> <span class="o">=</span> <span class="n">orderedtreeset</span><span class="o">.</span><span class="n">OrderedTreeSet</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)))</span>
+<span class="linenos">141</span>        
+<span class="linenos">142</span>    <span class="n">lastItem</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99999999999999999999999999999</span>
+<span class="linenos">143</span>    <span class="n">test17Passed</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">144</span>    
+<span class="linenos">145</span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">z</span><span class="p">:</span>
+<span class="linenos">146</span>        <span class="k">if</span> <span class="n">lastItem</span> <span class="o">&gt;=</span> <span class="n">item</span><span class="p">:</span>
+<span class="linenos">147</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 17 Failed with &quot;</span><span class="p">,</span> <span class="n">lastItem</span><span class="p">,</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="s2">&quot;out of order.&quot;</span><span class="p">)</span>
+<span class="linenos">148</span>            <span class="n">test17Passed</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">149</span>            
+<span class="linenos">150</span>        <span class="n">lastItem</span> <span class="o">=</span> <span class="n">item</span>
+<span class="linenos">151</span>            
+<span class="linenos">152</span>    <span class="k">if</span> <span class="n">test17Passed</span><span class="p">:</span>
+<span class="linenos">153</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 17 Passed&quot;</span><span class="p">)</span>  
+<span class="linenos">154</span>        
+<span class="linenos">155</span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+<span class="linenos">156</span>        <span class="n">z</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>  
+<span class="linenos">157</span>    
+<span class="linenos">158</span>    <span class="n">lastItem</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99999999999999999999999999999</span>
+<span class="linenos">159</span>    <span class="n">test18Passed</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">160</span>    
+<span class="linenos">161</span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">z</span><span class="p">:</span>
+<span class="linenos">162</span>        <span class="k">if</span> <span class="n">lastItem</span> <span class="o">&gt;=</span> <span class="n">item</span><span class="p">:</span>
+<span class="linenos">163</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 18 Failed with &quot;</span><span class="p">,</span> <span class="n">lastItem</span><span class="p">,</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="s2">&quot;out of order.&quot;</span><span class="p">)</span>
+<span class="linenos">164</span>            <span class="n">test18Passed</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">165</span>            
+<span class="linenos">166</span>        <span class="n">lastItem</span> <span class="o">=</span> <span class="n">item</span>
+<span class="linenos">167</span>            
+<span class="linenos">168</span>    <span class="k">if</span> <span class="n">test18Passed</span><span class="p">:</span>
+<span class="linenos">169</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 18 Passed&quot;</span><span class="p">)</span> 
+<span class="linenos">170</span>        
+<span class="linenos">171</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">==</span> <span class="mi">25</span><span class="p">:</span>
+<span class="linenos">172</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 19 Passed&quot;</span><span class="p">)</span>
+<span class="linenos">173</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">174</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 19 Failed&quot;</span><span class="p">)</span>       
+<span class="linenos">175</span>
+<span class="linenos">176</span>    
+<span class="linenos">177</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">178</span>    <span class="n">main</span><span class="p">()</span>
+<span class="linenos">179</span>    
 </pre></div>
-</td></tr></table></div>
+</div>
 </div></blockquote>
-</div>
-<div class="section" id="figures-from-text">
-<h2>6.6. Figures from Text<a class="headerlink" href="#figures-from-text" title="Permalink to this headline">¶</a></h2>
-<div class="figure" id="id1">
-<img alt="../_images/fib1.png" src="../_images/fib1.png" />
-<p class="caption"><span class="caption-text">Fig. 1: The Call Tree for Computing Fib(5)</span></p>
-</div>
-<div class="figure" id="id2">
+</section>
+<section id="figures-from-text">
+<h2><span class="section-number">6.6. </span>Figures from Text<a class="headerlink" href="#figures-from-text" title="Permalink to this heading">¶</a></h2>
+<figure class="align-default" id="id1">
+<img alt="../_images/fib.png" src="../_images/fib.png" />
+<figcaption>
+<p><span class="caption-text">Fig. 1: The Call Tree for Computing Fib(5)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
 <img alt="../_images/ast.png" src="../_images/ast.png" />
-<p class="caption"><span class="caption-text">Fig. 2: The AST for (5 + 4) * 6 + 3</span></p>
-</div>
-<div class="figure" id="id3">
+<figcaption>
+<p><span class="caption-text">Fig. 2: The AST for (5 + 4) * 6 + 3</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
 <img alt="../_images/binarysearchtree8.png" src="../_images/binarysearchtree8.png" />
-<p class="caption"><span class="caption-text">Fig. 3: An empty BinarySearchTree object</span></p>
-</div>
-<div class="figure" id="id4">
+<figcaption>
+<p><span class="caption-text">Fig. 3: An empty BinarySearchTree object</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
 <img alt="../_images/binarysearchtree7.png" src="../_images/binarysearchtree7.png" />
-<p class="caption"><span class="caption-text">Fig. 4: The Tree After Inserting 5</span></p>
-</div>
-<div class="figure" id="id5">
+<figcaption>
+<p><span class="caption-text">Fig. 4: The Tree After Inserting 5</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id5">
 <img alt="../_images/binarysearchtree6.png" src="../_images/binarysearchtree6.png" />
-<p class="caption"><span class="caption-text">Fig. 5: The Tree After Inserting 8</span></p>
-</div>
-<div class="figure" id="id6">
+<figcaption>
+<p><span class="caption-text">Fig. 5: The Tree After Inserting 8</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id6">
 <img alt="../_images/binarysearchtree5.png" src="../_images/binarysearchtree5.png" />
-<p class="caption"><span class="caption-text">Fig. 6: The Tree After Inserting 2</span></p>
-</div>
-<div class="figure" id="id7">
+<figcaption>
+<p><span class="caption-text">Fig. 6: The Tree After Inserting 2</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
 <img alt="../_images/binarysearchtree4.png" src="../_images/binarysearchtree4.png" />
-<p class="caption"><span class="caption-text">Fig. 7: The Tree After Inserting 1</span></p>
-</div>
-<div class="figure" id="id8">
+<figcaption>
+<p><span class="caption-text">Fig. 7: The Tree After Inserting 1</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id8">
 <img alt="../_images/binarysearchtree3.png" src="../_images/binarysearchtree3.png" />
-<p class="caption"><span class="caption-text">Fig. 8: The Tree After Inserting 4</span></p>
-</div>
-<div class="figure" id="id9">
+<figcaption>
+<p><span class="caption-text">Fig. 8: The Tree After Inserting 4</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
 <img alt="../_images/binarysearchtree2.png" src="../_images/binarysearchtree2.png" />
-<p class="caption"><span class="caption-text">Fig. 9: The Tree After Inserting 9</span></p>
-</div>
-<div class="figure" id="id10">
+<figcaption>
+<p><span class="caption-text">Fig. 9: The Tree After Inserting 9</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id10">
 <img alt="../_images/binarysearchtree1.png" src="../_images/binarysearchtree1.png" />
-<p class="caption"><span class="caption-text">Fig. 10: The Tree After Inserting 6</span></p>
-</div>
-<div class="figure" id="id11">
+<figcaption>
+<p><span class="caption-text">Fig. 10: The Tree After Inserting 6</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id11">
 <img alt="../_images/binarysearchtree.png" src="../_images/binarysearchtree.png" />
-<p class="caption"><span class="caption-text">Fig. 11: The Tree After Inserting 7</span></p>
-</div>
-<div class="figure" id="id12">
+<figcaption>
+<p><span class="caption-text">Fig. 11: The Tree After Inserting 7</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id12">
 <img alt="../_images/binarysearchtreefinal.png" src="../_images/binarysearchtreefinal.png" />
-<p class="caption"><span class="caption-text">Fig. 12: The Final BinarySearchTree Contents</span></p>
-</div>
-<div class="figure" id="id13">
+<figcaption>
+<p><span class="caption-text">Fig. 12: The Final BinarySearchTree Contents</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id13">
 <img alt="../_images/binarysearchtreedelete0.png" src="../_images/binarysearchtreedelete0.png" />
-<p class="caption"><span class="caption-text">Fig. 13: The Tree After Deleting 9</span></p>
-</div>
-<div class="figure" id="id14">
+<figcaption>
+<p><span class="caption-text">Fig. 13: The Tree After Deleting 9</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id14">
 <img alt="../_images/binarysearchtreedelete1.png" src="../_images/binarysearchtreedelete1.png" />
-<p class="caption"><span class="caption-text">Fig. 14: The Tree After Deleting 6</span></p>
-</div>
-<div class="figure" id="id15">
+<figcaption>
+<p><span class="caption-text">Fig. 14: The Tree After Deleting 6</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id15">
 <img alt="../_images/binarysearchtreedelete2.png" src="../_images/binarysearchtreedelete2.png" />
-<p class="caption"><span class="caption-text">Fig. 15: The Tree After Deleting 5</span></p>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text">Fig. 15: The Tree After Deleting 5</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
         </div>
         <div class="sidebar">
+          
           <h3>Table of Contents</h3>
           <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
@@ -1296,10 +776,9 @@
             <form class="search" action="../search.html" method="get">
                 <input type="text" name="q" />
                 <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
             </form>
           </div>
+
         </div>
         <div class="clearer"></div>
       </div>
@@ -1327,7 +806,7 @@
           
     <div class="footer" role="contentinfo">
         &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
         </div>
         <div class="clearer"></div>

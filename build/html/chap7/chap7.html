@@ -1,19 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>7. Graphs &#8212; Data Structures and Algorithms with Python</title>
-    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/agogo.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -46,70 +46,90 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="graphs">
-<span id="graphchap"></span><h1>7. Graphs<a class="headerlink" href="#graphs" title="Permalink to this headline">¶</a></h1>
+  <section id="graphs">
+<span id="graphchap"></span><h1><span class="section-number">7. </span>Graphs<a class="headerlink" href="#graphs" title="Permalink to this heading">¶</a></h1>
 <p>Many problems in Computer Science and Mathematics can be reduced to a set of states and a set of transitions between these states. A graph is a mathematical representation of problems like these. In the last chapter we saw that trees serve a variety of purposes in Computer Science. Trees are graphs. However, graphs are more general than trees. Abstracting away the details of a problem and studying it in its simplest form often leads to new insight. As a result, many algorithms have come out of the research in graph theory. Graph theory was first studied by mathematicians. Many of the algorithms in graph theory are named for the mathematician that developed or discovered them. Dijkstra and Kruskal are two such mathematicians and this chapter covers algorithms developed by them.</p>
 <p>Representing a graph can be done one of several different ways. The correct way to represent a graph depends on the algorithm being implemented. Graph theory problems include graph coloring, finding a path between two states or nodes in a graph, or finding a shortest path through a graph among many others. There are many algorithms that have come from the study of graphs. To understand the formulation of these problems it is good to learn a little graph notation which is presented in this chapter as well.</p>
-<div class="section" id="drawing-graphs">
-<h2>7.1. Drawing Graphs<a class="headerlink" href="#drawing-graphs" title="Permalink to this headline">¶</a></h2>
+<section id="drawing-graphs">
+<h2><span class="section-number">7.1. </span>Drawing Graphs<a class="headerlink" href="#drawing-graphs" title="Permalink to this heading">¶</a></h2>
 <p>This chapter contains several graph algorithms. Visualizing these graphs can be a challenge. Some of the pictures in the text were drawn from XML formatted files. The XML format was described in the chapter. Here are a few examples of these graph XML files.</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference download internal" download="" href="../_downloads/36562397d0a6bc6220e417a3bca568a0/graph.xml"><code class="xref download docutils literal notranslate"><span class="pre">graph.xml</span></code></a></li>
-<li><a class="reference download internal" download="" href="../_downloads/fbfd62bd0d8936cf0fce1252a8e5725e/directedgraph.xml"><code class="xref download docutils literal notranslate"><span class="pre">directedgraph.xml</span></code></a></li>
-<li><a class="reference download internal" download="" href="../_downloads/2c7f9eab2bf7648d08eeebe7fc92f43f/neiowagraph.xml"><code class="xref download docutils literal notranslate"><span class="pre">neiowagraph.xml</span></code></a></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/63cf86faeedc2bd779804c7d7e224851/graph.xml"><code class="xref download docutils literal notranslate"><span class="pre">graph.xml</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/f2fd4ca43f845087f807abf1f6d260ef/directedgraph.xml"><code class="xref download docutils literal notranslate"><span class="pre">directedgraph.xml</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/90668d0427c00a8240a184be167fcc2e/neiowagraph.xml"><code class="xref download docutils literal notranslate"><span class="pre">neiowagraph.xml</span></code></a></p></li>
 </ul>
 </div></blockquote>
-<p>These graphs can be drawn using turtle graphis. You can <a class="reference download internal" download="" href="../_downloads/9c0c5afe89047176a0bf06a053848a43/drawgraph.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> the drawgraph.py program to draw graphs in this XML format.</p>
-<p>There is also a very nice drawing program for Mac OS X called OmniGraffle. Most of the figures in the text were drawn with OmniGraffle. OmniGraffle saves its graphs in XML format as well. We have written a program to convert an OmniGraffle drawing of a graph to the XML format supported by the drawgraph.py program. You can <a class="reference download internal" download="" href="../_downloads/c52ef3ce48e3f250bc4144396cb1af20/graphreader.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> the graphreader.py program here. These programs are available <em>As-Is</em> for educational use. No support is provided for using them. The graphreader.py program happens to be a nice example of using dictionaries in a program.</p>
-</div>
-<div class="section" id="figures-from-text">
-<h2>7.2. Figures from Text<a class="headerlink" href="#figures-from-text" title="Permalink to this headline">¶</a></h2>
-<div class="figure" id="id1">
+<p>These graphs can be drawn using turtle graphis. You can <a class="reference download internal" download="" href="../_downloads/5046c22d1be7738821e47fa4997dedc1/drawgraph.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> the drawgraph.py program to draw graphs in this XML format.</p>
+<p>There is also a very nice drawing program for Mac OS X called OmniGraffle. Most of the figures in the text were drawn with OmniGraffle. OmniGraffle saves its graphs in XML format as well. We have written a program to convert an OmniGraffle drawing of a graph to the XML format supported by the drawgraph.py program. You can <a class="reference download internal" download="" href="../_downloads/a91b34dddff7e13667ba36ce33aadbfc/graphreader.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> the graphreader.py program here. These programs are available <em>As-Is</em> for educational use. No support is provided for using them. The graphreader.py program happens to be a nice example of using dictionaries in a program.</p>
+</section>
+<section id="figures-from-text">
+<h2><span class="section-number">7.2. </span>Figures from Text<a class="headerlink" href="#figures-from-text" title="Permalink to this heading">¶</a></h2>
+<figure class="align-default" id="id1">
 <img alt="../_images/undirectedgraph.png" src="../_images/undirectedgraph.png" />
-<p class="caption"><span class="caption-text">Fig. 1: An Undirected Graph</span></p>
-</div>
-<div class="figure" id="id2">
+<figcaption>
+<p><span class="caption-text">Fig. 1: An Undirected Graph</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
 <img alt="../_images/directedgraph.png" src="../_images/directedgraph.png" />
-<p class="caption"><span class="caption-text">Fig. 2: A Directed Graph</span></p>
-</div>
-<div class="figure" id="id3">
+<figcaption>
+<p><span class="caption-text">Fig. 2: A Directed Graph</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
 <img alt="../_images/neiowagraph.png" src="../_images/neiowagraph.png" />
-<p class="caption"><span class="caption-text">Fig. 3: A Weighted, Undirected Graph</span></p>
-</div>
-<div class="figure" id="id4">
+<figcaption>
+<p><span class="caption-text">Fig. 3: A Weighted, Undirected Graph</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
 <img alt="../_images/graphdfs.png" src="../_images/graphdfs.png" />
-<p class="caption"><span class="caption-text">Fig. 4: A Path from Vertex 0 to Vertex 1</span></p>
-</div>
-<div class="figure" id="id5">
+<figcaption>
+<p><span class="caption-text">Fig. 4: A Path from Vertex 0 to Vertex 1</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id5">
 <img alt="../_images/kruskal.png" src="../_images/kruskal.png" />
-<p class="caption"><span class="caption-text">Fig. 5: A Minimum Weighted Spanning Tree</span></p>
-</div>
-<div class="figure" id="id6">
+<figcaption>
+<p><span class="caption-text">Fig. 5: A Minimum Weighted Spanning Tree</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id6">
 <img alt="../_images/forest1.png" src="../_images/forest1.png" />
-<p class="caption"><span class="caption-text">Fig. 6: Kruskal’s: Snapshot 1</span></p>
-</div>
-<div class="figure" id="id7">
+<figcaption>
+<p><span class="caption-text">Fig. 6: Kruskal’s: Snapshot 1</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
 <img alt="../_images/forest2.png" src="../_images/forest2.png" />
-<p class="caption"><span class="caption-text">Fig. 7: Kruskal’s: Snapshot 2</span></p>
-</div>
-<div class="figure" id="id8">
+<figcaption>
+<p><span class="caption-text">Fig. 7: Kruskal’s: Snapshot 2</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id8">
 <img alt="../_images/dijkstra.png" src="../_images/dijkstra.png" />
-<p class="caption"><span class="caption-text">Fig. 8: Minimum Cost Paths and Total Cost from Source Vertex 0</span></p>
-</div>
-<div class="figure" id="id9">
+<figcaption>
+<p><span class="caption-text">Fig. 8: Minimum Cost Paths and Total Cost from Source Vertex 0</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
 <img alt="../_images/weighteddirected.png" src="../_images/weighteddirected.png" />
-<p class="caption"><span class="caption-text">Fig. 9: A Sample Weighted, Directed Graph</span></p>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text">Fig. 9: A Sample Weighted, Directed Graph</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
         </div>
         <div class="sidebar">
+          
           <h3>Table of Contents</h3>
           <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
@@ -135,10 +155,9 @@
             <form class="search" action="../search.html" method="get">
                 <input type="text" name="q" />
                 <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
             </form>
           </div>
+
         </div>
         <div class="clearer"></div>
       </div>
@@ -166,7 +185,7 @@
           
     <div class="footer" role="contentinfo">
         &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
         </div>
         <div class="clearer"></div>

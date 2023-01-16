@@ -1,19 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>8. Membership Structures &#8212; Data Structures and Algorithms with Python</title>
-    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/agogo.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -46,41 +46,51 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="membership-structures">
-<span id="chap11"></span><h1>8. Membership Structures<a class="headerlink" href="#membership-structures" title="Permalink to this headline">¶</a></h1>
+  <section id="membership-structures">
+<span id="chap11"></span><h1><span class="section-number">8. </span>Membership Structures<a class="headerlink" href="#membership-structures" title="Permalink to this heading">¶</a></h1>
 <p>In <a class="reference internal" href="../chap5/chap5.html#setsmaps">chapter 5</a> we studied data structures that support insertion, deletion, membership testing, and iteration. For some applications testing membership may be enough. Iteration and deletion may not be necessary. The classic example is that of a spell checker. Consider the job of a spell checker. A simple one may detect errors in spelling while a more advanced spell checker may suggest alternatives of <em>correctly</em> spelled words.</p>
 <p>Clearly a spell checker is provided with a large dictionary of words. Using the list of words the spell checker determines whether a word you have is in the dictionary and therefore a correct word. If the word does not appear in the dictionary the word processor or editor may underline the word indicating it may be incorrectly spelled. In some cases the word processor may suggest an alternative, correctly spelled word. In some cases, the word processor may simply correct the mispelling. How do these spell checkers/correctors work? What kind of data structures do they use?</p>
-<div class="section" id="an-english-dictionary">
-<h2>8.1. An English Dictionary<a class="headerlink" href="#an-english-dictionary" title="Permalink to this headline">¶</a></h2>
-<p>You can <a class="reference download internal" download="" href="../_downloads/f7c67b0d72a8750a36407a9f62a14906/wordsEn.txt"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> an English dictionary of words by clicking this link.</p>
-</div>
-<div class="section" id="figures-from-text">
-<h2>8.2. Figures from Text<a class="headerlink" href="#figures-from-text" title="Permalink to this headline">¶</a></h2>
-<div class="figure" id="id1">
+<section id="an-english-dictionary">
+<h2><span class="section-number">8.1. </span>An English Dictionary<a class="headerlink" href="#an-english-dictionary" title="Permalink to this heading">¶</a></h2>
+<p>You can <a class="reference download internal" download="" href="../_downloads/952a4539d11f0b8eecff632416f44ac3/wordsEn.txt"><code class="xref download docutils literal notranslate"><span class="pre">download</span></code></a> an English dictionary of words by clicking this link.</p>
+</section>
+<section id="figures-from-text">
+<h2><span class="section-number">8.2. </span>Figures from Text<a class="headerlink" href="#figures-from-text" title="Permalink to this heading">¶</a></h2>
+<figure class="align-default" id="id1">
 <img alt="../_images/bloom1.png" src="../_images/bloom1.png" />
-<p class="caption"><span class="caption-text">Fig. 1: An Empty Bloom Filter</span></p>
-</div>
-<div class="figure" id="id2">
+<figcaption>
+<p><span class="caption-text">Fig. 1: An Empty Bloom Filter</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
 <img alt="../_images/bloom2.png" src="../_images/bloom2.png" />
-<p class="caption"><span class="caption-text">Fig. 2: After Inserting <em>cow</em> into the Bloom Filter</span></p>
-</div>
-<div class="figure" id="id3">
+<figcaption>
+<p><span class="caption-text">Fig. 2: After Inserting <em>cow</em> into the Bloom Filter</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
 <img alt="../_images/bloom3.png" src="../_images/bloom3.png" />
-<p class="caption"><span class="caption-text">Fig. 3: After inserting <em>cow</em>, <em>cat</em>, <em>dog</em> into the Bloom Filter</span></p>
-</div>
-<div class="figure" id="id4">
+<figcaption>
+<p><span class="caption-text">Fig. 3: After inserting <em>cow</em>, <em>cat</em>, <em>dog</em> into the Bloom Filter</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
 <img alt="../_images/trie.png" src="../_images/trie.png" />
-<p class="caption"><span class="caption-text">Fig. 4: After inserting <em>cow</em>, <em>cat</em>, <em>dog</em> into a Trie</span></p>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text">Fig. 4: After inserting <em>cow</em>, <em>cat</em>, <em>dog</em> into a Trie</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
         </div>
         <div class="sidebar">
+          
           <h3>Table of Contents</h3>
           <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../chap1/chap1.html">1. Python Programming 101</a></li>
@@ -106,10 +116,9 @@
             <form class="search" action="../search.html" method="get">
                 <input type="text" name="q" />
                 <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
             </form>
           </div>
+
         </div>
         <div class="clearer"></div>
       </div>
@@ -137,7 +146,7 @@
           
     <div class="footer" role="contentinfo">
         &#169; Copyright 2014, Kent D. Lee and Steve Hubbard.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
         </div>
         <div class="clearer"></div>

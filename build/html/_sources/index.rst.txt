@@ -3,15 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. only:: html 
+.. only:: html
 
    ---------------
    Welcome!
    ---------------
 
-   Welcome to the *Data Structures and Algorithms with Python* text by Kent D. Lee and Steve Hubbard. This is the supplementary materials website. You can download programs and other files mentioned in the text from this website. The chapters are listed below along with a short description of each chapter and the supplementary materials available for each chapter. 
+   Welcome to the *Data Structures and Algorithms with Python* text by Kent D. Lee and Steve Hubbard. This is the supplementary materials website. You can download programs and other files mentioned in the text from this website. The chapters are listed below along with a short description of each chapter and the supplementary materials available for each chapter.
 
-   Instructor only materials are available by contacting Kent at kentdlee@luther.edu. You must provide proof that you are an instructor to get access to the instructor materials. 
+   Instructor only materials are available by contacting Kent at kentdlee@luther.edu. You must provide proof that you are an instructor to get access to the instructor materials.
 
 
 .. only:: latex
