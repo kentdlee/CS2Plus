@@ -72,7 +72,6 @@ class PlotApplication(tkinter.Frame):
                 xSize = maxX - minX
                 ySize = maxY - minY
                 xCenter = xSize / 2.0 + minX
-                yCenter = ySize / 2.0 + minY
 
                 xPlaces = max(4-round(math.log(xSize,10)),0)
                 yPlaces = max(4-round(math.log(ySize,10)),0)
@@ -133,7 +132,7 @@ class PlotApplication(tkinter.Frame):
                     theTurtle.color(color)
                     theTurtle.penup()
                     theTurtle.goto(xCenter,labelYVal)
-                    labelYVal = labelYVal - 0.10 * ySize
+                    labelYVal -= 0.10 * ySize
                     theTurtle.write(label,align="center",font=("Arial",14,"bold"))
 
                     dataPoints = sequence.getElementsByTagName("DataPoint")
