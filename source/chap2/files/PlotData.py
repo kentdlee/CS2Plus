@@ -26,7 +26,7 @@ class PlotApplication(tkinter.Frame):
         def loadFile(filename=None):
 
             if filename == None:
-                filename = tkinter.filedialog.askopenfilename(title="Select a Plot File")
+                filename = tkinter.filedialog.askopenfilename(title="Select a Plot File", filetypes=[("Extensible Markup Language", ".xml")])
 
             if filename == None or filename == '':
                 return
