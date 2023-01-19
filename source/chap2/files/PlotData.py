@@ -8,6 +8,7 @@ import math
 import sys
 
 class PlotApplication(tkinter.Frame):
+    currentFile = None # used for the reload feature
     def __init__(self, master=None, datafile=None):
         super().__init__(master)
         self.datafile = datafile
@@ -29,6 +30,8 @@ class PlotApplication(tkinter.Frame):
 
             if filename == None or filename == '':
                 return
+                
+            self.currentFile = filename
 
             try:
 
@@ -151,9 +154,14 @@ class PlotApplication(tkinter.Frame):
                 tkinter.messagebox.showerror('Error Reading File', 'There was an error reading the XML plot data:\n' + str(ex))
                 print("The error from reading the plot data.")
                 print(repr(ex))
-
+                
+        def reloadFile():
+            if self.currentFile != None: loadFile(self.currentFile)
+        
 
         fileMenu.add_command(label="Load Plot Data...",command=loadFile)
+        
+        fileMenu.add_command(label="Reload Plot Data...",command=reloadFile)
 
         fileMenu.add_command(label="Exit",command=self.master.quit)
 
