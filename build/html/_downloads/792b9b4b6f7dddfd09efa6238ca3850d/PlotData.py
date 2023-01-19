@@ -8,6 +8,7 @@ import math
 import sys
 
 class PlotApplication(tkinter.Frame):
+    currentFile = None # used for the reload feature
     def __init__(self, master=None, datafile=None):
         super().__init__(master)
         self.datafile = datafile
@@ -21,14 +22,20 @@ class PlotApplication(tkinter.Frame):
 
         bar = tkinter.Menu(self.master)
         fileMenu = tkinter.Menu(bar,tearoff=0)
+        open_button = None
+
 
         def loadFile(filename=None):
 
             if filename == None:
-                filename = tkinter.filedialog.askopenfilename(title="Select a Plot File")
+                filename = tkinter.filedialog.askopenfilename(title="Select a Plot File", filetypes=[("Extensible Markup Language", ".xml")])
 
             if filename == None or filename == '':
                 return
+                
+            if open_button: open_button.destroy()
+                
+            self.currentFile = filename
 
             try:
 
@@ -65,7 +72,6 @@ class PlotApplication(tkinter.Frame):
                 xSize = maxX - minX
                 ySize = maxY - minY
                 xCenter = xSize / 2.0 + minX
-                yCenter = ySize / 2.0 + minY
 
                 xPlaces = max(4-round(math.log(xSize,10)),0)
                 yPlaces = max(4-round(math.log(ySize,10)),0)
@@ -126,7 +132,7 @@ class PlotApplication(tkinter.Frame):
                     theTurtle.color(color)
                     theTurtle.penup()
                     theTurtle.goto(xCenter,labelYVal)
-                    labelYVal = labelYVal - 0.10 * ySize
+                    labelYVal -= 0.10 * ySize
                     theTurtle.write(label,align="center",font=("Arial",14,"bold"))
 
                     dataPoints = sequence.getElementsByTagName("DataPoint")
@@ -151,9 +157,17 @@ class PlotApplication(tkinter.Frame):
                 tkinter.messagebox.showerror('Error Reading File', 'There was an error reading the XML plot data:\n' + str(ex))
                 print("The error from reading the plot data.")
                 print(repr(ex))
+                
+        def reloadFile():
+            if self.currentFile != None: loadFile(self.currentFile)
 
+        open_button = tkinter.Button(self.master, text='Load Plot Data', width=20,
+             height=5, bd='10', command=loadFile)
+        open_button.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
 
         fileMenu.add_command(label="Load Plot Data...",command=loadFile)
+        
+        fileMenu.add_command(label="Reload Plot Data...",command=reloadFile)
 
         fileMenu.add_command(label="Exit",command=self.master.quit)
 
