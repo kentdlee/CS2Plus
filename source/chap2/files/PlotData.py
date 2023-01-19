@@ -22,6 +22,8 @@ class PlotApplication(tkinter.Frame):
 
         bar = tkinter.Menu(self.master)
         fileMenu = tkinter.Menu(bar,tearoff=0)
+        open_button = None
+
 
         def loadFile(filename=None):
 
@@ -30,6 +32,8 @@ class PlotApplication(tkinter.Frame):
 
             if filename == None or filename == '':
                 return
+                
+            if open_button: open_button.destroy()
                 
             self.currentFile = filename
 
@@ -157,7 +161,10 @@ class PlotApplication(tkinter.Frame):
                 
         def reloadFile():
             if self.currentFile != None: loadFile(self.currentFile)
-        
+
+        open_button = tkinter.Button(self.master, text='Load Plot Data', width=20,
+             height=5, bd='10', command=loadFile)
+        open_button.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
 
         fileMenu.add_command(label="Load Plot Data...",command=loadFile)
         
